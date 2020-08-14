@@ -1,10 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 // 服务端接口数据结构
-export interface ServerResponse<T> {
+interface Response<T> {
   code: string
   message: string
-  data?: T
+  data: T | null
 }
 
 const instance = axios.create({
@@ -26,12 +26,13 @@ async function request<T>(
   config: AxiosRequestConfig = {}
 ): Promise<T> {
   return new Promise((resolve, reject) => {
-    instance({ url, data, ...config })
+    instance
+      .request<Response<T>>({ url, data, ...config })
       .then((response) => {
         const res = response.data
         const { data, code } = res
 
-        if (code !== '0000') {
+        if (code !== '000000') {
           reject(res)
         } else if (data) {
           resolve(data)
@@ -50,16 +51,13 @@ async function request<T>(
  * 适用于async/await形式的写法，可以避免使用try catch处理异常返回的数据
  * @borrows https://github.com/scopsy/await-to-js
  */
-async function awaitTo<T>(promise: Promise<T>): Promise<[ServerResponse<T> | null, T]> {
+async function to<T>(promise: Promise<T>): Promise<[Response<null>, null] | [null, T]> {
   try {
     const data = await promise
     return [null, data]
   } catch (err) {
-    return [err, (undefined as unknown) as T]
+    return [err, null]
   }
 }
 
-export default {
-  request,
-  awaitTo,
-}
+export { request, to }
