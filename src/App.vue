@@ -1,12 +1,20 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
   </div>
+  <router-view />
+
+  <Loading />
 </template>
+
+<script lang="ts">
+import Loading from '@/components/ui/loading/loading.vue'
+
+export default {
+  components: { Loading },
+}
+</script>
 
 <style lang="scss">
 #app {
