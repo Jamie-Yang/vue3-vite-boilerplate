@@ -6055,7 +6055,7 @@ vue-eslint-parser@^7.1.0:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
-vue-loader@^16.0.0-beta.4:
+vue-loader@^16.0.0-beta.5:
   version "16.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.0.0-beta.5.tgz#04edc889492b03a445e7ac66e9226a70175ca8a0"
   integrity sha512-ciWfzNefqWlmzKznCWY9hl+fPP4KlQ0A9MtHbJ/8DpyY+dAM8gDrjufIdxwTgC4szE4EZC3A6ip/BbrqM84GqA==
@@ -6067,7 +6067,7 @@ vue-loader@^16.0.0-beta.4:
     merge-source-map "^1.1.0"
     source-map "^0.6.1"
 
-vue-router@^4.0.0-beta.2:
+vue-router@^4.0.0-beta.6:
   version "4.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-beta.6.tgz#7ddf4c00d1bee778fb8945f5e8ccb931b5885543"
   integrity sha512-zF+reWzcM0ivbIAbjfCpDVYlvc4iQAi7rx5abLNUcNiJxuTMR0lEBoxamQcaewV4sJ+zskX6PYW3QM5/fRkPqA==
@@ -6080,7 +6080,7 @@ vue-style-loader@^4.1.2:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue@^3.0.0-rc.2:
+vue@^3.0.0-rc.5:
   version "3.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.0-rc.5.tgz#973175d45a892b3bd23ef5de7faa4add9c66275f"
   integrity sha512-8t8Y4sHMBGD5iLZ7JfBGmKBJlzesPoL+/nW9EV8s+4LwnKC4rGlRp+Lj2rcign4iQaj0GFaL7DrQ8IoOfVX6+w==
@@ -6198,7 +6198,7 @@ webpack-sources@^1.1.0, webpack-sources@^1.4.3:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^5.0.0-beta.22:
+webpack@^5.0.0-beta.26:
   version "5.0.0-beta.26"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.26.tgz#1a6262ba0c99d7943788a39b923eee1f1dce6d76"
   integrity sha512-/T4eA+MxVf6AzEU6V9PMUM6m+ChNlZfXtd5hHVKgjyyWv+XurGAihQsxaK4alILEBArWLgeDwi8IKwNur1t1vw==
