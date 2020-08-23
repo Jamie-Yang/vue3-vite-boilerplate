@@ -3,8 +3,6 @@ module.exports = {
   plugins: ['stylelint-scss', 'stylelint-order'],
   ignoreFiles: [
     'node_modules/**',
-    '**/*.md',
-    '**/*.js',
     'src/assets/font/**',
     'src/assets/style/reset.css',
   ],
