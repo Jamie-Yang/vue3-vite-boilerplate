@@ -1,0 +1,99 @@
+/* stylelint-disable selector-list-comma-newline-after, no-duplicate-selectors */
+
+/**
+ * apply a natural box layout model to all elements, but allowing components to change
+ * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  font-family: Helvetica, Verdana, Tahoma, sans-serif; /* 1 */
+  line-height: 1.5; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #f7f6f8;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  outline: 0;
+}
+
+a, img, button, div, fieldset, h1, h2, h3, h4, h5, h6, img, li, ol, p, ul, figure, dl, dt, dd {
+  user-select: none;
+}
+
+a, img, button, div, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, menu, ol, p, textarea, ul, figure, dl, dt, dd {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+li, ol, ul, dl, dt, dd {
+  list-style: none;
+}
+
+b, em, h1, h2, h3, h4, h5, h6, i, th, td {
+  font-weight: 400;
+  font-style: normal;
+}
+
+/**
+ * Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  -webkit-text-decoration-skip: objects;
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:active, a:hover {
+  outline-width: 0;
+}
+
+button, input, select, textarea, img {
+  outline: 0;
+  color: #000;
+}
+
+button, input[type=button], input[type=password], input[type=submit], input[type=text], textarea {
+  -webkit-appearance: none;
+  -webkit-appearance: button;
+}
+
+img, video {
+  vertical-align: middle;
+  border: 0 none;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
