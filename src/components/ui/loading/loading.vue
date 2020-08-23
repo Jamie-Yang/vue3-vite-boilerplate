@@ -9,7 +9,7 @@
   </transition>
 </template>
 
-<script lang="ts" scoped>
+<script lang="ts">
 export default {
   name: 'Loading',
   props: {
