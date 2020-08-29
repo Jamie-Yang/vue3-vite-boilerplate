@@ -1,6 +1,6 @@
 <template>
   <transition name="scale">
-    <div v-show="show" class="loading-wrapper">
+    <div v-show="isShow" class="loading-wrapper">
       <div class="loading-block">
         <img src="./images/loading-white.png" class="loading-icon" />
         <div class="loading-tips">{{ message }}</div>
@@ -10,16 +10,33 @@
 </template>
 
 <script lang="ts">
+import { ref } from 'vue'
+
+// const isShow = ref(false)
+// const message = ref('加载中...')
+
+interface Data {
+  [key: string]: unknown
+}
+
 export default {
   name: 'Loading',
-  props: {
-    show: {
-      type: Boolean,
-      default: true,
-    },
-    message: {
-      type: String,
-      default: '加载中...',
+
+  data(): Data {
+    return {
+      isShow: false,
+      message: '加载中...',
+    }
+  },
+
+  // setup(): Data {
+  //   return { isShow, message }
+  // },
+
+  methods: {
+    show(message = '加载中...'): void {
+      this.isShow = true
+      this.message = message
     },
   },
 }
