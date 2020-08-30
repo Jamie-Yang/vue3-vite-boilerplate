@@ -8,18 +8,12 @@ interface Response<T> {
 }
 
 const instance = axios.create({
-  baseURL: '',
   method: 'post',
   timeout: 15000,
-  headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+  headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 })
 
-/**
- * 基本网络请求
- * @param url 地址
- * @param data 接口入参
- * @param config axios配置
- */
+// 基本网络请求
 async function request<T>(
   url: string,
   data: Record<string, unknown> = {},
