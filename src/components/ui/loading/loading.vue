@@ -10,11 +10,6 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
-
-// const isShow = ref(false)
-// const message = ref('加载中...')
-
 interface Data {
   [key: string]: unknown
 }
@@ -28,10 +23,6 @@ export default {
       message: '加载中...',
     }
   },
-
-  // setup(): Data {
-  //   return { isShow, message }
-  // },
 
   methods: {
     show(message = '加载中...'): void {
