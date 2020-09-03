@@ -1,10 +1,14 @@
 import { createApp } from 'vue'
 
 import '@/assets/styles/reset.css'
-import '@/utils/rem.js'
+import '@/core/rem.js'
 
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
-createApp(App).use(router).use(store).mount('#app')
+// import loading from '@/components/ui/loading'
+// import toast from '@/components/ui/toast'
+
+const app = createApp(App)
+app.use(router).use(store).mount('#app')
