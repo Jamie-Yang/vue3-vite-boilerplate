@@ -32,6 +32,7 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     https: false,
     open: false,
     noInfo: true,
+    // writeToDisk: true,
   },
 
   plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.ProgressPlugin()],

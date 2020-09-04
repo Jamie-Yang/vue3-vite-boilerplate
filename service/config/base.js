@@ -49,24 +49,25 @@ module.exports = {
     new HTMLPlugin({
       template: paths.resolve('public/index.html'),
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: paths.resolve('public'),
-          to: paths.resolve(config.outputDir),
-          toType: 'dir',
-          globOptions: {
-            ignore: ['.DS_Store'],
-          },
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: paths.resolve('public'),
+    //       to: paths.resolve(config.outputDir),
+    //       toType: 'dir',
+    //       globOptions: {
+    //         ignore: ['.DS_Store', 'test.html'],
+    //       },
+    //     },
+    //   ],
+    // }),
   ],
 
   module: {
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
 
     rules: [
+      // eslint
       {
         test: /\.(vue|(j|t)sx?)$/,
         loader: 'eslint-loader',
@@ -79,11 +80,13 @@ module.exports = {
         },
       },
 
+      // vue
       {
         test: /\.vue$/,
         use: ['cache-loader', 'vue-loader'],
       },
 
+      // babel
       {
         test: /\.m?jsx?$/,
         exclude: (file) => {
@@ -97,6 +100,7 @@ module.exports = {
         use: ['cache-loader', 'thread-loader', 'babel-loader'],
       },
 
+      // ts
       {
         test: /\.tsx?$/,
         use: [
@@ -114,6 +118,7 @@ module.exports = {
         ],
       },
 
+      // images
       {
         test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
         loader: 'url-loader',
@@ -128,12 +133,14 @@ module.exports = {
         options: genUrlLoaderOptions('img'),
       },
 
+      // media
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: genUrlLoaderOptions('media'),
       },
 
+      // fonts
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         loader: 'url-loader',
