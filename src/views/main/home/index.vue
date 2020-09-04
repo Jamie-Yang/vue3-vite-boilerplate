@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import HelloWorld from './components/hello-world.vue'
-import { useLoading } from '@/components/ui/loading'
+// import { useLoading } from '@/components/ui/loading'
 // import { useToast } from '@/components/ui/toast'
 
 interface Data {
@@ -22,12 +22,12 @@ export default {
   setup(): Data {
     console.log(process.env.NODE_ENV)
 
-    const Loading = useLoading()
+    // const Loading = useLoading()
     // const showToast = useToast()
 
-    function showLoading() {
-      Loading.show()
-    }
+    // function showLoading() {
+    //   Loading.show()
+    // }
 
     // function showToast() {
     //   Toast.show({
@@ -36,14 +36,14 @@ export default {
     // }
 
     return {
-      showLoading,
+      // showLoading,
       // showToast,
     }
   },
 
   methods: {
     onClick(): void {
-      this.$showToast('提示')
+      // this.$showToast('提示')
     },
   },
 }
