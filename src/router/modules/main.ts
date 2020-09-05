@@ -1,8 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { RouteRecordRaw } from 'vue-router'
+
 export default [
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/main/home/index.vue'),
+    path: '/main/home',
+    component: () => import('@/views/main/home/home.vue'),
+    meta: {
+      title: '首页',
+    },
   },
-]
+] as Array<RouteRecordRaw>
