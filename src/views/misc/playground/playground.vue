@@ -1,6 +1,7 @@
 <template>
   <div class="view-container">
-    <button @click="onClick">测试</button>
+    <button @click="showToast">测试 this.$showToast</button>
+    <button @click="showMessageBox">测试 this.$showMessageBox</button>
   </div>
 </template>
 
@@ -17,8 +18,12 @@ export default {
   },
 
   methods: {
-    onClick(): void {
-      this.$showToast('test')
+    showToast(): void {
+      this.$showToast('test showToast')
+    },
+
+    showMessageBox(): void {
+      this.$showMessageBox('test showMessageBox')
     },
   },
 }
@@ -28,6 +33,7 @@ export default {
 .view-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
