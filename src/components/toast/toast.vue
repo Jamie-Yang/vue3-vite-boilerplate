@@ -36,7 +36,7 @@ export default {
   watch: {
     show(val: boolean): void {
       if (val) {
-        console.log(val)
+        // console.log(val)
       }
     },
   },
@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .toast-wrapper {
   display: flex;
   align-items: center;
