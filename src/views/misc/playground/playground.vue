@@ -2,16 +2,28 @@
   <div class="view-container">
     <button @click="showToast">测试 this.$showToast</button>
     <button @click="showMessageBox">测试 this.$showMessageBox</button>
+    <CountDown :remianTime="10000000" :ms="false" v-slot="slotProps">
+      {{ JSON.stringify(slotProps.remain) }}
+      <br />
+      {{ slotProps.remain.hours }}
+      {{ slotProps.remain.minutes }}
+      {{ slotProps.remain.seconds }}
+      {{ slotProps.remain.milliseconds }}
+    </CountDown>
   </div>
 </template>
 
 <script lang="ts">
+import CountDown from '@/components/count-down/count-down.vue'
+
 interface Data {
   [key: string]: unknown
 }
 
 export default {
   name: 'Playground',
+
+  components: { CountDown },
 
   setup(): Data {
     return {}
