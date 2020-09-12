@@ -118,7 +118,7 @@ function formatTime(time: IRemainTime | IDateTime, format = 'HH:mm:ss'): string 
 }
 
 /**
- * 剩余时间格式化
+ * 转换剩余时间为对象形式
  * @param {number} remain 剩余毫秒数
  * @returns {object}
  */
@@ -127,7 +127,7 @@ export function convertRemainTime(remain: number): unknown {
 }
 
 /**
- * 时间格式化
+ * 转换时间为对象形式
  * @param {Date} date 时间对象
  * @returns {object}
  */
@@ -135,6 +135,9 @@ export function convertDate(date: Date): unknown {
   return convertTime(parseDate(date))
 }
 
+/**
+ * 转换对象的字段为字符串
+ */
 function convertTime(time: IRemainTime | IDateTime): unknown {
   const result: { [key: string]: number | string } = { ...time }
 
