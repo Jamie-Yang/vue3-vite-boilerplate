@@ -5,8 +5,10 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const { DefinePlugin } = require('webpack')
 // const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
 
+const resolveClientEnv = require('../core/resolveClientEnv')
 const paths = require('../utils/paths')
 
 const config = require('../project.config')
@@ -48,6 +50,12 @@ module.exports = {
     new FriendlyErrorsPlugin(),
     new HTMLPlugin({
       template: paths.resolve('public/index.html'),
+    }),
+    new DefinePlugin({
+      // feature flags <http://link.vuejs.org/feature-flags>
+      __VUE_OPTIONS_API__: 'true',
+      __VUE_PROD_DEVTOOLS__: 'false',
+      ...resolveClientEnv({ publicPath: config.dev.publicPath }),
     }),
     // new CopyPlugin({
     //   patterns: [
