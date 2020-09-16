@@ -42,6 +42,7 @@ export default {
       handler: 'start',
     },
   },
+
   methods: {
     ...{ formatRemainTime, convertRemainTime },
 
