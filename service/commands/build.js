@@ -1,6 +1,6 @@
 'use strict'
 
-const loadEnv = require('../core/loadEnv')
+const loadEnv = require('../utils/loadEnv')
 loadEnv()
 loadEnv('production')
 

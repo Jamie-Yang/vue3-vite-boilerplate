@@ -2,7 +2,6 @@
 
 const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
-const PreloadPlugin = require('preload-webpack-plugin')
 
 const baseWebpackConfig = require('./base')
 const cssWebpackConfig = require('./css')
@@ -38,16 +37,4 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
       },
     },
   },
-
-  plugins: [
-    new PreloadPlugin({
-      rel: 'preload',
-      include: 'initial',
-      fileBlacklist: [/\.map$/, /hot-update\.js$/],
-    }),
-    new PreloadPlugin({
-      rel: 'prefetch',
-      include: 'asyncChunks',
-    }),
-  ],
 })

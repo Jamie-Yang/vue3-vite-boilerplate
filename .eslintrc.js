@@ -28,7 +28,7 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
 
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['@typescript-eslint'],
 
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

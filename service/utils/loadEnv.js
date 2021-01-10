@@ -1,8 +1,9 @@
 'use strict'
+
 const path = require('path')
 const dotenv = require('dotenv')
 const dotenvExpand = require('dotenv-expand')
-const { error } = require('../utils/logger')
+const { error } = require('./logger')
 
 module.exports = function loadEnv(mode) {
   const basePath = path.resolve(process.cwd(), `.env${mode ? `.${mode}` : ``}`)

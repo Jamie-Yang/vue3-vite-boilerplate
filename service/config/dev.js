@@ -1,7 +1,5 @@
 'use strict'
 
-const path = require('path')
-const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 
 const baseWebpackConfig = require('./base')
@@ -14,26 +12,23 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
   devtool: 'eval-cheap-module-source-map',
 
   devServer: {
-    clientLogLevel: 'silent',
     historyApiFallback: {
-      rewrites: [
-        {
-          from: /.*/,
-          to: path.posix.join(config.dev.publicPath, 'index.html'),
-        },
-      ],
+      rewrites: [{ from: /./, to: '/index.html' }],
     },
-    hot: true,
-    compress: false,
-    publicPath: config.dev.publicPath,
-    overlay: { warnings: true, errors: true },
+    dev: {
+      publicPath: config.dev.publicPath,
+    },
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
+    open: false,
     host: '0.0.0.0',
     port: config.dev.port,
-    https: false,
-    open: false,
-    noInfo: true,
-    // writeToDisk: true,
+    liveReload: false,
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.ProgressPlugin()],
+  infrastructureLogging: {
+    level: 'warn',
+  },
 })
