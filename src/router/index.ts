@@ -1,17 +1,17 @@
 import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router'
+import example from './modules/example'
+import main from './modules/main'
+import misc from './modules/misc'
 
 let routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/misc/playground',
   },
+  ...example,
+  ...main,
+  ...misc,
 ]
-
-const files = require.context('./modules', false, /\.ts$/)
-
-files.keys().forEach((key) => {
-  routes = routes.concat(files(key).default)
-})
 
 const router = createRouter({
   history: createWebHashHistory(),
