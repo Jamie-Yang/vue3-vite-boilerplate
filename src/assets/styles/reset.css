@@ -80,7 +80,7 @@ button, input, select, textarea, img {
   color: #000;
 }
 
-button, input[type=button], input[type=password], input[type=submit], input[type=text], textarea {
+button, input[type="button"], input[type="password"], input[type="submit"], input[type="text"], textarea {
   -webkit-appearance: none;
   -webkit-appearance: button;
 }
