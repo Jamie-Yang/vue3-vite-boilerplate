@@ -1,7 +1,6 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
     node: true,
   },
 
@@ -22,8 +21,19 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
+
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['^@', './src/']],
+        extensions: ['.ts', '.js', '.vue', '.json'],
+      },
+    },
+  },
 
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

@@ -8,7 +8,7 @@
     "serve": "vite preview",
     "lint": "yarn prettier && yarn eslint && yarn stylelint",
     "prettier": "prettier . --write --loglevel warn",
-    "eslint": "eslint --ext .ts,.js,.vue --fix",
+    "eslint": "eslint . --ext .ts,.js,.vue --fix",
     "stylelint": "stylelint \"./src/**/*.{vue,scss,css}\" --fix"
   },
   "dependencies": {
@@ -18,12 +18,15 @@
     "vuex": "^4.0.0"
   },
   "devDependencies": {
+    "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.11",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-vue": "^7.9.0",
     "prettier": "2.3.0",
     "sass": "^1.32.13",

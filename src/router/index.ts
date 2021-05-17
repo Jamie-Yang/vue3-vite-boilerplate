@@ -3,7 +3,7 @@ import example from './modules/example'
 import main from './modules/main'
 import misc from './modules/misc'
 
-let routes: Array<RouteRecordRaw> = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/misc/playground',
