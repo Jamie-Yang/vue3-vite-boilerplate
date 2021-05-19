@@ -10,7 +10,9 @@
 
 <script lang="ts">
 interface Data {
-  [key: string]: unknown
+  timer: number
+  message: string
+  show: boolean
 }
 
 export default {

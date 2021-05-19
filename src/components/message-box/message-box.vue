@@ -32,6 +32,7 @@
 <script lang="ts">
 export default {
   emits: ['onclickbtn', 'update:show'],
+
   props: {
     title: {
       type: String,

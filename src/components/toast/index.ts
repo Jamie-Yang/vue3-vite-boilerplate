@@ -24,9 +24,9 @@ const returnInstance = (instance: ToastType) => {
   }
 }
 
-const removeDom = (event: Event) => {
-  if (event?.target?.parentNode) {
-    event.target.parentNode.removeChild(event.target)
+const removeDom = (event: TransitionEvent) => {
+  if (event.target instanceof Element) {
+    event.target?.parentNode?.removeChild(event.target)
   }
 }
 
