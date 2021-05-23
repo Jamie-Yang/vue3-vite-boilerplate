@@ -1,6 +1,6 @@
 <template>
-  <transition name="toast">
-    <div v-show="show" class="toast-wrapper">
+  <transition name="toast" @after-leave="$emit('destroy')">
+    <div v-show="visible" :id="id" class="toast-wrapper">
       <div class="toast">
         <span class="toast-message" v-html="message"></span>
       </div>
@@ -9,42 +9,52 @@
 </template>
 
 <script lang="ts">
-interface Data {
-  timer: number
-  message: string
-  show: boolean
-}
+import { defineComponent, onMounted, ref } from 'vue'
 
-export default {
-  // props: {
-  //   message: {
-  //     type: String,
-  //     default: '',
-  //   },
-  //   show: {
-  //     type: Boolean,
-  //     default: false,
-  //   },
-  // },
+export default defineComponent({
+  props: {
+    id: { type: String, default: '' },
+    message: { type: String, default: '' },
+  },
 
-  data(): Data {
+  emits: ['destroy'],
+
+  setup() {
+    const visible = ref(false)
+
+    let timer: number | undefined = undefined
+
+    function startTimer() {
+      timer = setTimeout(() => {
+        if (visible.value) {
+          close()
+        }
+      }, 2000)
+    }
+
+    function clearTimer() {
+      clearTimeout(timer)
+      timer = undefined
+    }
+
+    function close() {
+      visible.value = false
+    }
+
+    onMounted(() => {
+      startTimer()
+      visible.value = true
+    })
+
     return {
-      timer: 0,
-      message: '',
-      show: false,
+      visible,
+
+      startTimer,
+      clearTimer,
+      close,
     }
   },
-
-  watch: {
-    show(val: boolean): void {
-      if (val) {
-        // console.log(val)
-      }
-    },
-  },
-
-  methods: {},
-}
+})
 </script>
 
 <style lang="scss" scoped>

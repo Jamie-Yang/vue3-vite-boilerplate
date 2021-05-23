@@ -30,7 +30,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   emits: ['onclickbtn', 'update:show'],
 
   props: {
@@ -62,7 +64,7 @@ export default {
       this.$emit('update:show', false) // 支持sync
     },
   },
-}
+})
 </script>
 
 <style lang="scss">

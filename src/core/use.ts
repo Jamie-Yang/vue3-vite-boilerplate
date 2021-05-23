@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import toast from '@/components/toast'
+import toast from '@/components/toast/toast'
 import messageBox from '@/components/message-box'
 
 export default function use(app: App): void {
