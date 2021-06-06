@@ -7,8 +7,13 @@ import '@/core/rem.js'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import use from '@/core/use'
+
+import Toast from '@/components/toast/toast'
+import MessageBox from '@/components/message-box'
 
 const app = createApp(App)
-use(app)
-app.use(router).use(store).mount('#app')
+app.use(router)
+app.use(store)
+app.use(Toast)
+app.use(MessageBox)
+app.mount('#app')
