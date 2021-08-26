@@ -14,10 +14,7 @@
             <button
               type="button"
               class="message-box-btn"
-              :class="[
-                typeof btn === 'object' && btn.emphasize ? 'emphasize' : '',
-                typeof btn === 'object' && btn.cssClass ? btn.cssClass : '',
-              ]"
+              :class="[typeof btn === 'object' && btn.emphasize ? 'emphasize' : '']"
               @click="onClickBtn(index)"
             >
               {{ typeof btn === 'object' ? btn.label : btn }}
@@ -33,34 +30,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  emits: ['onclickbtn', 'update:show'],
+  emits: ['btn-click', 'update:show'],
 
   props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    message: {
-      type: String,
-      default: '',
-    },
-    buttons: {
-      type: Array,
-      default: (): string[] => [''],
-    },
-    align: {
-      type: String,
-      default: 'row',
-    },
-    show: {
-      type: Boolean,
-      default: false,
-    },
+    title: { type: String, default: '' },
+    message: { type: String, default: '' },
+    buttons: { type: Array, default: (): string[] => [''] },
+    align: { type: String, default: 'row' },
+    show: { type: Boolean, default: false },
   },
 
   methods: {
     onClickBtn(index: number): void {
-      this.$emit('onclickbtn', index)
+      this.$emit('btn-click', index)
       this.$emit('update:show', false) // 支持sync
     },
   },

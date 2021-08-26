@@ -14,28 +14,11 @@ export default {
   emits: ['reach-end'],
 
   props: {
-    isLoading: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
-    loadingText: {
-      type: String,
-      default: '加载中...',
-    },
-    noMore: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
-    noMoreText: {
-      type: String,
-      default: '没有更多数据了',
-    },
-    scrollElement: {
-      type: [Window, HTMLElement],
-      default: (): Window => window,
-    },
+    isLoading: { type: Boolean, default: false, required: true },
+    loadingText: { type: String, default: '加载中...' },
+    noMore: { type: Boolean, default: false, required: true },
+    noMoreText: { type: String, default: '没有更多数据了' },
+    scrollElement: { type: [Window, HTMLElement], default: (): Window => window },
   },
 
   watch: {

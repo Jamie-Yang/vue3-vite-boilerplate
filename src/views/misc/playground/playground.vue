@@ -2,6 +2,7 @@
   <div class="view-container">
     <button @click="showToast">测试 this.$showToast</button>
     <button @click="showMessageBox">测试 this.$showMessageBox</button>
+    <button @click="showLoading">测试 this.$showLoading</button>
     <CountDown :remianTime="10000000" :ms="false" v-slot="slotProps">
       {{ JSON.stringify(slotProps.remain) }}
       <br />
@@ -36,6 +37,10 @@ export default {
 
     showMessageBox(): void {
       this.$showMessageBox('test showMessageBox')
+    },
+
+    showLoading(): void {
+      this.$showLoading('test showLoading')
     },
   },
 }

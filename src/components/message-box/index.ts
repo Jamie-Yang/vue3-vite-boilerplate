@@ -16,10 +16,10 @@ const defaults: MessageBoxOptions = {
 }
 
 function showMessageBox(options: MessageBoxOptions | string = '') {
-  let messageBoxDiv = document.querySelector('body>div[type=message-box]')
-  if (!messageBoxDiv) {
-    messageBoxDiv = document.createElement('div')
-    messageBoxDiv.setAttribute('type', 'message-box')
+  let div = document.querySelector('body>div[type=message-box]')
+  if (!div) {
+    div = document.createElement('div')
+    div.setAttribute('type', 'message-box')
   }
 
   if (typeof options === 'string') {
@@ -31,7 +31,7 @@ function showMessageBox(options: MessageBoxOptions | string = '') {
   const opts = Object.assign(
     {
       show: true,
-      onOnclickbtn: (index: number): void => {
+      onBtnClick: (index: number): void => {
         console.log(index)
       },
     },
@@ -39,20 +39,17 @@ function showMessageBox(options: MessageBoxOptions | string = '') {
     options
   )
 
-  createApp({
+  const app = createApp({
     render() {
       return h(MessageBox, opts)
     },
-  }).mount(messageBoxDiv)
+  }).mount(div)
 
-  document.body.appendChild(messageBoxDiv)
+  document.body.appendChild(div)
 
-  // return new Promise((resolve) => {
-  //   instance.$on('onClickBtn', (btnIndex) => {
-  //     instance.show = false
-  //     resolve(btnIndex)
-  //   })
-  // })
+  return new Promise((resolve) => {
+    
+  })
 }
 
 export default {

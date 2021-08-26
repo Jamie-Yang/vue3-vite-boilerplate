@@ -14,18 +14,9 @@ interface Data {
 
 export default {
   props: {
-    ms: {
-      type: Boolean,
-      default: false,
-    },
-    remianTime: {
-      type: Number,
-      default: 0,
-    },
-    format: {
-      type: String,
-      default: 'HH:mm:ss', // d天 HH:mm:ss.SSS
-    },
+    ms: { type: Boolean, default: false },
+    remianTime: { type: Number, default: 0 },
+    format: { type: String, default: 'HH:mm:ss' }, // d天 HH:mm:ss.SSS
   },
 
   data: function (): Data {
