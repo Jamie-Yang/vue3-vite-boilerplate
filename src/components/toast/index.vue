@@ -71,7 +71,7 @@ export default defineComponent({
 }
 
 .toast {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0 0 0 / 70%);
   border-radius: 0.25rem;
   padding: 0.3rem 0.4rem;
   max-width: 80%;

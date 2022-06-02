@@ -1,5 +1,6 @@
-import { createApp, App, h } from 'vue'
-import MessageBox from './message-box.vue'
+import { createVNode, render } from 'vue'
+import type { App } from 'vue'
+import MessageBoxConstructor from './message-box.vue'
 
 interface MessageBoxOptions {
   title?: string
@@ -16,11 +17,9 @@ const defaults: MessageBoxOptions = {
 }
 
 function showMessageBox(options: MessageBoxOptions | string = '') {
-  let div = document.querySelector('body>div[type=message-box]')
-  if (!div) {
-    div = document.createElement('div')
-    div.setAttribute('type', 'message-box')
-  }
+  const container =
+    document.querySelector('body>div[type=message-box]') ?? document.createElement('div')
+  container.setAttribute('type', 'message-box')
 
   if (typeof options === 'string') {
     options = {
@@ -31,24 +30,23 @@ function showMessageBox(options: MessageBoxOptions | string = '') {
   const opts = Object.assign(
     {
       show: true,
-      onBtnClick: (index: number): void => {
-        console.log(index)
-      },
     },
     defaults,
     options
   )
 
-  const app = createApp({
-    render() {
-      return h(MessageBox, opts)
-    },
-  }).mount(div)
+  const vm = createVNode(MessageBoxConstructor, { ...opts })
 
-  document.body.appendChild(div)
+  render(vm, container)
+  document.body.appendChild(container.firstElementChild as Node)
 
   return new Promise((resolve) => {
-    
+    if (!vm.props) return
+
+    vm.props.onBtnClick = (index: number) => {
+      resolve(index)
+      render(null, container)
+    }
   })
 }
 

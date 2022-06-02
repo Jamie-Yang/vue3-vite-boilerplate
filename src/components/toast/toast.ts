@@ -1,4 +1,5 @@
-import { App, createVNode, render } from 'vue'
+import { createVNode, render } from 'vue'
+import type { App } from 'vue'
 import ToastConstructor from './index.vue'
 
 let seed = 1

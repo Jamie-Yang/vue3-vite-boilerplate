@@ -30,7 +30,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  emits: ['btn-click', 'update:show'],
+  emits: ['btnClick', 'update:show'],
 
   props: {
     title: { type: String, default: '' },
@@ -42,7 +42,7 @@ export default defineComponent({
 
   methods: {
     onClickBtn(index: number): void {
-      this.$emit('btn-click', index)
+      this.$emit('btnClick', index)
       this.$emit('update:show', false) // 支持sync
     },
   },
@@ -61,7 +61,7 @@ export default defineComponent({
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0 0 0 / 50%);
 }
 
 .message-box {

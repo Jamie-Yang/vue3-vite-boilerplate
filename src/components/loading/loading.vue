@@ -48,7 +48,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgb(0 0 0 / 70%);
   border-radius: 0.25rem;
   padding: 0.3rem 0.4rem;
 }

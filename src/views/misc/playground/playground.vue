@@ -36,7 +36,9 @@ export default {
     },
 
     showMessageBox(): void {
-      this.$showMessageBox('test showMessageBox')
+      this.$showMessageBox('test showMessageBox').then((index) => {
+        console.log('showMessageBox resolve: ', index)
+      })
     },
 
     showLoading(): void {

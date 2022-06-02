@@ -21,8 +21,8 @@ html {
 html {
   font-family: Helvetica, Verdana, Tahoma, sans-serif; /* 1 */
   line-height: 1.5; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 3 */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-size-adjust: 100%; /* 3 */
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
   background-color: #f7f6f8;
 }
 
@@ -59,7 +59,7 @@ b, em, h1, h2, h3, h4, h5, h6, i, th, td {
  */
 
 a {
-  -webkit-text-decoration-skip: objects;
+  text-decoration-skip: objects;
 }
 
 /**
@@ -81,8 +81,8 @@ button, input, select, textarea, img {
 }
 
 button, input[type="button"], input[type="password"], input[type="submit"], input[type="text"], textarea {
-  -webkit-appearance: none;
-  -webkit-appearance: button;
+  appearance: none;
+  appearance: button;
 }
 
 img, video {
