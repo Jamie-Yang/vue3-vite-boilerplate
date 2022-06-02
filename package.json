@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "pinia": "^2.0.14",
     "vue": "^3.2.36",
-    "vue-router": "^4.0.15",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.27.0",
