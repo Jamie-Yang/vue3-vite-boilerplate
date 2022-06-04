@@ -1,21 +1,27 @@
-import { createApp, App, inject } from 'vue'
-import Loading from './loading.vue'
+import { createVNode, render } from 'vue'
+import type { App } from 'vue'
+import LoadingConstructor from './loading.vue'
 
-const LoadingSymbol = Symbol()
+let container: Element | null = null
 
-export function useLoading(): typeof Loading {
-  const loading = inject<typeof Loading>(LoadingSymbol)
-  if (!loading) {
-    throw new Error('error')
+function loading(options: string | false = '加载中...') {
+  if (!container) {
+    container = document.createElement('div')
+    container.setAttribute('type', 'loading')
   }
-  return loading
+
+  if (options === false) {
+    render(null, container)
+    return
+  }
+
+  const vm = createVNode(LoadingConstructor, { show: true, message: options })
+  render(vm, container)
+  document.body.appendChild(container.firstElementChild as Node)
 }
 
-export default {
-  install: (app: App): void => {
-    const el = document.createElement('div')
-    document.body.appendChild(el)
-
-    app.provide(LoadingSymbol, createApp(Loading).mount(el))
-  },
+loading.install = (app: App): void => {
+  app.config.globalProperties.$loading = loading
 }
+
+export default loading

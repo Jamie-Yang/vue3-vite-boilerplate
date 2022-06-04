@@ -1,10 +1,10 @@
 import { createVNode, render } from 'vue'
 import type { App } from 'vue'
-import ToastConstructor from './index.vue'
+import ToastConstructor from './toast.vue'
 
 let seed = 1
 
-function Toast(message = ''): void {
+function showToast(message = ''): void {
   const id = `toast_${seed++}`
   const container = document.createElement('div')
   container.className = `container_${id}`
@@ -21,8 +21,8 @@ function Toast(message = ''): void {
   document.body.appendChild(container.firstElementChild as Node)
 }
 
-Toast.install = (app: App): void => {
-  app.config.globalProperties.$showToast = Toast
+showToast.install = (app: App): void => {
+  app.config.globalProperties.$toast = showToast
 }
 
-export default Toast
+export default showToast

@@ -1,9 +1,10 @@
 <template>
   <div class="view-container">
-    <button @click="showToast">测试 this.$showToast</button>
-    <button @click="showMessageBox">测试 this.$showMessageBox</button>
+    <button @click="showToast">测试 this.$toast</button>
+    <button @click="showMessageBox">测试 this.$messageBox</button>
     <button @click="showLoading">测试 this.$showLoading</button>
-    <CountDown :remianTime="10000000" :ms="false" v-slot="slotProps">
+
+    <CountDown :remainTime="10000000" :ms="false" v-slot="slotProps">
       {{ JSON.stringify(slotProps.remain) }}
       <br />
       {{ slotProps.remain.hours }}
@@ -15,37 +16,34 @@
 </template>
 
 <script lang="ts">
-import CountDown from '@/components/count-down/count-down.vue'
+import { defineComponent } from 'vue'
+import { CountDown } from '@/components'
 
-interface Data {
-  [key: string]: unknown
-}
-
-export default {
+export default defineComponent({
   name: 'Playground',
 
   components: { CountDown },
 
-  setup(): Data {
-    return {}
-  },
-
   methods: {
     showToast(): void {
-      this.$showToast('test showToast')
+      this.$toast('test showToast')
     },
 
     showMessageBox(): void {
-      this.$showMessageBox('test showMessageBox').then((index) => {
-        console.log('showMessageBox resolve: ', index)
+      this.$messageBox('test messageBox').then((index) => {
+        console.log('messageBox resolve: ', index)
       })
     },
 
     showLoading(): void {
-      this.$showLoading('test showLoading')
+      this.$loading('test showLoading')
+
+      setTimeout(() => {
+        this.$loading(false)
+      }, 2000)
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

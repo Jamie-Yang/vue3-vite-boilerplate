@@ -8,12 +8,14 @@ import '@/core/rem.js'
 import App from './App.vue'
 import router from './router'
 
-import Toast from '@/components/toast/toast'
+import Toast from '@/components/toast'
 import MessageBox from '@/components/message-box'
+import Loading from '@/components/loading'
 
 const app = createApp(App)
 app.use(router)
 app.use(createPinia())
 app.use(Toast)
 app.use(MessageBox)
+app.use(Loading)
 app.mount('#app')

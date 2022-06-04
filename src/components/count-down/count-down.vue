@@ -15,7 +15,7 @@ interface Data {
 export default {
   props: {
     ms: { type: Boolean, default: false },
-    remianTime: { type: Number, default: 0 },
+    remainTime: { type: Number, default: 0 },
     format: { type: String, default: 'HH:mm:ss' }, // d天 HH:mm:ss.SSS
   },
 
@@ -28,7 +28,7 @@ export default {
   },
 
   watch: {
-    remianTime: {
+    remainTime: {
       immediate: true,
       handler: 'start',
     },
@@ -38,10 +38,10 @@ export default {
     ...{ formatRemainTime, convertRemainTime },
 
     start(): void {
-      if (!this.remianTime) {
+      if (!this.remainTime) {
         return
       }
-      this.remain = this.remianTime
+      this.remain = this.remainTime
       this.endingTime = Date.now() + this.remain
       this.tick()
     },

@@ -1,6 +1,6 @@
 <template>
   <transition name="scale">
-    <div v-show="isShow" class="loading-wrapper">
+    <div v-show="show" class="loading-wrapper">
       <div class="loading-block">
         <img src="./images/loading-white.png" class="loading-icon" />
         <div class="loading-tips">{{ message }}</div>
@@ -10,27 +10,16 @@
 </template>
 
 <script lang="ts">
-interface Data {
-  [key: string]: unknown
-}
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Loading',
 
-  data(): Data {
-    return {
-      isShow: false,
-      message: '加载中...',
-    }
+  props: {
+    show: { type: Boolean, default: false },
+    message: { type: String, default: '加载中...' },
   },
-
-  methods: {
-    show(message = '加载中...'): void {
-      this.isShow = true
-      this.message = message
-    },
-  },
-}
+})
 </script>
 
 <style type="scss" scoped>

@@ -16,7 +16,7 @@ const defaults: MessageBoxOptions = {
   align: 'row',
 }
 
-function showMessageBox(options: MessageBoxOptions | string = '') {
+function messageBox(options: MessageBoxOptions | string = '') {
   const container =
     document.querySelector('body>div[type=message-box]') ?? document.createElement('div')
   container.setAttribute('type', 'message-box')
@@ -27,13 +27,7 @@ function showMessageBox(options: MessageBoxOptions | string = '') {
     }
   }
 
-  const opts = Object.assign(
-    {
-      show: true,
-    },
-    defaults,
-    options
-  )
+  const opts = Object.assign({ show: true }, defaults, options)
 
   const vm = createVNode(MessageBoxConstructor, { ...opts })
 
@@ -50,8 +44,8 @@ function showMessageBox(options: MessageBoxOptions | string = '') {
   })
 }
 
-export default {
-  install: (app: App): void => {
-    app.config.globalProperties.$showMessageBox = showMessageBox
-  },
+messageBox.install = (app: App): void => {
+  app.config.globalProperties.$messageBox = messageBox
 }
+
+export default messageBox
