@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview",
+    "preview": "npm run build && vite preview",
+    "preview:dist": "vite preview",
+    "type:check": "vue-tsc --noEmit --skipLibCheck",
     "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:stylelint",
     "lint:prettier": "prettier . --write --loglevel warn",
     "lint:eslint": "eslint . --ext .ts,.js,.vue --fix",
