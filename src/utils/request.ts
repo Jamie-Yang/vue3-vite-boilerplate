@@ -48,8 +48,10 @@ async function to<T>(promise: Promise<T>): Promise<[Response<null>, null] | [nul
     const data = await promise
     return [null, data]
   } catch (err) {
-    return [err, null]
+    return [err as Response<null>, null]
   }
 }
+
+export default request
 
 export { request, to }
