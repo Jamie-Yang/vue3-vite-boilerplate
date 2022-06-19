@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "build:pre": "vue-tsc --noEmit && vite build --mode pre",
+    "build:prod": "vue-tsc --noEmit && vite build --mode prod",
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
