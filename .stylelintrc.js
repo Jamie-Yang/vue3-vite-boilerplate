@@ -1,9 +1,5 @@
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-standard-scss',
-    'stylelint-config-prettier',
-  ],
+  extends: ['stylelint-config-standard', 'stylelint-config-standard-scss', 'stylelint-config-prettier'],
   ignoreFiles: ['node_modules/**', 'src/assets/font/**', 'src/assets/style/reset.css'],
   overrides: [
     {

@@ -17,8 +17,7 @@ const defaults: MessageBoxOptions = {
 }
 
 function messageBox(options: MessageBoxOptions | string = '') {
-  const container =
-    document.querySelector('body>div[type=message-box]') ?? document.createElement('div')
+  const container = document.querySelector('body>div[type=message-box]') ?? document.createElement('div')
   container.setAttribute('type', 'message-box')
 
   if (typeof options === 'string') {
