@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import Toast from '@/components/toast'
 
 // 服务端接口数据结构
 interface Response<T> {
@@ -8,10 +9,24 @@ interface Response<T> {
 }
 
 const instance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   method: 'post',
   timeout: 15000,
   headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 })
+
+instance.interceptors.request.use(
+  (config) => {
+    if (config.method === 'get' && config.data) {
+      config.params = config.data
+      delete config.data
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 // 基本网络请求
 async function request<T>(
@@ -32,7 +47,9 @@ async function request<T>(
           reject(res)
         }
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error)
+        Toast('网络异常请稍后再试！')
         reject({ code: '-000001', message: '网络异常请稍后再试！' })
       })
   })

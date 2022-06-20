@@ -21,10 +21,12 @@
   "dependencies": {
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
+    "qs": "^6.10.5",
     "vue": "^3.2.36",
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "@vitejs/plugin-vue": "^2.3.3",
