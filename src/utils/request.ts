@@ -2,10 +2,10 @@ import axios, { AxiosRequestConfig } from 'axios'
 import Toast from '@/components/toast'
 
 // 服务端接口数据结构
-interface Response<T> {
+interface Response {
   code: string
   message: string
-  data: T
+  data: unknown
 }
 
 const instance = axios.create({
@@ -29,14 +29,14 @@ instance.interceptors.request.use(
 )
 
 // 基本网络请求
-async function request<T>(
+async function request(
   url: string,
   data: Record<string, unknown> = {},
   config: AxiosRequestConfig = {}
-): Promise<T> {
+): Promise<unknown> {
   return new Promise((resolve, reject) => {
     instance
-      .request<Response<T>>({ url, data, ...config })
+      .request<Response>({ url, data, ...config })
       .then((response) => {
         const res = response.data
         const { code, data } = res
@@ -60,12 +60,12 @@ async function request<T>(
  * 适用于async/await形式的写法，可以避免使用try catch处理异常返回的数据
  * @borrows https://github.com/scopsy/await-to-js
  */
-async function to<T>(promise: Promise<T>): Promise<[Response<null>, null] | [null, T]> {
+async function to<T>(promise: Promise<T>): Promise<[Response, null] | [null, T]> {
   try {
     const data = await promise
     return [null, data]
   } catch (err) {
-    return [err as Response<null>, null]
+    return [err as Response, null]
   }
 }
 
