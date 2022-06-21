@@ -26,27 +26,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+interface MessageBoxButton {
+  label: string
+  emphasize?: boolean
+}
 
-export default defineComponent({
-  emits: ['btnClick', 'update:show'],
+withDefaults(
+  defineProps<{
+    title?: string
+    message?: string
+    buttons: (string | MessageBoxButton)[]
+    align?: 'row' | 'column'
+    show: boolean
+  }>(),
+  {
+    buttons: () => ['我知道了'],
+    align: 'row',
+    show: false,
+  }
+)
 
-  props: {
-    title: { type: String, default: '' },
-    message: { type: String, default: '' },
-    buttons: { type: Array, default: (): string[] => [''] },
-    align: { type: String, default: 'row' },
-    show: { type: Boolean, default: false },
-  },
+const emit = defineEmits(['btnClick', 'update:show'])
 
-  methods: {
-    onClickBtn(index: number): void {
-      this.$emit('btnClick', index)
-      this.$emit('update:show', false) // 支持sync
-    },
-  },
-})
+function onClickBtn(index: number): void {
+  emit('btnClick', index)
+  emit('update:show', false) // 支持sync
+}
 </script>
 
 <style lang="scss">
