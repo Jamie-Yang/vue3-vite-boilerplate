@@ -5,6 +5,7 @@
 <script lang="ts">
 import { requestAnimFrame, cancelAnimFrame } from '@/utils/raf'
 import { formatRemainTime, convertRemainTime } from '@/utils/format'
+import { defineComponent } from 'vue'
 
 interface Data {
   remain: number
@@ -12,7 +13,7 @@ interface Data {
   rafId: number
 }
 
-export default {
+export default defineComponent({
   props: {
     ms: { type: Boolean, default: false },
     remainTime: { type: Number, default: 0 },
@@ -67,5 +68,5 @@ export default {
       })
     },
   },
-}
+})
 </script>

@@ -6,9 +6,11 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
+
 type ScrollElement = Window | HTMLElement
 
-export default {
+export default defineComponent({
   name: 'ScrollLoad',
 
   emits: ['reach-end'],
@@ -66,7 +68,7 @@ export default {
       el.removeEventListener('scroll', this.onScroll)
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

@@ -8,52 +8,44 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
 
-export default defineComponent({
-  props: {
-    id: { type: String, default: '' },
-    message: { type: String, default: '' },
-  },
+withDefaults(
+  defineProps<{
+    id: string
+    message: string
+  }>(),
+  {
+    id: '',
+    message: '',
+  }
+)
+defineEmits(['destroy'])
 
-  emits: ['destroy'],
+const visible = ref(false)
+let timer: number | undefined = undefined
 
-  setup() {
-    const visible = ref(false)
-
-    let timer: number | undefined = undefined
-
-    function startTimer() {
-      timer = setTimeout(() => {
-        if (visible.value) {
-          close()
-        }
-      }, 2000)
+function startTimer() {
+  timer = setTimeout(() => {
+    if (visible.value) {
+      close()
     }
+  }, 2000)
+}
 
-    function clearTimer() {
-      clearTimeout(timer)
-      timer = undefined
-    }
+function clearTimer() {
+  clearTimeout(timer)
+  timer = undefined
+}
 
-    function close() {
-      visible.value = false
-    }
+function close() {
+  visible.value = false
+}
 
-    onMounted(() => {
-      startTimer()
-      visible.value = true
-    })
-
-    return {
-      visible,
-
-      startTimer,
-      clearTimer,
-      close,
-    }
-  },
+onMounted(() => {
+  startTimer()
+  visible.value = true
 })
 </script>
 
