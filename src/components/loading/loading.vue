@@ -9,16 +9,10 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'Loading',
-
-  props: {
-    show: { type: Boolean, default: false },
-    message: { type: String, default: '加载中...' },
-  },
+<script lang="ts" setup>
+defineProps({
+  message: { type: String, default: '加载中...' },
+  show: { type: Boolean, default: true },
 })
 </script>
 
