@@ -14,7 +14,7 @@
     "checkJs": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "vite/client"],
+    "types": ["vite/client"],
     "paths": {
       "@/*": ["./src/*"]
     },

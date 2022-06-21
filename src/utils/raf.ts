@@ -13,9 +13,9 @@ function fallback(callback: (timestamp: number) => void) {
 }
 
 export function requestAnimFrame(callback: (timestamp: number) => void): number {
-  return (window.requestAnimationFrame || window.webkitRequestAnimationFrame || fallback)(callback)
+  return (window.requestAnimationFrame || fallback)(callback)
 }
 
 export function cancelAnimFrame(id: number): void {
-  ;(window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout)(id)
+  ;(window.cancelAnimationFrame || window.clearTimeout)(id)
 }
