@@ -2,48 +2,23 @@
   <div class="view-container">
     <button @click="showToast">测试 this.$toast</button>
     <button @click="showMessageBox">测试 this.$messageBox</button>
-    <button @click="showLoading">测试 this.$showLoading</button>
-
-    <CountDown :remainTime="10000000" :ms="false" v-slot="slotProps">
-      {{ JSON.stringify(slotProps.remain) }}
-      <br />
-      {{ slotProps.remain.hours }}
-      {{ slotProps.remain.minutes }}
-      {{ slotProps.remain.seconds }}
-      {{ slotProps.remain.milliseconds }}
-    </CountDown>
+    <Loading vertical>加载中...</Loading>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { CountDown } from '@/components'
+<script lang="ts" setup>
+import { Loading } from '@/components'
+import { Toast, MessageBox } from '@/components/fn'
 
-export default defineComponent({
-  name: 'Playground',
+function showToast(): void {
+  Toast('test showToast')
+}
 
-  components: { CountDown },
-
-  methods: {
-    showToast(): void {
-      this.$toast('test showToast')
-    },
-
-    showMessageBox(): void {
-      this.$messageBox('test messageBox').then((index) => {
-        console.log('messageBox resolve: ', index)
-      })
-    },
-
-    showLoading(): void {
-      this.$loading('test showLoading')
-
-      setTimeout(() => {
-        this.$loading(false)
-      }, 2000)
-    },
-  },
-})
+function showMessageBox(): void {
+  MessageBox('test messageBox').then((index) => {
+    console.log('messageBox resolve: ', index)
+  })
+}
 </script>
 
 <style lang="scss" scoped>
