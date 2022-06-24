@@ -1,5 +1,5 @@
 export { default as CountDown } from './count-down/count-down.vue'
-export { default as Loading } from './loading/loading.vue'
+export { default as Loading } from './loading/Loading.vue'
 export { default as MessageBox } from './message-box/message-box.vue'
 export { default as ScrollLoad } from './scroll-load/scroll-load.vue'
 export { default as Toast } from './toast/toast.vue'

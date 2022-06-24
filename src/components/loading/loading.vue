@@ -1,83 +1,86 @@
 <template>
-  <transition name="scale">
-    <div v-show="show" class="loading-wrapper">
-      <div class="loading-block">
-        <img src="./images/loading-white.png" class="loading-icon" />
-        <div class="loading-tips">{{ message }}</div>
-      </div>
+  <div class="loading" :class="{ 'loading-vertical': vertical }">
+    <div class="spinner" :style="{ ...getSizeStyle(size) }">
+      <svg class="spinner-circular" viewBox="25 25 50 50" :style="{ color }">
+        <circle cx="50" cy="50" r="20" fill="none" />
+      </svg>
     </div>
-  </transition>
+    <span class="text" :style="{ fontSize: `${textSize}px`, color }"><slot /></span>
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { getSizeStyle } from '@/utils/format'
+
 defineProps({
-  message: { type: String, default: '加载中...' },
-  show: { type: Boolean, default: true },
+  size: { type: Number, default: 20 },
+  vertical: Boolean,
+  textSize: { type: Number, default: 14 },
+  color: String,
 })
 </script>
 
-<style type="scss" scoped>
-.loading-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9000;
+<style lang="scss" scoped>
+.loading {
+  display: flex;
+  align-items: center;
 }
 
-.loading-block {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(0 0 0 / 70%);
-  border-radius: 0.25rem;
-  padding: 0.3rem 0.4rem;
-}
-
-.loading-icon {
-  display: block;
-  width: 0.74rem;
-  height: 0.74rem;
-  margin: 0 auto 0.16rem;
+.spinner {
+  width: 20px;
+  height: 20px;
   animation: rotate 0.75s 0s linear infinite;
 }
 
-.loading-tips {
-  color: #fff;
-  font-size: 0.28rem;
-  line-height: 0.4rem;
-  text-align: center;
+.spinner-circular {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #969799;
+
+  circle {
+    animation: circular 1.5s ease-in-out infinite;
+    stroke: currentcolor;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+}
+
+.text {
+  color: #969799;
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 8px;
+}
+
+.loading-vertical {
+  flex-direction: column;
+
+  .text {
+    margin: 8px 0 0;
+  }
+}
+
+@keyframes circular {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120;
+  }
 }
 
 @keyframes rotate {
   100% {
     transform: rotate(1turn);
-  }
-}
-
-.scale-leave-active {
-  animation: scale 0.35s ease-in;
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  35% {
-    opacity: 0.5;
-  }
-
-  70% {
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(0.3);
-    opacity: 0;
   }
 }
 </style>
