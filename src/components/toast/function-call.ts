@@ -22,7 +22,7 @@ function parseOptions(message: string | ToastOptions): ToastOptions {
 function Toast(options: string | ToastOptions = {}): void {
   const parsedOptions = parseOptions(options)
   const id = `toast_${seed++}`
-  const { vm, unmount } = mountComponent(ToastConstructor, {
+  const { vnode, unmount } = mountComponent(ToastConstructor, {
     id,
     ...defaultOptions,
     ...parsedOptions,
@@ -30,7 +30,7 @@ function Toast(options: string | ToastOptions = {}): void {
       unmount()
     },
   })
-  instance = vm.component?.proxy
+  instance = vnode.component?.proxy
 }
 
 Toast.hide = (): void => {
