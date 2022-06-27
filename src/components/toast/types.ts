@@ -1,4 +1,14 @@
-import type { VNode } from 'vue'
+import type { Numeric } from '@/utils/types'
 
-export type ToastVM = VNode
-export type ToastQueue = ToastVM[]
+export type ToastPosition = 'top' | 'middle' | 'bottom'
+export type IconType = 'loading' | 'success' | 'fail'
+
+export type ToastOptions = {
+  message?: Numeric
+  duration?: number
+  position?: ToastPosition
+  icon?: string | IconType
+  iconSize?: Numeric
+  onOpened?: () => void
+  onClose?: () => void
+}

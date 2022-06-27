@@ -1,6 +1,7 @@
 <template>
   <div class="view-container">
     <button @click="showToast">测试 this.$toast</button>
+    <button @click="hideToast">测试 this.$toast</button>
     <button @click="showMessageBox">测试 this.$messageBox</button>
     <Loading vertical>加载中...</Loading>
   </div>
@@ -11,7 +12,15 @@ import { Loading } from '@/components'
 import { Toast, MessageBox } from '@/components/fn'
 
 function showToast(): void {
-  Toast('test showToast')
+  Toast({
+    message: 'test showToast',
+    icon: 'loading',
+    duration: 0,
+  })
+}
+
+function hideToast(): void {
+  Toast.hide()
 }
 
 function showMessageBox(): void {

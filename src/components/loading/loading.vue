@@ -13,7 +13,7 @@
 import { getSizeStyle } from '@/utils/format'
 
 defineProps({
-  size: { type: Number, default: 20 },
+  size: { type: [Number, String], default: 20 },
   vertical: Boolean,
   textSize: { type: Number, default: 14 },
   color: String,

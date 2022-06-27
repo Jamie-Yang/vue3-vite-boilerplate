@@ -1,3 +1,7 @@
+import type { CSSProperties } from 'vue'
+import type { Numeric } from './types'
+import { isNumeric } from './validate'
+
 interface IRemainTime {
   days: number
   hours: number
@@ -152,4 +156,21 @@ function convertTime(time: IRemainTime | IDateTime): unknown {
     }
   }
   return result
+}
+
+export function addUnit(value?: Numeric): string | undefined {
+  if (value) {
+    return isNumeric(value) ? `${value}px` : String(value)
+  }
+  return undefined
+}
+
+export function getSizeStyle(value?: Numeric | Numeric[]): Pick<CSSProperties, 'width' | 'height'> | undefined {
+  if (value) {
+    if (Array.isArray(value)) {
+      return { width: addUnit(value[0]), height: addUnit(value[1]) }
+    }
+    const size = addUnit(value)
+    return { width: size, height: size }
+  }
 }
