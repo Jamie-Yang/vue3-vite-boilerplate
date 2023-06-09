@@ -1,2 +1,6 @@
+[production]
 android >= 4.4
 ios_saf >= 9
+
+[development]
+last 1 chrome version
