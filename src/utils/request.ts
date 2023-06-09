@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import type { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import Toast from '@/components/toast'
 
 // 服务端接口数据结构

@@ -1,29 +1,20 @@
-module.exports = {
-  env: {
-    browser: true,
-    node: true,
-  },
+/* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution')
 
-  // the ts-eslint recommended ruleset sets the parser so we need to set it back
-  parser: 'vue-eslint-parser',
+module.exports = {
+  root: true,
 
   parserOptions: {
-    ecmaVersion: 2021,
-    parser: '@typescript-eslint/parser',
-    extraFileExtensions: ['.vue'],
-    ecmaFeatures: { jsx: true },
-    sourceType: 'module',
+    ecmaVersion: 'latest',
   },
 
-  plugins: ['@typescript-eslint'],
-
   extends: [
-    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier/skip-formatting',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'prettier',
   ],
 
   settings: {

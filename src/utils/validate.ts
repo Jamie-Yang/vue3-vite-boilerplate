@@ -1,4 +1,4 @@
-import { Numeric } from './types'
+import type { Numeric } from './types'
 
 export const isNumeric = (val: Numeric): val is string => typeof val === 'number' || /^\d+(\.\d+)?$/.test(val)
 

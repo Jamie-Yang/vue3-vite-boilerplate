@@ -13,8 +13,6 @@ type ScrollElement = Window | HTMLElement
 export default defineComponent({
   name: 'ScrollLoad',
 
-  emits: ['reach-end'],
-
   props: {
     isLoading: { type: Boolean, default: false, required: true },
     loadingText: { type: String, default: '加载中...' },
@@ -22,6 +20,8 @@ export default defineComponent({
     noMoreText: { type: String, default: '没有更多数据了' },
     scrollElement: { type: [Window, HTMLElement], default: (): Window => window },
   },
+
+  emits: ['reach-end'],
 
   watch: {
     scrollElement(newEl: ScrollElement, oldEl: ScrollElement): void {
@@ -85,7 +85,7 @@ export default defineComponent({
   width: 0.28rem;
   height: 0.28rem;
   margin-right: 0.2rem;
-  background: url('./img/loading.png') center center no-repeat;
+  background: url('./images/loading.png') center center no-repeat;
   background-size: 0.28rem 0.28rem;
   animation: rotate 0.75s linear infinite;
 }

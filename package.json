@@ -8,9 +8,8 @@
     "build:test": "npm run type:check && vite build --mode test",
     "build:pre": "npm run type:check && vite build --mode pre",
     "build:prod": "npm run type:check && vite build --mode prod",
-    "preview": "npm run build && vite preview",
-    "preview:dist": "vite preview",
-    "type:check": "vue-tsc --noEmit --skipLibCheck",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "run-p lint:prettier lint:eslint lint:stylelint",
     "lint:prettier": "prettier . --write --loglevel warn",
     "lint:eslint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
@@ -30,6 +29,7 @@
     "@tsconfig/node18": "^2.0.1",
     "@types/node": "^18.16.8",
     "@types/qs": "^6.9.7",
+    "@vitejs/plugin-legacy": "^4.0.4",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
@@ -39,9 +39,9 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-vue": "^9.14.1",
-    "npm-run-all": "^4.1.5",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.24",
     "postcss-html": "^1.5.0",
     "prettier": "2.8.8",
@@ -79,5 +79,9 @@
     "*.md": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=18.16.0",
+    "npm": ">=9.0.0"
   }
 }
