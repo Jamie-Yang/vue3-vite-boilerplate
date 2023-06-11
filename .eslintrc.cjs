@@ -4,6 +4,10 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 module.exports = {
   root: true,
 
+  env: {
+    node: true,
+  },
+
   parserOptions: {
     ecmaVersion: 'latest',
   },
@@ -30,5 +34,6 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/attribute-hyphenation': 'off',
   },
 }

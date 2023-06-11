@@ -1,5 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
+
+import { setupRouterGuard } from './guard'
+
 import example from './modules/example'
 import main from './modules/main'
 import misc from './modules/misc'
@@ -19,9 +22,6 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, _from, next) => {
-  document.title = to.meta.title ? `${to.meta.title} - Vue3 Mobile` : 'Vue3 Mobile'
-  next()
-})
+setupRouterGuard(router)
 
 export default router
