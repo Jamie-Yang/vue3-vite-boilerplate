@@ -67,15 +67,19 @@ export default class Http {
     setter?.(this.instance)
   }
 
-  request(url: string, options: AxiosRequestConfig = {}): Promise<unknown> {
-    return this.instance.request({ url, ...options })
+  request<R>(url: string, options: AxiosRequestConfig = {}) {
+    return this.instance.request<R, R>({ url, ...options })
   }
 
-  get(url: string, params: Record<string, unknown> = {}, options: AxiosRequestConfig = {}): Promise<unknown> {
-    return this.instance.get(url, { params, ...options })
+  get<R>(url: string, params: Record<string, unknown> = {}, options: AxiosRequestConfig = {}) {
+    return this.instance.get<R, R>(url, { params, ...options })
   }
 
-  post(url: string, data: Record<string, unknown> = {}, options: AxiosRequestConfig = {}): Promise<unknown> {
-    return this.instance.post(url, data, options)
+  post<R>(url: string, data: Record<string, unknown> = {}, options: AxiosRequestConfig = {}) {
+    return this.instance.post<R, R>(url, data, options)
+  }
+
+  postForm<R>(url: string, data: Record<string, unknown> = {}, options: AxiosRequestConfig = {}) {
+    return this.instance.postForm<R, R>(url, data, options)
   }
 }
