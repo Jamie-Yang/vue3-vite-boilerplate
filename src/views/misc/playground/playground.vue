@@ -24,7 +24,10 @@ function hideToast(): void {
 }
 
 function showMessageBox(): void {
-  MessageBox('test messageBox').then((index) => {
+  MessageBox({
+    title: '弹框标题',
+    message: '弹框内容',
+  }).then((index) => {
     console.log('messageBox resolve: ', index)
   })
 }

@@ -76,24 +76,24 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .load-icon {
   display: block;
-  width: 0.28rem;
-  height: 0.28rem;
-  margin-right: 0.2rem;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
   background: url('./images/loading.png') center center no-repeat;
-  background-size: 0.28rem 0.28rem;
+  background-size: 14px 14px;
   animation: rotate 0.75s linear infinite;
 }
 
 .load-label {
   color: #8c8fa7;
-  font-size: 0.24rem;
-  line-height: 0.4rem;
+  font-size: 12px;
+  line-height: 20px;
 }
 
 @keyframes rotate {

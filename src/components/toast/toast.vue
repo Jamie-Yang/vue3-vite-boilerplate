@@ -92,7 +92,7 @@ defineExpose({
   font-size: 37px;
   line-height: 37px;
   text-align: center;
-  margin: 0 auto 8rem;
+  margin: 0 auto 40px;
 }
 
 .toast-text {

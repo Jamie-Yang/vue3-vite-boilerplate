@@ -44,7 +44,7 @@ withDefaults(
     buttons: () => ['我知道了'],
     align: 'row',
     show: false,
-  }
+  },
 )
 
 const emit = defineEmits(['btnClick', 'update:show'])
@@ -74,47 +74,46 @@ function onClickBtn(index: number): void {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 5.6rem;
+  width: 280px;
   transform: translate3d(-50%, -50%, 0);
   background-color: #fff;
-  border-radius: 0.24rem;
-  font-size: 0.26rem;
+  border-radius: 12px;
+  font-size: 14px;
   overflow: hidden;
   backface-visibility: hidden;
 
   &-content {
     position: relative;
-    padding: 0.4rem;
+    padding: 20px;
   }
 
   &-title {
-    color: #2d2f46;
-    font-size: 0.34rem;
-    line-height: 0.48rem;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
     text-align: center;
-    margin-bottom: 0.18rem;
+    margin-bottom: 9px;
   }
 
   &-image {
     display: block;
-    max-width: 4.8rem;
-    height: 1.8rem;
-    margin: 0 auto 0.3rem;
+    max-width: 24px;
+    height: 90px;
+    margin: 0 auto 15px;
   }
 
   &-message {
-    color: #030303;
-    font-size: 0.26rem;
-    line-height: 0.38rem;
+    font-size: 14px;
+    line-height: 20px;
     text-align: center;
   }
 
   &-btn {
     flex: 1;
-    height: 0.88rem;
+    height: 44px;
     color: #3a72ef;
-    font-size: 0.34rem;
-    line-height: 0.88rem;
+    font-size: 16px;
+    line-height: 44px;
     background-color: #fff;
     border-top: 1px solid #ebebeb;
 
@@ -123,7 +122,7 @@ function onClickBtn(index: number): void {
     }
 
     &.emphasize {
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
