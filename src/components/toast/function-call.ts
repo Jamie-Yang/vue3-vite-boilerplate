@@ -1,8 +1,8 @@
-import ToastConstructor from './Toast.vue'
-import mountComponent from '@/utils/mount-component'
-import { isObject } from '@/utils/validate'
 import type { App, ComponentPublicInstance } from 'vue'
 import type { ToastOptions } from './types'
+import ToastConstructor from './toast.vue'
+import mountComponent from '@/utils/mount-component'
+import { isObject } from '@/utils/validate'
 
 let seed = 1
 let instance: ComponentPublicInstance | null | undefined

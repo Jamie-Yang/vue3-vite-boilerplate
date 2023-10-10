@@ -1,5 +1,5 @@
-import { createVNode, render } from 'vue'
 import type { App } from 'vue'
+import { createVNode, render } from 'vue'
 import MessageBoxConstructor from './MessageBox.vue'
 
 interface MessageBoxOptions {
