@@ -8,7 +8,7 @@ interface Data {
 }
 
 export default {
-  name: 'Item',
+  name: 'ListItem',
 
   setup(): Data {
     return {}

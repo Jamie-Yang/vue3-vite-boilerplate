@@ -1,11 +1,11 @@
 <template>
   <div class="view-container">
-    <Item v-for="n in 10" :key="n" />
+    <ListItem v-for="n in 10" :key="n" />
   </div>
 </template>
 
 <script lang="ts">
-import Item from './components/item.vue'
+import ListItem from './components/ListItem.vue'
 
 interface Data {
   [key: string]: unknown
@@ -14,7 +14,7 @@ interface Data {
 export default {
   name: 'ItemList',
 
-  components: { Item },
+  components: { ListItem },
 
   setup(): Data {
     return {}

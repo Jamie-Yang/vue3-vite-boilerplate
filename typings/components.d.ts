@@ -2,7 +2,7 @@ export {}
 
 declare module 'vue' {
   interface ComponentCustomProperties {
-    $messageBox: typeof import('../src/components/message-box').default
-    $toast: typeof import('../src/components/toast').default
+    $messageBox: typeof import('../src/components/MessageBox').default
+    $toast: typeof import('../src/components/Toast2').default
   }
 }

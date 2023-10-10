@@ -1,2 +1,2 @@
-export { default as MessageBox } from './message-box'
-export { default as Toast } from './toast'
+export { default as MessageBox } from './MessageBox'
+export { default as Toast } from './Toast2'
