@@ -1,4 +1,4 @@
-import Http from './http'
+import Http from './Http'
 
 const http = new Http()
 
@@ -9,7 +9,7 @@ http.setupInstance((instance) => {
     },
     (error) => {
       return Promise.reject(error)
-    }
+    },
   )
 })
 

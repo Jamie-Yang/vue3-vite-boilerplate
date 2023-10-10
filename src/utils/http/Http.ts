@@ -1,20 +1,12 @@
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios'
 import axios from 'axios'
 import qs from 'qs'
 
 import Toast from '@/components/toast'
 
-interface Config {
-  baseURL: string
-  successCode: string | number
-  codeKey: string
-  messageKey: string
-  dataKey: string
-}
-
 export default class Http {
   private instance: AxiosInstance
-  private config: Config = {
+  private config = {
     baseURL: import.meta.env.VITE_API_BASE_URL,
     successCode: '000000',
     codeKey: 'code',
@@ -22,7 +14,7 @@ export default class Http {
     messageKey: 'message',
   }
 
-  constructor(config: Partial<Config> = {}) {
+  constructor(config: Partial<Http['config']> = {}) {
     this.config = { ...this.config, ...config }
     this.instance = this.createInstance(this.config.baseURL)
   }
@@ -53,11 +45,11 @@ export default class Http {
         }
         return data
       },
-      (error) => {
+      (error: AxiosError) => {
         console.log(error)
         Toast('网络异常请稍后再试！')
         return Promise.reject({ code: '-000001', message: '网络异常请稍后再试！', data: {} })
-      }
+      },
     )
 
     return instance
