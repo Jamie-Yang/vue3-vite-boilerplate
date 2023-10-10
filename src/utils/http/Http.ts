@@ -2,7 +2,7 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios'
 import axios from 'axios'
 import qs from 'qs'
 
-import Toast from '@/components/Toast2'
+import Toast from '@/components/Toast'
 
 export default class Http {
   private instance: AxiosInstance

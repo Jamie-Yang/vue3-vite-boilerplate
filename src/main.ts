@@ -8,7 +8,7 @@ import '@/assets/styles/index.scss'
 import App from './App.vue'
 import router from './router'
 
-import Toast from '@/components/Toast2'
+import Toast from '@/components/Toast'
 import MessageBox from '@/components/MessageBox'
 
 const app = createApp(App)

@@ -12,8 +12,8 @@ import { Loading } from '@/components'
 import { onMounted, ref } from 'vue'
 
 const props = defineProps({
-  id: String,
-  message: [Number, String],
+  id: { type: String, default: '' },
+  message: { type: String, default: '' },
   duration: { type: Number, default: 3000 },
   position: { type: String, default: 'middle' },
   icon: { type: String, default: '' },

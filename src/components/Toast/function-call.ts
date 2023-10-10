@@ -1,6 +1,6 @@
 import type { App, ComponentPublicInstance } from 'vue'
 import type { ToastOptions } from './types'
-import ToastConstructor from './Toast2.vue'
+import ToastConstructor from './Toast.vue'
 import mountComponent from '@/utils/mount-component'
 import { isObject } from '@/utils/validate'
 
