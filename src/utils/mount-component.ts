@@ -6,7 +6,7 @@ export default function mountComponent(Component: Component, props: Record<strin
   const vNode = createVNode(Component, props)
 
   render(vNode, container)
-  document.body.appendChild(container.firstElementChild as Node)
+  document.body.appendChild(container.firstElementChild as Element)
 
   function unmount() {
     render(null, container)

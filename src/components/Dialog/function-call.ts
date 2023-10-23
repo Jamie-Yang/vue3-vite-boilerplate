@@ -1,4 +1,3 @@
-import { createVNode, render } from 'vue'
 import DialogConstructor from './Dialog.vue'
 import mountComponent from '@/utils/mount-component'
 
@@ -26,19 +25,16 @@ function showDialog(options: DialogOptions | string = '') {
     }
   }
 
-  const opts = Object.assign({ show: true }, defaults, options)
-
-  const vm = createVNode(DialogConstructor, { ...opts })
-
-  render(vm, container)
-  document.body.appendChild(container.firstElementChild as Node)
+  const { vNode, unmount } = mountComponent(DialogConstructor, {
+    show: true,
+    ...defaults,
+    ...options,
+  })
 
   return new Promise((resolve) => {
-    if (!vm.props) return
-
-    vm.props.onBtnClick = (index: number) => {
+    vNode!.props!.onBtnClick = (index: number) => {
       resolve(index)
-      render(null, container)
+      unmount()
     }
   })
 }

@@ -23,12 +23,7 @@ export function usePopupState() {
 
   useExpose({ open, close, toggle })
 
-  return {
-    open,
-    close,
-    state,
-    toggle,
-  }
+  return { state, open, close, toggle }
 }
 
 export function mountComponent(RootComponent: Component) {
