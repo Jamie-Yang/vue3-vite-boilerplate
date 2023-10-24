@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "run-p lint:prettier lint:eslint lint:stylelint",
-    "lint:prettier": "prettier . --write --loglevel warn",
+    "lint:prettier": "prettier . --write --log-level warn",
     "lint:eslint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"./src/**/*.{vue,scss,css}\" --fix",
     "lint:lint-staged": "lint-staged",
@@ -73,7 +73,7 @@
       "prettier --write",
       "stylelint --fix"
     ],
-    "*.{scss,html}": [
+    "*.{scss,css}": [
       "stylelint --fix",
       "prettier --write"
     ],
