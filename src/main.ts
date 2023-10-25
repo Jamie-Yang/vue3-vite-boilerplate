@@ -7,8 +7,7 @@ import '@/assets/styles/index.scss'
 import App from './App.vue'
 import router from './router'
 
-import Toast from '@/components/Toast'
-import MessageBox from '@/components/MessageBox'
+import { Toast, MessageBox } from '@/components/fn'
 
 const app = createApp(App)
 app.use(router)
