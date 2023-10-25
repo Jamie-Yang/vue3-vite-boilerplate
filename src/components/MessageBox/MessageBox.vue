@@ -41,6 +41,8 @@ withDefaults(
     show: boolean
   }>(),
   {
+    title: '',
+    message: '',
     buttons: () => ['我知道了'],
     align: 'row',
     show: false,

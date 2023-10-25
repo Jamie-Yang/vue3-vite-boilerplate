@@ -16,7 +16,7 @@ defineProps({
   size: { type: [Number, String], default: 20 },
   vertical: Boolean,
   textSize: { type: Number, default: 14 },
-  color: String,
+  color: { type: String, default: '#969799' },
 })
 </script>
 

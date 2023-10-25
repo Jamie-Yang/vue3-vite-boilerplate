@@ -40,6 +40,7 @@ function clearTimer() {
 
 function close() {
   visible.value = false
+  clearTimer()
 }
 
 onMounted(() => {

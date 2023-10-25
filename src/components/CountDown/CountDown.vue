@@ -20,6 +20,8 @@ export default defineComponent({
     format: { type: String, default: 'HH:mm:ss' }, // d天 HH:mm:ss.SSS
   },
 
+  emits: ['finish'],
+
   data: function (): Data {
     return {
       rafId: 0,
