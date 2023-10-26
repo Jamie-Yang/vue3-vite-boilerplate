@@ -2,7 +2,7 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios'
 import axios from 'axios'
 import qs from 'qs'
 
-import { Toast } from '@/components/fn'
+import { showToast } from '@/components/fn'
 
 export default class Http {
   private instance: AxiosInstance
@@ -40,14 +40,14 @@ export default class Http {
         const res = response.data
         const { [this.config.codeKey]: code, [this.config.dataKey]: data, [this.config.messageKey]: message } = res
         if (code !== this.config.successCode) {
-          Toast(message || '服务异常请稍后再试！')
+          showToast(message || '服务异常请稍后再试！')
           return Promise.reject({ code, data, message })
         }
         return data
       },
       (error: AxiosError) => {
         console.log(error)
-        Toast('网络异常请稍后再试！')
+        showToast('网络异常请稍后再试！')
         return Promise.reject({ code: '-000001', message: '网络异常请稍后再试！', data: {} })
       },
     )

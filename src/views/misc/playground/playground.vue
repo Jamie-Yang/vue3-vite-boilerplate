@@ -1,34 +1,35 @@
 <template>
   <div class="view-container">
-    <button @click="showToast">测试 this.$toast</button>
-    <button @click="hideToast">测试 this.$toast</button>
-    <button @click="showMessageBox">测试 this.$messageBox</button>
+    <button @click="handleShowToast">测试 showToast</button>
+    <button @click="handleCloseToast">测试 closeToast</button>
+    <button @click="handleShowDialog">测试 showDialog</button>
     <Loading vertical>加载中...</Loading>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { Loading } from '@/components'
-import { Toast, MessageBox } from '@/components/fn'
+import { showToast, closeToast, showDialog } from '@/components/fn'
 
-function showToast(): void {
-  Toast({
+function handleShowToast(): void {
+  showToast({
     message: 'test showToast',
-    icon: 'loading',
+    // icon: 'loading',
+    position: 'top',
     duration: 0,
   })
 }
 
-function hideToast(): void {
-  Toast.hide()
+function handleCloseToast(): void {
+  closeToast()
 }
 
-function showMessageBox(): void {
-  MessageBox({
+function handleShowDialog(): void {
+  showDialog({
     title: '弹框标题',
     message: '弹框内容',
   }).then((index) => {
-    console.log('messageBox resolve: ', index)
+    console.log('dialog resolve: ', index)
   })
 }
 </script>

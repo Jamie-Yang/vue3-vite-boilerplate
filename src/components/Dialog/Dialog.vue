@@ -1,19 +1,19 @@
 <template>
-  <div class="message-box-wrapper">
-    <div v-if="show" class="message-box-mask" @touchmove.prevent.stop></div>
+  <div class="dialog-wrapper">
+    <div v-if="show" class="dialog-mask" @touchmove.prevent.stop></div>
 
-    <transition name="message-box">
-      <div v-show="show" class="message-box" @touchmove.prevent.stop>
-        <div class="message-box-content">
-          <div v-if="title" class="message-box-title">{{ title }}</div>
-          <div v-if="message" class="message-box-message" v-html="message"></div>
+    <transition name="dialog">
+      <div v-show="show" class="dialog" @touchmove.prevent.stop>
+        <div class="dialog-content">
+          <div v-if="title" class="dialog-title">{{ title }}</div>
+          <div v-if="message" class="dialog-message" v-html="message"></div>
         </div>
 
-        <div class="message-box-btns" :class="[`btns-align-${align}`]">
+        <div class="dialog-buttons" :class="[`buttons-align-${align}`]">
           <template v-for="(btn, index) in buttons" :key="index">
             <button
               type="button"
-              class="message-box-btn"
+              class="dialog-btn"
               :class="[typeof btn === 'object' && btn.emphasize ? 'emphasize' : '']"
               @click="onClickBtn(index)"
             >
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-interface MessageBoxButton {
+interface DialogButton {
   label: string
   emphasize?: boolean
 }
@@ -36,7 +36,7 @@ withDefaults(
   defineProps<{
     title?: string
     message?: string
-    buttons: (string | MessageBoxButton)[]
+    buttons: (string | DialogButton)[]
     align?: 'row' | 'column'
     show: boolean
   }>(),
@@ -58,12 +58,12 @@ function onClickBtn(index: number): void {
 </script>
 
 <style lang="scss">
-.message-box-wrapper {
+.dialog-wrapper {
   position: relative;
   z-index: 9999;
 }
 
-.message-box-mask {
+.dialog-mask {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -72,7 +72,7 @@ function onClickBtn(index: number): void {
   background-color: rgb(0 0 0 / 50%);
 }
 
-.message-box {
+.dialog {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -128,28 +128,28 @@ function onClickBtn(index: number): void {
     }
   }
 
-  &-btns {
+  &-buttons {
     display: flex;
 
-    &.btns-align-column {
+    &.buttons-align-column {
       flex-direction: column;
     }
 
-    &.btns-align-row {
-      .message-box-btn:not(:first-child) {
+    &.buttons-align-row {
+      .dialog-btn:not(:first-child) {
         border-left: 1px solid #ebebeb;
       }
     }
   }
 }
 
-.message-box-enter-active,
-.message-box-leave-active {
+.dialog-enter-active,
+.dialog-leave-active {
   transition: all 0.2s;
 }
 
-.message-box-enter,
-.message-box-leave-to {
+.dialog-enter,
+.dialog-leave-to {
   opacity: 0;
   transform: translate3d(-50%, -50%, 0) scale(0.9);
 }

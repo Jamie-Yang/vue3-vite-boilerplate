@@ -1,24 +1,24 @@
-import type { App } from 'vue'
 import { createVNode, render } from 'vue'
-import MessageBoxConstructor from './MessageBox.vue'
+import DialogConstructor from './Dialog.vue'
+import mountComponent from '@/utils/mount-component'
 
-interface MessageBoxOptions {
+interface DialogOptions {
   title?: string
   message: string
   buttons?: string[]
   align?: 'row' | 'column'
 }
 
-const defaults: MessageBoxOptions = {
+const defaults: DialogOptions = {
   title: '',
   message: '',
   buttons: ['我知道了'],
   align: 'row',
 }
 
-function messageBox(options: MessageBoxOptions | string = '') {
-  const container = document.querySelector('body>div[type=message-box]') ?? document.createElement('div')
-  container.setAttribute('type', 'message-box')
+function showDialog(options: DialogOptions | string = '') {
+  const container = document.querySelector('body>div[type=dialog]') ?? document.createElement('div')
+  container.setAttribute('type', 'dialog')
 
   if (typeof options === 'string') {
     options = {
@@ -28,7 +28,7 @@ function messageBox(options: MessageBoxOptions | string = '') {
 
   const opts = Object.assign({ show: true }, defaults, options)
 
-  const vm = createVNode(MessageBoxConstructor, { ...opts })
+  const vm = createVNode(DialogConstructor, { ...opts })
 
   render(vm, container)
   document.body.appendChild(container.firstElementChild as Node)
@@ -43,8 +43,4 @@ function messageBox(options: MessageBoxOptions | string = '') {
   })
 }
 
-messageBox.install = (app: App): void => {
-  app.config.globalProperties.$messageBox = messageBox
-}
-
-export default messageBox
+export { showDialog }

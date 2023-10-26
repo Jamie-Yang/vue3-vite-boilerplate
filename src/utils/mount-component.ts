@@ -3,9 +3,9 @@ import { createVNode, render } from 'vue'
 
 export default function mountComponent(Component: Component, props: Record<string, unknown>) {
   const container = document.createElement('div')
-  const vnode = createVNode(Component, props)
+  const vNode = createVNode(Component, props)
 
-  render(vnode, container)
+  render(vNode, container)
   document.body.appendChild(container.firstElementChild as Node)
 
   function unmount() {
@@ -13,7 +13,7 @@ export default function mountComponent(Component: Component, props: Record<strin
   }
 
   return {
-    vnode,
+    vNode,
     unmount,
   }
 }
