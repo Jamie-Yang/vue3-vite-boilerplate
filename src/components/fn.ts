@@ -1,2 +1,2 @@
-export * from './v-dialog/function-call'
-export * from './v-toast/function-call'
+export * from './dialog/function-call'
+export * from './toast/function-call'
