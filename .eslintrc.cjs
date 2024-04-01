@@ -5,6 +5,7 @@ module.exports = {
   root: true,
 
   env: {
+    browser: true,
     node: true,
   },
 
@@ -13,8 +14,8 @@ module.exports = {
   },
 
   extends: [
-    'plugin:vue/vue3-recommended',
     'eslint:recommended',
+    'plugin:vue/vue3-recommended',
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting',
     'plugin:import/recommended',
