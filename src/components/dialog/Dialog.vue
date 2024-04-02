@@ -57,7 +57,7 @@ function onClickBtn(index: number): void {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dialog-wrapper {
   position: relative;
   z-index: 9999;

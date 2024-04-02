@@ -7,11 +7,22 @@
 - Vue 3
 - Vue Router 4
 - Pinia 2
-- Vite
+- Axios
 - TypeScript
+- Vite
 - ESLint
 - Prettier
 - Stylelint
+- Commitlint
 - Husky
-- Axios
 - And more!
+
+## VSCode 配置
+
+启用 Stylelint 校验 Vue 文件
+
+```jsonc
+{
+  "stylelint.validate": ["vue"],
+}
+```
