@@ -16,7 +16,8 @@
     "lint:eslint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"./src/**/*.{vue,scss,css}\" --fix",
     "lint:lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -26,6 +27,8 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@rushstack/eslint-patch": "^1.10.1",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.2",

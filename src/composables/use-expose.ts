@@ -2,7 +2,7 @@ import { getCurrentInstance } from 'vue'
 
 /**
  * expose public api
- * @borrows https://github.dev/youzan/vant/tree/main/packages/vant/src/composables/use-expose.ts
+ * @borrows https://github.com/youzan/vant/blob/main/packages/vant/src/composables/use-expose.ts
  */
 export function useExpose<T = Record<string, any>>(apis: T) {
   const instance = getCurrentInstance()
