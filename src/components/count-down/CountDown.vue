@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
-import { requestAnimFrame, cancelAnimFrame } from '@/utils/raf'
-import { formatRemainTime, convertRemainTime } from '@/utils/format'
 import { defineComponent } from 'vue'
+
+import { formatRemainTime, convertRemainTime } from '@/utils/format'
+import { requestAnimFrame, cancelAnimFrame } from '@/utils/raf'
 
 interface Data {
   remain: number

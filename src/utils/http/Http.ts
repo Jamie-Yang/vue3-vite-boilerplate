@@ -1,6 +1,7 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios'
+
 import axios from 'axios'
-import qs from 'qs'
+import { stringify } from 'qs'
 
 import { showToast } from '@/components/fn'
 
@@ -28,7 +29,7 @@ export default class Http {
       transformRequest: [
         (data, headers) => {
           if (headers?.['Content-Type'] === 'application/x-www-form-urlencoded') {
-            return qs.stringify(data)
+            return stringify(data)
           }
           return data
         },

@@ -1,5 +1,7 @@
 import type { Component } from 'vue'
+
 import { createApp, reactive } from 'vue'
+
 import { useExpose } from '@/composables/use-expose'
 
 export function usePopupState() {

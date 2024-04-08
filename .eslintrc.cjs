@@ -23,7 +23,11 @@ module.exports = {
   ],
 
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/resolver': {
+      typescript: true,
       alias: {
         map: [['^@', './src/']],
         extensions: ['.ts', '.js', '.vue', '.json'],
@@ -34,8 +38,20 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+
     'vue/multi-word-component-names': 'off',
     'vue/attribute-hyphenation': 'off',
     'vue/no-v-html': 'off',
+
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: ['type', 'builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'object', 'unknown'],
+        pathGroups: [{ pattern: '@/**', group: 'external', position: 'after' }],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
   },
 }

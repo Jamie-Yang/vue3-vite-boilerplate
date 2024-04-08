@@ -8,8 +8,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Loading } from '@/components'
 import { onMounted, ref } from 'vue'
+
+import { Loading } from '@/components'
 
 const props = defineProps({
   id: { type: String, default: '' },

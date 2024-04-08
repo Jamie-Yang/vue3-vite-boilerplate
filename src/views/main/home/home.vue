@@ -7,6 +7,7 @@
 
 <script lang="ts" setup>
 import { SvgIcon } from '@/components/'
+
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 

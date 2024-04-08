@@ -1,5 +1,6 @@
-import DialogConstructor from './Dialog.vue'
 import mountComponent from '@/utils/mount-component'
+
+import DialogConstructor from './Dialog.vue'
 
 interface DialogOptions {
   title?: string

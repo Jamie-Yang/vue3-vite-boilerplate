@@ -1,4 +1,5 @@
 import type { Component } from 'vue'
+
 import { createVNode, render } from 'vue'
 
 export default function mountComponent(Component: Component, props: Record<string, unknown>) {
