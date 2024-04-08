@@ -1,15 +1,14 @@
 import type { ToastOptions } from './types'
 import type { ComponentPublicInstance } from 'vue'
 
-import mountComponent from '@/utils/mount-component'
-import { isObject } from '@/utils/validate'
+import { mountPopup } from '@/utils/mount-popup'
 
 import Toast from './Toast.vue'
 
 let seed = 1
 let instance: ComponentPublicInstance | null | undefined
 
-const defaultOptions: ToastOptions = {
+const defaults: ToastOptions = {
   message: '',
   duration: 3000,
   position: 'middle',
@@ -17,25 +16,29 @@ const defaultOptions: ToastOptions = {
   iconSize: undefined,
 }
 
-function parseOptions(message: string | ToastOptions): ToastOptions {
-  return isObject(message) ? message : { message }
-}
+function showToast(options: string | ToastOptions = ''): void {
+  if (typeof options === 'string') {
+    options = {
+      message: options,
+    }
+  }
 
-function showToast(options: string | ToastOptions = {}): void {
-  const parsedOptions = parseOptions(options)
   const id = `toast_${seed++}`
-  const { vNode, unmount } = mountComponent(Toast, {
+  const { instance: toastInstance, unmount } = mountPopup(Toast, {
     id,
-    ...defaultOptions,
-    ...parsedOptions,
+    ...defaults,
+    ...options,
     onDestroy: () => {
+      instance = null
       unmount()
     },
   })
-  instance = vNode.component?.proxy
+
+  instance = toastInstance
 }
 
 function closeToast() {
+  if (!instance) return
   // @ts-ignore `visible` from defineExpose
   instance.visible = false
 }

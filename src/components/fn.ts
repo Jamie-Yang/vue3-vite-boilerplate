@@ -1,2 +1,2 @@
-export * from './dialog/function-call'
-export * from './toast/function-call'
+export { showDialog } from './dialog/function-call'
+export { showToast, closeToast } from './toast/function-call'

@@ -1,4 +1,4 @@
-import mountComponent from '@/utils/mount-component'
+import { mountPopup } from '@/utils/mount-popup'
 
 import Dialog from './Dialog.vue'
 
@@ -17,26 +17,23 @@ const defaults: DialogOptions = {
 }
 
 function showDialog(options: DialogOptions | string = '') {
-  const container = document.querySelector('body>div[type=dialog]') ?? document.createElement('div')
-  container.setAttribute('type', 'dialog')
-
   if (typeof options === 'string') {
     options = {
       message: options,
     }
   }
 
-  const { vNode, unmount } = mountComponent(Dialog, {
-    show: true,
-    ...defaults,
-    ...options,
-  })
+  const currentOptions = { ...defaults, ...options }
 
   return new Promise((resolve) => {
-    vNode!.props!.onBtnClick = (index: number) => {
-      resolve(index)
-      unmount()
-    }
+    const { unmount } = mountPopup(Dialog, {
+      show: true,
+      ...currentOptions,
+      onBtnClick: (index: number) => {
+        resolve(index)
+        unmount()
+      },
+    })
   })
 }
 
