@@ -2,74 +2,58 @@
   <slot :remain="convertRemainTime(remain)">{{ formatRemainTime(remain, format) }}</slot>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { watch, ref } from 'vue'
 
 import { formatRemainTime, convertRemainTime } from '@/utils/format'
-import { requestAnimFrame, cancelAnimFrame } from '@/utils/raf'
 
-interface Data {
-  remain: number
-  endingTime: number
-  rafId: number
-}
+const props = defineProps({
+  showMs: { type: Boolean, default: false }, // 是否显示毫秒。为了性能考虑，不显示毫秒时，只有在秒数变化时才更新
+  remainTime: { type: Number, default: 0 }, // 剩余时间
+  format: { type: String, default: 'HH:mm:ss' }, // d天 HH:mm:ss.SSS
+})
 
-export default defineComponent({
-  props: {
-    ms: { type: Boolean, default: false },
-    remainTime: { type: Number, default: 0 },
-    format: { type: String, default: 'HH:mm:ss' }, // d天 HH:mm:ss.SSS
-  },
+const emits = defineEmits(['finish'])
 
-  emits: ['finish'],
+const { remain } = useCountDown()
 
-  data: function (): Data {
-    return {
-      rafId: 0,
-      remain: 0,
-      endingTime: 0, // 结束时间 = 当前时间 + 剩余秒数
-    }
-  },
+function useCountDown() {
+  const rafId = ref(0)
+  const remain = ref(0)
+  const endingTime = ref(0) // 结束时间 = 当前时间 + 剩余秒数
 
-  watch: {
-    remainTime: {
-      immediate: true,
-      handler: 'start',
-    },
-  },
+  watch(() => props.remainTime, start, { immediate: true })
 
-  methods: {
-    ...{ formatRemainTime, convertRemainTime },
+  function start() {
+    if (!props.remainTime) return
 
-    start(): void {
-      if (!this.remainTime) {
+    remain.value = props.remainTime
+    endingTime.value = Date.now() + props.remainTime
+
+    tick()
+  }
+
+  function tick() {
+    rafId.value = window.requestAnimationFrame(() => {
+      const remainValue = Math.max(endingTime.value - Date.now(), 0)
+
+      if (remainValue === 0) {
+        window.cancelAnimationFrame(rafId.value)
+        remain.value = 0
+        emits('finish')
         return
       }
-      this.remain = this.remainTime
-      this.endingTime = Date.now() + this.remain
-      this.tick()
-    },
 
-    tick(): void {
-      this.rafId = requestAnimFrame(() => {
-        const remain = Math.max(this.endingTime - Date.now(), 0)
+      const isDiffSecond = Math.abs(remainValue - remain.value) > 986 // 17 * 58
 
-        if (remain === 0) {
-          this.remain = 0
-          cancelAnimFrame(this.rafId)
-          this.$emit('finish')
-          return
-        }
+      if (props.showMs || isDiffSecond) {
+        remain.value = remainValue
+      }
 
-        const isDiffSecond = Math.abs(remain - this.remain) > 986 // 17 * 58
+      tick()
+    })
+  }
 
-        if (this.ms || isDiffSecond) {
-          this.remain = remain
-        }
-
-        this.tick()
-      })
-    },
-  },
-})
+  return { remain }
+}
 </script>

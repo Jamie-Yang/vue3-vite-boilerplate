@@ -49,11 +49,11 @@ withDefaults(
   },
 )
 
-const emit = defineEmits(['btnClick', 'update:show'])
+const emits = defineEmits(['btnClick', 'update:show'])
 
 function onClickBtn(index: number): void {
-  emit('btnClick', index)
-  emit('update:show', false) // 支持sync
+  emits('btnClick', index)
+  emits('update:show', false) // 支持sync
 }
 </script>
 

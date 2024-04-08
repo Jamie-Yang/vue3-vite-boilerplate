@@ -2,19 +2,9 @@
   <div class="item-container"></div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 interface Data {
   [key: string]: unknown
-}
-
-export default {
-  name: 'ListItem',
-
-  setup(): Data {
-    return {}
-  },
-
-  methods: {},
 }
 </script>
 

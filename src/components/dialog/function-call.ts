@@ -1,6 +1,6 @@
 import mountComponent from '@/utils/mount-component'
 
-import DialogConstructor from './Dialog.vue'
+import Dialog from './Dialog.vue'
 
 interface DialogOptions {
   title?: string
@@ -26,7 +26,7 @@ function showDialog(options: DialogOptions | string = '') {
     }
   }
 
-  const { vNode, unmount } = mountComponent(DialogConstructor, {
+  const { vNode, unmount } = mountComponent(Dialog, {
     show: true,
     ...defaults,
     ...options,

@@ -5,70 +5,65 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { watch, onMounted, onBeforeUnmount } from 'vue'
 
 type ScrollElement = Window | HTMLElement
 
-export default defineComponent({
-  name: 'ScrollLoad',
+const props = defineProps<{
+  isLoading: boolean
+  loadingText: string
+  noMore: boolean
+  noMoreText: string
+  scrollElement: ScrollElement
+}>()
 
-  props: {
-    isLoading: { type: Boolean, default: false, required: true },
-    loadingText: { type: String, default: '加载中...' },
-    noMore: { type: Boolean, default: false, required: true },
-    noMoreText: { type: String, default: '没有更多数据了' },
-    scrollElement: { type: [Window, HTMLElement], default: (): Window => window },
+const emits = defineEmits(['reach-end'])
+
+watch(
+  () => props.scrollElement,
+  (newEl, oldEl) => {
+    if (newEl === oldEl) return
+    unbindScroll(oldEl)
+    bindScroll()
   },
+)
 
-  emits: ['reach-end'],
-
-  watch: {
-    scrollElement(newEl: ScrollElement, oldEl: ScrollElement): void {
-      if (newEl === oldEl) return
-      this.unbindScroll(oldEl)
-      this.bindScroll()
-    },
-  },
-
-  mounted(): void {
-    this.bindScroll()
-  },
-
-  beforeUnmount(): void {
-    this.unbindScroll()
-  },
-
-  methods: {
-    onScroll(): void {
-      if (this.isLoading || this.noMore) return
-
-      const el = this.scrollElement
-      const isWindow = el === window
-
-      const scrollTop = isWindow ? window.scrollY : (el as HTMLElement).scrollTop
-      const scrollHeight = isWindow
-        ? document.documentElement.scrollHeight || document.body.scrollHeight
-        : (el as HTMLElement).scrollHeight
-      const elHeight = isWindow ? window.innerHeight : (el as HTMLElement).offsetHeight
-
-      const distance = scrollHeight - scrollTop - elHeight
-
-      if (distance <= 30) {
-        this.$emit('reach-end')
-      }
-    },
-
-    bindScroll(): void {
-      this.scrollElement.addEventListener('scroll', this.onScroll)
-    },
-
-    unbindScroll(el?: ScrollElement): void {
-      el = el || this.scrollElement
-      el.removeEventListener('scroll', this.onScroll)
-    },
-  },
+onMounted(() => {
+  bindScroll()
 })
+
+onBeforeUnmount(() => {
+  unbindScroll()
+})
+
+function onScroll(): void {
+  if (props.isLoading || props.noMore) return
+
+  const el = props.scrollElement
+  const isWindow = el === window
+
+  const scrollTop = isWindow ? window.scrollY : (el as HTMLElement).scrollTop
+  const scrollHeight = isWindow
+    ? document.documentElement.scrollHeight || document.body.scrollHeight
+    : (el as HTMLElement).scrollHeight
+  const elHeight = isWindow ? window.innerHeight : (el as HTMLElement).offsetHeight
+
+  const distance = scrollHeight - scrollTop - elHeight
+
+  if (distance <= 30) {
+    emits('reach-end')
+  }
+}
+
+function bindScroll(): void {
+  props.scrollElement.addEventListener('scroll', onScroll)
+}
+
+function unbindScroll(el?: ScrollElement): void {
+  el = el || props.scrollElement
+  el.removeEventListener('scroll', onScroll)
+}
 </script>
 
 <style lang="scss" scoped>

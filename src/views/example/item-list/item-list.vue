@@ -4,24 +4,8 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import ListItem from './components/ListItem.vue'
-
-interface Data {
-  [key: string]: unknown
-}
-
-export default {
-  name: 'ItemList',
-
-  components: { ListItem },
-
-  setup(): Data {
-    return {}
-  },
-
-  methods: {},
-}
 </script>
 
 <style lang="scss" scoped>

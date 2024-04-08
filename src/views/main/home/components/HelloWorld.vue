@@ -4,11 +4,8 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: { type: String, default: '' },
-  },
-}
+<script lang="ts" setup>
+defineProps({
+  msg: { type: String, default: '' },
+})
 </script>
