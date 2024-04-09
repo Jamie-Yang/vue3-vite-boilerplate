@@ -5,6 +5,8 @@ import { stringify } from 'qs'
 
 import { showToast } from '@/components/fn'
 
+import { transformProxyUrl } from './utils'
+
 export default class Http {
   private instance: AxiosInstance
   private config = {
@@ -22,7 +24,7 @@ export default class Http {
 
   private createInstance(baseURL: string) {
     const instance = axios.create({
-      baseURL,
+      baseURL: transformProxyUrl(baseURL),
       method: 'post',
       timeout: 15000,
       headers: { Accept: 'application/json', 'Content-Type': 'application/json' },

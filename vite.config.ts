@@ -1,31 +1,53 @@
+import type { ProxyOptions } from 'vite'
+
+import { cwd } from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 
 import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import svgLoader from 'vite-svg-loader'
 
-export default defineConfig({
-  base: '/',
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, cwd(), '')
 
-  plugins: [vue(), legacy(), svgLoader()],
+  return {
+    base: '/',
 
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
+    plugins: [vue(), legacy(), svgLoader()],
 
-  server: {
-    host: true,
-    open: true,
-    proxy: {
-      // https://cn.vitejs.dev/config/server-options.html#server-proxy
-      '/api': {
-        target: 'https://api.target.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
-  },
+
+    server: {
+      host: true,
+      open: true,
+      proxy: {
+        ...generateProxy(env.VITE_PROXY_TARGETS),
+      },
+    },
+  }
 })
+
+/**
+ * 根据环境变量配置，生成本地请求代理配置
+ * 通过与 transformProxyUrl（src/utils/http/utils.ts）配合
+ */
+function generateProxy(envTargets: string) {
+  const targets = (JSON.parse(envTargets) || []) as string[]
+  return targets.reduce(
+    (acc, target) => {
+      const prefixed = `/${target}`
+      acc[prefixed] = {
+        target,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(new RegExp(`^${prefixed}`), ''),
+      }
+      return acc
+    },
+    {} as Record<string, ProxyOptions>,
+  )
+}
