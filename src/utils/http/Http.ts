@@ -5,7 +5,7 @@ import { stringify } from 'qs'
 
 import { showToast } from '@/components/fn'
 
-import { transformProxyUrl } from './utils'
+import { transformProxyUrl } from '../dev-proxy'
 
 export default class Http {
   private instance: AxiosInstance

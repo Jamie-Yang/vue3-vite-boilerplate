@@ -1,8 +1,10 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
-  "include": ["vite.config.ts", ".prettier.cjs", "stylelint.config.js"],
+  "include": ["vite.config.ts", ".prettier.cjs", "stylelint.config.js", "./src/utils/dev-proxy.ts"],
   "compilerOptions": {
     "composite": true,
-    "types": ["node"]
+    "types": ["node"],
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   }
 }
