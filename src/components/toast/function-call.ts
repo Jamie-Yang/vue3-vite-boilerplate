@@ -5,8 +5,10 @@ import { mountPopup } from '@/utils/mount-popup'
 
 import Toast from './Toast.vue'
 
+type ToastInstance = ComponentPublicInstance<{ visible: boolean }>
+
 let seed = 1
-let instance: ComponentPublicInstance | null | undefined
+let instance: ToastInstance | null
 
 const defaults: ToastOptions = {
   message: '',
@@ -24,7 +26,7 @@ function showToast(options: string | ToastOptions = ''): void {
   }
 
   const id = `toast_${seed++}`
-  const { instance: toastInstance, unmount } = mountPopup(Toast, {
+  const { instance: toastInstance, unmount } = mountPopup<ToastInstance>(Toast, {
     id,
     ...defaults,
     ...options,
@@ -39,7 +41,6 @@ function showToast(options: string | ToastOptions = ''): void {
 
 function closeToast() {
   if (!instance) return
-  // @ts-ignore `visible` from defineExpose
   instance.visible = false
 }
 

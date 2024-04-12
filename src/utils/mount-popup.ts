@@ -28,14 +28,14 @@ export function usePopupState() {
   return { state, open, close, toggle }
 }
 
-export function mountPopup(RootComponent: Component, props: Record<string, unknown>) {
+export function mountPopup<I>(RootComponent: Component, props: Record<string, unknown>) {
   const app = createApp(RootComponent, props)
   const root = document.createElement('div')
 
   document.body.appendChild(root)
 
   return {
-    instance: app.mount(root),
+    instance: app.mount(root) as I,
     unmount() {
       app.unmount()
       document.body.removeChild(root)
