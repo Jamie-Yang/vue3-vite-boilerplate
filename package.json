@@ -29,12 +29,12 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@rushstack/eslint-patch": "^1.10.1",
+    "@rushstack/eslint-patch": "^1.10.2",
     "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.12.5",
+    "@types/node": "^20.12.7",
     "@types/qs": "^6.9.14",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-legacy": "^5.3.2",
     "@vitejs/plugin-vue": "^5.0.4",
@@ -53,15 +53,14 @@
     "postcss": "^8.4.38",
     "postcss-html": "^1.6.0",
     "prettier": "3.2.5",
-    "sass": "^1.74.1",
+    "sass": "^1.75.0",
     "stylelint": "^16.3.1",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-config-standard-vue": "^1.0.0",
-    "stylelint-scss": "^6.2.1",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "vite": "^5.2.8",
     "vite-svg-loader": "^5.1.0",
-    "vue-tsc": "^2.0.11"
+    "vue-tsc": "^2.0.13"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
