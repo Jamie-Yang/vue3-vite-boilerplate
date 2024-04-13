@@ -1,6 +1,6 @@
 # vue3-vite-boilerplate
 
-A Vue 3 Starter Boilerplate with Vite 5, Vue Router 4, Pinia 2, TypeScript 5, ESLint, Prettier and More.
+A Modern Vue 3 Starter Boilerplate based on Vite 5, TypeScript 5, Prettier, Stylelint, ESLint, and more.
 
 ## Tech stacks
 
