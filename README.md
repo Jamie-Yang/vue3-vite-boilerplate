@@ -1,39 +1,35 @@
-# vue3-mobile
+# vue3-vite-boilerplate
 
-开箱即用的 Vue 3 移动端 Web 应用脚手架
+A Vue 3 Starter Boilerplate with Vite 5, Vue Router 4, Pinia 2, TypeScript 5, ESLint, Prettier and More.
 
-## 技术栈
+## Tech stacks
 
 - Vue 3
 - Vue Router 4
 - Pinia 2
 - Axios
-- TypeScript
+- TypeScript 5
 - Vite
 - ESLint
 - Prettier
 - Stylelint
 - Commitlint
 - Husky
-- And more!
 
-## VSCode 推荐配置
+## Recommended VSCode settings
 
 ```jsonc
 {
-  // 默认格式化程序指定为 prettier
+  // Set default formatter to prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  // 保存时格式化代码
+  // Format code on save
   "editor.formatOnSave": true,
 
-  // 手动保存时，运行代码自动修复
+  // Automatically apply code fixes on manual save
   "editor.codeActionsOnSave": { "source.fixAll": "explicit" },
 
-  // 配置 Eslint 校验文件类型
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
-
-  // 配置 Stylelint 校验 Vue 文件
+  // Configure Stylelint to validate .vue files
   "stylelint.validate": ["vue"],
 }
 ```
