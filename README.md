@@ -29,7 +29,7 @@ A Modern Vue 3 Starter Boilerplate based on Vite 5, TypeScript 5, Prettier, Styl
   // Automatically apply code fixes on manual save
   "editor.codeActionsOnSave": { "source.fixAll": "explicit" },
 
-  // Configure Stylelint to validate .vue files
-  "stylelint.validate": ["vue"],
+  // Configure Stylelint to validate the following files
+  "stylelint.validate": ["css", "scss", "vue"],
 }
 ```

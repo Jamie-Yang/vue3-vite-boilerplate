@@ -29,10 +29,7 @@
   // 手动保存时，运行代码自动修复
   "editor.codeActionsOnSave": { "source.fixAll": "explicit" },
 
-  // 配置 Eslint 校验文件类型
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
-
-  // 配置 Stylelint 校验 Vue 文件
-  "stylelint.validate": ["vue"],
+  // 配置 Stylelint 校验以下文件
+  "stylelint.validate": ["css", "scss", "vue"],
 }
 ```

@@ -16,10 +16,10 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
-    '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting',
+    '@vue/eslint-config-typescript/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'prettier',
   ],
 
   settings: {
@@ -38,6 +38,8 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'arrow-body-style': ['error', 'as-needed'],
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
 
     'vue/multi-word-component-names': 'off',
     'vue/attribute-hyphenation': 'off',
