@@ -9,7 +9,7 @@ A Modern Vue 3 Starter Boilerplate based on Vite 5, TypeScript 5, Prettier, Styl
 - Pinia 2
 - Axios
 - TypeScript 5
-- Vite
+- Vite 5
 - ESLint
 - Prettier
 - Stylelint

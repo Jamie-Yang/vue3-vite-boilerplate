@@ -8,8 +8,8 @@
 - Vue Router 4
 - Pinia 2
 - Axios
-- TypeScript
-- Vite
+- TypeScript 5
+- Vite 5
 - ESLint
 - Prettier
 - Stylelint
