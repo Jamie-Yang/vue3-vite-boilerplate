@@ -86,9 +86,9 @@ function unbindScroll(el?: ScrollElement): void {
 }
 
 .load-label {
-  color: #8c8fa7;
   font-size: 12px;
   line-height: 20px;
+  color: #8c8fa7;
 }
 
 @keyframes rotate {

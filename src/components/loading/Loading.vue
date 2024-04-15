@@ -39,18 +39,18 @@ defineProps({
   color: #969799;
 
   circle {
-    animation: circular 1.5s ease-in-out infinite;
     stroke: currentcolor;
-    stroke-width: 3;
     stroke-linecap: round;
+    stroke-width: 3;
+    animation: circular 1.5s ease-in-out infinite;
   }
 }
 
 .text {
-  color: #969799;
+  margin-left: 8px;
   font-size: 14px;
   line-height: 20px;
-  margin-left: 8px;
+  color: #969799;
 }
 
 .loading-vertical {

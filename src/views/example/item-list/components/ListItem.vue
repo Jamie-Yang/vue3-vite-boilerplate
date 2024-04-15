@@ -7,10 +7,10 @@
 <style lang="scss" scoped>
 .item-container {
   height: 120px;
+  overflow: hidden;
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 6px;
-  overflow: hidden;
 
   & + & {
     margin-top: 20px;

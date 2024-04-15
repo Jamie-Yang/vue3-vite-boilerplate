@@ -58,20 +58,20 @@ defineExpose({
 
 <style lang="scss" scoped>
 .toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 80%;
   min-width: 180px;
+  max-width: 80%;
   padding: 8px 12px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
   background: rgb(0 0 0 / 70%);
   border-radius: 8px;
-  z-index: 1000;
+  transform: translate3d(-50%, -50%, 0);
 
   &.toast-top {
     top: 20%;
@@ -90,18 +90,18 @@ defineExpose({
 
 .toast-icon {
   display: block;
-  color: #fff;
+  margin: 0 auto 40px;
   font-size: 37px;
   line-height: 37px;
+  color: #fff;
   text-align: center;
-  margin: 0 auto 40px;
 }
 
 .toast-text {
   display: block;
-  color: #fff;
   font-size: 14px;
   line-height: 20px;
+  color: #fff;
   text-align: center;
 }
 

@@ -64,11 +64,11 @@ function onClickBtn(index: number): void {
 }
 
 .dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
   background-color: rgb(0 0 0 / 50%);
 }
 
@@ -77,11 +77,11 @@ function onClickBtn(index: number): void {
   top: 50%;
   left: 50%;
   width: 280px;
-  transform: translate3d(-50%, -50%, 0);
+  overflow: hidden;
+  font-size: 14px;
   background-color: #fff;
   border-radius: 12px;
-  font-size: 14px;
-  overflow: hidden;
+  transform: translate3d(-50%, -50%, 0);
   backface-visibility: hidden;
 
   &-content {
@@ -90,11 +90,11 @@ function onClickBtn(index: number): void {
   }
 
   &-title {
+    margin-bottom: 9px;
     font-size: 16px;
     font-weight: bold;
     line-height: 24px;
     text-align: center;
-    margin-bottom: 9px;
   }
 
   &-image {
@@ -113,9 +113,9 @@ function onClickBtn(index: number): void {
   &-btn {
     flex: 1;
     height: 44px;
-    color: #3a72ef;
     font-size: 16px;
     line-height: 44px;
+    color: #3a72ef;
     background-color: #fff;
     border-top: 1px solid #ebebeb;
 

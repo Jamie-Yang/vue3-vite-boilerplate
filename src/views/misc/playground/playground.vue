@@ -36,10 +36,10 @@ function handleShowDialog(): void {
 
 <style lang="scss" scoped>
 .view-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 </style>
