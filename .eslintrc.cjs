@@ -20,6 +20,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'prettier',
+    './.eslintrc-auto-import.json',
   ],
 
   settings: {
