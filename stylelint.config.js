@@ -7,5 +7,7 @@ export default {
       rules: {},
     },
   ],
-  rules: {},
+  rules: {
+    'selector-class-pattern': null,
+  },
 }
