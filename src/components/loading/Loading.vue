@@ -14,7 +14,7 @@ import { getSizeStyle } from '@/utils/format'
 
 defineProps({
   size: { type: [Number, String], default: 20 },
-  vertical: Boolean,
+  vertical: { type: Boolean, default: false },
   textSize: { type: Number, default: 14 },
   color: { type: String, default: '#969799' },
 })

@@ -22,38 +22,40 @@ const props = defineProps({
 })
 
 defineEmits(['destroy'])
+const { visible } = useToast()
+defineExpose({ visible })
 
-const visible = ref(true)
-let timer: number | undefined = undefined
+function useToast() {
+  const visible = ref(true)
+  let timer: number | undefined = undefined
 
-function startTimer() {
-  timer = setTimeout(() => {
-    if (visible.value) {
-      close()
-    }
-  }, props.duration)
-}
-
-function clearTimer() {
-  clearTimeout(timer)
-  timer = undefined
-}
-
-function close() {
-  visible.value = false
-  clearTimer()
-}
-
-onMounted(() => {
-  if (props.duration > 0) {
-    startTimer()
+  function startTimer() {
+    timer = setTimeout(() => {
+      if (visible.value) {
+        close()
+      }
+    }, props.duration)
   }
-  visible.value = true
-})
 
-defineExpose({
-  visible,
-})
+  function clearTimer() {
+    clearTimeout(timer)
+    timer = undefined
+  }
+
+  function close() {
+    visible.value = false
+    clearTimer()
+  }
+
+  onMounted(() => {
+    if (props.duration > 0) {
+      startTimer()
+    }
+    visible.value = true
+  })
+
+  return { visible, close }
+}
 </script>
 
 <style lang="scss" scoped>

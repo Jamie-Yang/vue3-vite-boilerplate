@@ -10,7 +10,7 @@ import misc from './modules/misc'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/misc/playground',
+    redirect: '/main/home',
   },
   ...example,
   ...main,

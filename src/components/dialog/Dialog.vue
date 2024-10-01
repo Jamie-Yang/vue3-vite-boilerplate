@@ -1,6 +1,8 @@
 <template>
   <div class="dialog-wrapper">
-    <div v-if="show" class="dialog-mask" @touchmove.prevent.stop></div>
+    <transition name="fade">
+      <div v-if="show" class="dialog-mask" @touchmove.prevent.stop></div>
+    </transition>
 
     <transition name="dialog">
       <div v-show="show" class="dialog" @touchmove.prevent.stop>
@@ -27,32 +29,20 @@
 </template>
 
 <script lang="ts" setup>
-interface DialogButton {
-  label: string
-  emphasize?: boolean
-}
+import type { DialogButton } from './type'
 
-withDefaults(
-  defineProps<{
-    title?: string
-    message?: string
-    buttons: (string | DialogButton)[]
-    align?: 'row' | 'column'
-    show: boolean
-  }>(),
-  {
-    title: '',
-    message: '',
-    buttons: () => ['我知道了'],
-    align: 'row',
-    show: false,
-  },
-)
+defineProps({
+  title: { type: String, default: '' },
+  message: { type: String, default: '' },
+  buttons: { type: Array as PropType<DialogButton[]>, default: () => ['我知道了'] },
+  align: { type: String as PropType<'row' | 'column'>, default: 'row' },
+  show: { type: Boolean, default: false },
+})
 
-const emits = defineEmits(['btnClick', 'update:show'])
+const emits = defineEmits(['btn-click', 'update:show'])
 
 function onClickBtn(index: number): void {
-  emits('btnClick', index)
+  emits('btn-click', index)
   emits('update:show', false) // 支持sync
 }
 </script>
@@ -60,7 +50,7 @@ function onClickBtn(index: number): void {
 <style lang="scss" scoped>
 .dialog-wrapper {
   position: relative;
-  z-index: 9999;
+  z-index: 1999;
 }
 
 .dialog-mask {
@@ -84,12 +74,12 @@ function onClickBtn(index: number): void {
   transform: translate3d(-50%, -50%, 0);
   backface-visibility: hidden;
 
-  &-content {
+  .dialog-content {
     position: relative;
     padding: 20px;
   }
 
-  &-title {
+  .dialog-title {
     margin-bottom: 9px;
     font-size: 16px;
     font-weight: bold;
@@ -97,20 +87,20 @@ function onClickBtn(index: number): void {
     text-align: center;
   }
 
-  &-image {
+  .dialog-image {
     display: block;
     max-width: 24px;
     height: 90px;
     margin: 0 auto 15px;
   }
 
-  &-message {
+  .dialog-message {
     font-size: 14px;
     line-height: 20px;
     text-align: center;
   }
 
-  &-btn {
+  .dialog-btn {
     flex: 1;
     height: 44px;
     font-size: 16px;
@@ -128,7 +118,7 @@ function onClickBtn(index: number): void {
     }
   }
 
-  &-buttons {
+  .dialog-buttons {
     display: flex;
 
     &.buttons-align-column {
@@ -143,14 +133,24 @@ function onClickBtn(index: number): void {
   }
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .dialog-enter-active,
 .dialog-leave-active {
   transition: all 0.2s;
 }
 
-.dialog-enter,
+.dialog-enter-from,
 .dialog-leave-to {
   opacity: 0;
-  transform: translate3d(-50%, -50%, 0) scale(0.9);
+  transform: translate3d(-50%, -50%, 0) scale(0.95);
 }
 </style>
