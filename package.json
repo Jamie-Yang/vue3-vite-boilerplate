@@ -15,9 +15,7 @@
     "lint:prettier": "prettier . --write --log-level warn",
     "lint:eslint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"./src/**/*.{vue,scss,css}\" --fix",
-    "lint:lint-staged": "lint-staged",
-    "prepare": "husky install",
-    "commitlint": "commitlint --edit"
+    "prepare": "husky"
   },
   "dependencies": {
     "axios": "^1.7.7",
