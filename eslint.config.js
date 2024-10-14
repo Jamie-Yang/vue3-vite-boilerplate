@@ -18,8 +18,8 @@ export default tsEslint.config(
   importPlugin.flatConfigs.recommended,
   configPrettier,
 
-  // browser
   {
+    name: 'browser',
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -79,9 +79,9 @@ export default tsEslint.config(
     },
   },
 
-  // node
   {
-    files: ['service/**/*.js', '.prettierrc.js', '.stylelintrc.js', '.eslintrc.cjs', 'babel.config.js'],
+    name: 'node',
+    files: ['service/**/*.js', '.prettierrc.js', '.stylelintrc.js', 'babel.config.js'],
 
     languageOptions: {
       globals: {
@@ -89,13 +89,11 @@ export default tsEslint.config(
       },
     },
 
-    rules: {
-      '@typescript-eslint/no-var-requires': 'off',
-      '@typescript-eslint/no-require-imports': 'off',
-    },
+    rules: {},
   },
 
   {
+    name: 'ignore',
     ignores: ['dist'],
   },
 )

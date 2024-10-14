@@ -44,9 +44,7 @@ function onScroll(): void {
   const isWindow = el === window
 
   const scrollTop = isWindow ? window.scrollY : (el as HTMLElement).scrollTop
-  const scrollHeight = isWindow
-    ? document.documentElement.scrollHeight || document.body.scrollHeight
-    : (el as HTMLElement).scrollHeight
+  const scrollHeight = isWindow ? document.documentElement.scrollHeight || document.body.scrollHeight : (el as HTMLElement).scrollHeight
   const elHeight = isWindow ? window.innerHeight : (el as HTMLElement).offsetHeight
 
   const distance = scrollHeight - scrollTop - elHeight

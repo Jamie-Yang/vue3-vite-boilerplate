@@ -2,7 +2,7 @@
  * 根据环境变量配置，生成本地请求代理配置
  * vite.config.ts 中使用
  */
-export function generateProxy(targetsEnv: string) {
+export default function generateProxy(targetsEnv: string) {
   if (!targetsEnv) return {}
 
   let targets = []
@@ -22,18 +22,4 @@ export function generateProxy(targetsEnv: string) {
     }
     return { ...acc, [prefixed]: proxyOptions }
   }, {})
-}
-
-/**
- * 按配置转换请求域名，以应用本地代理
- * Axios 请求方法中使用
- */
-export function transformProxyUrl(baseURL: string) {
-  const proxyTargets = JSON.parse(import.meta.env.VITE_PROXY_TARGETS)
-
-  if (Array.isArray(proxyTargets) && proxyTargets.includes(baseURL)) {
-    return `/${baseURL}`
-  }
-
-  return baseURL
 }
