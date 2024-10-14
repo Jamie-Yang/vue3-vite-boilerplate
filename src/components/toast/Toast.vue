@@ -8,8 +8,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-
 import { Loading } from '@/components'
 
 const props = defineProps({

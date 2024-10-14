@@ -22,10 +22,6 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         imports: ['vue', 'vue-router', 'pinia'],
         dts: './typings/auto-imports.d.ts',
-        eslintrc: {
-          enabled: true,
-          filepath: './.eslintrc-auto-import.json',
-        },
       }),
     ],
 
