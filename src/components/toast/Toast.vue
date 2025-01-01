@@ -28,7 +28,7 @@ function useToast() {
   let timer: number | undefined = undefined
 
   function startTimer() {
-    timer = setTimeout(() => {
+    timer = window.setTimeout(() => {
       if (visible.value) {
         close()
       }

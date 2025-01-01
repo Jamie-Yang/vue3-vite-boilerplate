@@ -5,22 +5,21 @@ import type { ProxyOptions } from 'vite'
  * vite.config.ts 中使用
  */
 export default function generateProxy(targetsEnv: string) {
-  const targets = targetsEnv
-    .split(',')
-    .map((str) => str.trim())
-    .filter(Boolean)
+  if (!targetsEnv) return {}
 
-  return targets.reduce(
-    (acc, target) => {
-      const prefixed = `/${target}`
-      const proxyOptions = {
-        target,
-        changeOrigin: true,
-        rewrite: (path: string) => path.replace(new RegExp(`^${prefixed}`), ''),
-      }
-      acc[prefixed] = proxyOptions
-      return acc
-    },
-    {} as Record<string, ProxyOptions>,
-  )
+  const proxy: Record<string, ProxyOptions> = {}
+
+  for (const str of targetsEnv.split(',')) {
+    const target = str.trim()
+    if (!target) continue
+
+    const prefixed = `/${target}`
+    proxy[prefixed] = {
+      target,
+      changeOrigin: true,
+      rewrite: (path) => path.replace(new RegExp(`^${prefixed}`), ''),
+    }
+  }
+
+  return proxy
 }

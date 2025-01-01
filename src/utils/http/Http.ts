@@ -9,6 +9,7 @@ import transformProxyUrl from '../dev-proxy/transform-proxy-url'
 
 export default class Http {
   private instance: AxiosInstance
+
   private config = {
     baseURL: import.meta.env.VITE_API_BASE_URL,
     successCode: '000000',
@@ -42,10 +43,12 @@ export default class Http {
       (response) => {
         const res = response.data
         const { [this.config.codeKey]: code, [this.config.dataKey]: data, [this.config.messageKey]: message } = res
+
         if (code !== this.config.successCode) {
           showToast(message || '服务异常请稍后再试！')
           return Promise.reject({ code, data, message })
         }
+
         return data
       },
       (error: AxiosError) => {

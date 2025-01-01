@@ -3,21 +3,14 @@
  * Axios 请求方法中使用
  */
 
-const targetsEnv = import.meta.env.VITE_PROXY_TARGETS || ''
-
-const targets = targetsEnv
-  .split(',')
-  .map((str) => str.trim())
-  .filter(Boolean)
-
-const targetMap = targets.reduce(
-  (acc, target) => {
-    acc[target] = true
-    return acc
-  },
-  {} as Record<string, true>,
+// 缓存目标域名，提高查找效率
+const targetSet = new Set(
+  (import.meta.env.VITE_PROXY_TARGETS || '')
+    .split(',')
+    .map((str) => str.trim())
+    .filter(Boolean),
 )
 
 export default function transformProxyUrl(baseURL: string) {
-  return targetMap[baseURL] ? `/${baseURL}` : baseURL
+  return import.meta.env.DEV && baseURL && targetSet.has(baseURL) ? `/${baseURL}` : baseURL
 }
