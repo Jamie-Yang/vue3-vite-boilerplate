@@ -36,7 +36,7 @@ export function mountPopup<I>(RootComponent: Component, props: Record<string, un
 
   return {
     instance: app.mount(root) as I,
-    unmount() {
+    unmount: () => {
       app.unmount()
       document.body.removeChild(root)
     },

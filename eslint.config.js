@@ -8,7 +8,7 @@ import tsEslint from 'typescript-eslint'
 
 export default tsEslint.config(
   js.configs.recommended,
-  ...tsEslint.configs.recommended,
+  ...tsEslint.configs.strict,
   ...vuePlugin.configs['flat/recommended'],
   ...vueTsEslintConfig(),
   importPlugin.flatConfigs.recommended,
@@ -73,8 +73,6 @@ export default tsEslint.config(
     languageOptions: {
       globals: globals.node,
     },
-
-    rules: {},
   },
 
   {

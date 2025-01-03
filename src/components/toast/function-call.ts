@@ -14,7 +14,7 @@ const defaults: ToastOptions = {
   message: '',
   duration: 3000,
   position: 'middle',
-  icon: '',
+  icon: undefined,
   iconSize: undefined,
 }
 

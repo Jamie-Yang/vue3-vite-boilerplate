@@ -7,7 +7,7 @@ export type ToastOptions = {
   message?: string
   duration?: number
   position?: ToastPosition
-  icon?: string | IconType
+  icon?: IconType
   iconSize?: Numeric
   onOpened?: () => void
   onClose?: () => void
