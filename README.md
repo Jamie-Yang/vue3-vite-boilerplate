@@ -1,6 +1,6 @@
 # vue3-vite-boilerplate
 
-A Modern Vue 3 Starter Boilerplate based on Vite 6, TypeScript 5, Prettier, Stylelint, ESLint, and more.
+A Modern Vue 3 Starter Boilerplate based on Vite 6, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
 
 ## Tech stacks
 
