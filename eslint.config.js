@@ -68,7 +68,7 @@ export default tsEslint.config(
 
   {
     name: 'node',
-    files: ['service/**/*.js', '.prettierrc.js', '.stylelintrc.js', 'babel.config.js'],
+    files: ['./*.config.{js,ts}', '.prettierrc.js', './src/utils/dev-proxy/generate-proxy.ts'],
 
     languageOptions: {
       globals: globals.node,
