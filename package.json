@@ -12,9 +12,10 @@
     "preview": "vite preview",
     "type-check": "vue-tsc --build --force",
     "lint": "run-p lint:prettier lint:eslint lint:stylelint",
-    "lint:prettier": "prettier . --write --log-level warn",
     "lint:eslint": "eslint . --fix",
+    "lint:prettier": "prettier . --write --log-level warn",
     "lint:stylelint": "stylelint \"./src/**/*.{vue,scss,css}\" --fix",
+    "eslint-inspect": "eslint --inspect-config",
     "prepare": "husky"
   },
   "dependencies": {
@@ -30,7 +31,6 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^22.10.2",
     "@types/qs": "^6.9.17",
-    "@typescript-eslint/eslint-plugin": "^8.19.0",
     "@typescript-eslint/parser": "^8.19.0",
     "@vitejs/plugin-legacy": "^6.0.0",
     "@vitejs/plugin-vue": "^5.2.1",

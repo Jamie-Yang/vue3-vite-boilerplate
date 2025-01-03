@@ -9,5 +9,5 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // Configure Stylelint to validate the following files
-  "stylelint.validate": ["css", "scss", "vue"],
+  "stylelint.validate": ["css", "scss", "vue"]
 }

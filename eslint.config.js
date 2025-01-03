@@ -1,45 +1,32 @@
 import js from '@eslint/js'
 import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import configPrettier from 'eslint-config-prettier'
+import prettierConfig from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
-import pluginVue from 'eslint-plugin-vue'
+import vuePlugin from 'eslint-plugin-vue'
 import globals from 'globals'
 import tsEslint from 'typescript-eslint'
-
-const typeScriptExtensions = ['.ts', '.cts', '.mts', '.tsx']
-
-const allExtensions = [...typeScriptExtensions, '.js', '.jsx', '.mjs', '.cjs']
 
 export default tsEslint.config(
   js.configs.recommended,
   ...tsEslint.configs.recommended,
-  ...pluginVue.configs['flat/recommended'],
+  ...vuePlugin.configs['flat/recommended'],
   ...vueTsEslintConfig(),
   importPlugin.flatConfigs.recommended,
-  configPrettier,
+  importPlugin.flatConfigs.typescript,
+  prettierConfig,
 
   {
     name: 'browser',
     languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-      ecmaVersion: 2024,
+      globals: globals.browser,
+      ecmaVersion: 'latest',
       parserOptions: {
         ecmaFeatures: { jsx: true },
       },
     },
 
     settings: {
-      'import/extensions': allExtensions,
-      'import/external-module-folders': ['node_modules', 'node_modules/@types'],
-      'import/parsers': {
-        '@typescript-eslint/parser': typeScriptExtensions,
-      },
       'import/resolver': {
-        node: {
-          extensions: allExtensions,
-        },
         typescript: true,
         alias: {
           map: [['^@', './src/']],
@@ -64,7 +51,7 @@ export default tsEslint.config(
       'vue/attribute-hyphenation': 'off',
       'vue/no-v-html': 'off',
 
-      'import/named': 'off', // TypeScript compilation already ensures that named imports exist in the referenced module
+      'import/named': 'off', // TypeScript 已经确保了命名导入在引用的模块中存在
       'import/no-named-as-default-member': 'off',
       'import/order': [
         'error',
@@ -84,9 +71,7 @@ export default tsEslint.config(
     files: ['service/**/*.js', '.prettierrc.js', '.stylelintrc.js', 'babel.config.js'],
 
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
     },
 
     rules: {},
