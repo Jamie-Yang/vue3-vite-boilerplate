@@ -11,6 +11,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <style lang="scss" scoped>
 .home {
+  padding-top: 100px;
   text-align: center;
 }
 
