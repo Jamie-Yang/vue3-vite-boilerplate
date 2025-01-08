@@ -9,7 +9,7 @@ import misc from './modules/misc'
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/home' },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('@/views/main/not-found/index.vue') },
-  { path: '/home', name: 'Home', component: () => import('@/views/main/home/home.vue'), meta: { title: '首页' } },
+  { path: '/home', name: 'Home', component: () => import('@/views/main/home/index.vue'), meta: { title: '首页' } },
 
   example,
   misc,

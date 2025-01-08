@@ -5,13 +5,11 @@
     <button @click="handleShowDialog">showDialog</button>
 
     <Loading>加载中...</Loading>
-
-    <SvgIcon name="smiling-face" class="icon" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Loading, SvgIcon } from '@/components'
+import { Loading } from '@/components'
 import { showToast, closeToast, showDialog } from '@/components/fn'
 
 function handleShowToast(): void {

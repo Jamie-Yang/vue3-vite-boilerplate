@@ -1,5 +1,5 @@
 <template>
-  <Icon />
+  <Icon style="width: 1em; height: 1em" />
 </template>
 
 <script lang="ts" setup>
@@ -9,5 +9,5 @@ const props = defineProps({
   name: { type: String, required: true },
 })
 
-const Icon = defineAsyncComponent(() => import(`../../assets/icons/${props.name}.svg`))
+const Icon = defineAsyncComponent(() => import(`@/assets/svg-icons/${props.name}.svg`))
 </script>
