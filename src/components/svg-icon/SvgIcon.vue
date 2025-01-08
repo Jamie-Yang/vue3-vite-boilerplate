@@ -1,13 +1,20 @@
 <template>
-  <Icon style="width: 1em; height: 1em" />
+  <SvgIcon class="svg-icon" />
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import { defineAsyncComponent } from 'vue'
 
 const props = defineProps({
-  name: { type: String, required: true },
+  icon: { type: String, required: true },
 })
 
-const Icon = defineAsyncComponent(() => import(`@/assets/svg-icons/${props.name}.svg`))
+const SvgIcon = defineAsyncComponent(() => import(`@/assets/svg-icons/${props.icon}.svg`))
 </script>
+
+<style scoped>
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+</style>

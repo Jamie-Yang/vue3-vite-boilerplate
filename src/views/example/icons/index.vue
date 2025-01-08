@@ -1,64 +1,29 @@
 <template>
-  <div class="view-container">
-    <h1>图标示例</h1>
+  <DemoPage title="图标示例">
+    <DemoSection title=".svg + vite-svg-loader" desc="将 SVG 文件以 Vue 组件的形式导入使用，适合项目自定义的图标。">
+      <SvgIcon icon="smiling-face" class="icon" />
+      <SvgIcon icon="note-yellow" class="icon" />
+    </DemoSection>
 
-    <div class="icon-container">
-      <div class="icon-item">
-        <p class="icon-title">.svg + vite-svg-loader</p>
-        <SvgIcon name="smiling-face" class="icon" />
-      </div>
-
-      <div class="icon-item">
-        <p class="icon-title">iconify/vue</p>
-        <Icon icon="mdi:home" class="icon" />
-      </div>
-    </div>
-  </div>
+    <DemoSection title="iconify/vue" desc="按需加载海量图标库，适合快速开发。">
+      <Icon icon="lucide:smile" class="icon" />
+      <Icon icon="mdi:sticker-text-outline" class="icon" />
+      <Icon icon="devicon:github-wordmark" class="icon" />
+    </DemoSection>
+  </DemoPage>
 </template>
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 
 import { SvgIcon } from '@/components'
+
+import { DemoPage, DemoSection } from '../components'
 </script>
 
 <style lang="scss" scoped>
-.view-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-.icon-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-}
-
-.icon-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 8px;
-}
-
-.icon-title {
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
 .icon {
+  width: 1.5em;
   font-size: 40px;
 }
 </style>

@@ -4,7 +4,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import { setupRouterGuard } from './guard'
 import example from './modules/example'
-import misc from './modules/misc'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/home' },
@@ -12,7 +11,6 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/home', name: 'Home', component: () => import('@/views/main/home/index.vue'), meta: { title: '首页' } },
 
   example,
-  misc,
 ]
 
 const router = createRouter({

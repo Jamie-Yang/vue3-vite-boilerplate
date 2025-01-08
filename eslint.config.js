@@ -50,6 +50,7 @@ export default tsEslint.config(
       'vue/multi-word-component-names': 'off',
       'vue/attribute-hyphenation': 'off',
       'vue/no-v-html': 'off',
+      'vue/block-lang': ['error', { script: { lang: ['ts', 'tsx'] } }],
 
       'import/named': 'off', // TypeScript 已经确保了命名导入在引用的模块中存在
       'import/no-named-as-default-member': 'off',

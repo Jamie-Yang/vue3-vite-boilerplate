@@ -11,5 +11,10 @@ export default {
       component: () => import('@/views/example/icons/index.vue'),
       meta: { title: '图标示例' },
     },
+    {
+      path: 'playground',
+      component: () => import('@/views/example/playground/index.vue'),
+      meta: { title: 'Playground' },
+    },
   ],
 }
