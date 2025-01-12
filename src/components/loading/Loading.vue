@@ -1,22 +1,37 @@
 <template>
   <div class="loading" :class="{ 'loading-vertical': vertical }">
-    <div class="spinner" :style="{ ...getSizeStyle(size) }">
-      <svg class="spinner-circular" viewBox="25 25 50 50" :style="{ color }">
+    <div class="loading-icon" :class="[type]" :style="{ ...getSizeStyle(size), color }">
+      <div v-if="type === 'spinner'" class="icon-spinner">
+        <div v-for="(_, index) in 12" :key="index" class="spinner-line" :class="`line-${index + 1}`" />
+      </div>
+      <svg v-if="type === 'circular'" class="icon-circular" viewBox="25 25 50 50">
         <circle cx="50" cy="50" r="20" fill="none" />
       </svg>
     </div>
-    <span class="text" :style="{ fontSize: `${textSize}px`, color }"><slot /></span>
+
+    <span class="text" :style="{ fontSize: `${textSize}px`, color: textColor }"><slot /></span>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import { getSizeStyle } from '@/utils/format'
 
-defineProps({
-  size: { type: [Number, String], default: 20 },
-  vertical: { type: Boolean, default: false },
-  textSize: { type: Number, default: 14 },
-  color: { type: String, default: '#969799' },
+interface Props {
+  type?: 'circular' | 'spinner'
+  size?: number | string
+  vertical?: boolean
+  textSize?: number
+  color?: string
+  textColor?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  type: 'circular',
+  size: 24,
+  vertical: false,
+  textSize: 14,
+  color: '#969799',
+  textColor: '#969799',
 })
 </script>
 
@@ -24,19 +39,48 @@ defineProps({
 .loading {
   display: flex;
   align-items: center;
+  margin: 5px 0;
 }
 
-.spinner {
+.loading-icon {
   width: 20px;
   height: 20px;
-  animation: rotate 0.75s 0s linear infinite;
+  animation: rotate 0.8s 0s linear infinite;
+
+  &.spinner {
+    animation-timing-function: steps(12);
+  }
 }
 
-.spinner-circular {
+.spinner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    display: block;
+    width: 2px;
+    height: 25%;
+    margin: 0 auto;
+    content: ' ';
+    background-color: currentcolor;
+    border-radius: 40%;
+  }
+}
+
+@for $i from 1 through 12 {
+  .line-#{$i} {
+    opacity: 1 - (0.75 / 12) * ($i - 1);
+    transform: rotate($i * 30deg);
+  }
+}
+
+.icon-circular {
   display: block;
   width: 100%;
   height: 100%;
-  color: #969799;
 
   circle {
     stroke: currentcolor;
