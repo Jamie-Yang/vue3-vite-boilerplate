@@ -20,7 +20,6 @@ defineProps({
 .demo-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 15px;
   background-color: #fff;
   border-radius: 8px;
@@ -40,12 +39,6 @@ defineProps({
     margin-bottom: 15px;
     font-size: 14px;
     color: #666;
-    text-align: center;
-  }
-
-  .section-content {
-    display: flex;
-    gap: 10px;
   }
 }
 </style>

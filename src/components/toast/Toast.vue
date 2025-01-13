@@ -16,7 +16,7 @@ const props = defineProps({
   duration: { type: Number, default: 3000 },
   position: { type: String, default: 'middle' },
   icon: { type: String, default: '' },
-  iconSize: { type: [Number, String], default: 36 },
+  iconSize: { type: [Number, String], default: 30 },
 })
 
 defineEmits(['destroy'])

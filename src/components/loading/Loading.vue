@@ -36,6 +36,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:math';
+
 .loading {
   display: flex;
   align-items: center;
@@ -72,7 +74,7 @@ withDefaults(defineProps<Props>(), {
 
 @for $i from 1 through 12 {
   .line-#{$i} {
-    opacity: 1 - (0.75 / 12) * ($i - 1);
+    opacity: 1 - math.div(0.75, 12) * ($i - 1);
     transform: rotate($i * 30deg);
   }
 }
