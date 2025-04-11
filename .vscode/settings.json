@@ -13,7 +13,7 @@
 
   // Nest related files
   "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.expand": true,
   "explorer.fileNesting.patterns": {
     ".env": ".env.*",
     "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .gitattributes, .gitignore, .npmrc, .node-version, .git*",

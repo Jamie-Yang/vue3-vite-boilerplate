@@ -21,7 +21,9 @@ export function usePopupState() {
     toggle(true)
   }
 
-  const close = () => toggle(false)
+  const close = () => {
+    toggle(false)
+  }
 
   useExpose({ open, close, toggle })
 

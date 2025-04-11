@@ -1,38 +1,21 @@
 import js from '@eslint/js'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import prettierConfig from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
-import vuePlugin from 'eslint-plugin-vue'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import configPrettier from 'eslint-config-prettier'
+import pluginImport from 'eslint-plugin-import'
+import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
-import tsEslint from 'typescript-eslint'
 
-export default tsEslint.config(
+export default defineConfigWithVueTs(
+  /**
+   * javascript config
+   */
   js.configs.recommended,
-  ...tsEslint.configs.strict,
-  ...vuePlugin.configs['flat/recommended'],
-  ...vueTsEslintConfig(),
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-  prettierConfig,
-
   {
-    name: 'browser',
+    name: '@project-config/javascript',
+    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
+
     languageOptions: {
       globals: globals.browser,
-      ecmaVersion: 'latest',
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-      },
-    },
-
-    settings: {
-      'import/resolver': {
-        typescript: true,
-        alias: {
-          map: [['^@', './src/']],
-          extensions: ['.ts', '.js', '.vue', '.json'],
-        },
-      },
     },
 
     rules: {
@@ -46,12 +29,40 @@ export default tsEslint.config(
           block: { markers: ['!'], exceptions: ['*'], balanced: true },
         },
       ],
+    },
+  },
 
-      'vue/multi-word-component-names': 'off',
-      'vue/attribute-hyphenation': 'off',
-      'vue/no-v-html': 'off',
-      'vue/block-lang': ['error', { script: { lang: ['ts', 'tsx'] } }],
+  /**
+   * typescript config
+   */
+  vueTsConfigs.recommendedTypeChecked,
+  {
+    name: '@project-config/typescript',
+    files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.vue'],
+    rules: {
+      '@typescript-eslint/prefer-promise-reject-errors': 'off',
+    },
+  },
 
+  /**
+   * import plugin config
+   */
+  pluginImport.flatConfigs.recommended,
+  pluginImport.flatConfigs.typescript,
+  {
+    name: '@project-config/import',
+
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        alias: {
+          map: [['^@', './src/']],
+          extensions: ['.ts', '.js', '.vue', '.json'],
+        },
+      },
+    },
+
+    rules: {
       'import/named': 'off', // TypeScript 已经确保了命名导入在引用的模块中存在
       'import/no-named-as-default-member': 'off',
       'import/order': [
@@ -67,8 +78,32 @@ export default tsEslint.config(
     },
   },
 
+  /**
+   * vue config
+   */
+  pluginVue.configs['flat/recommended'],
   {
-    name: 'node',
+    name: '@project-config/vue',
+    files: ['**/*.vue'],
+
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'vue/attribute-hyphenation': 'off',
+      'vue/no-v-html': 'off',
+      'vue/block-lang': ['error', { script: { lang: ['ts', 'tsx'] } }],
+    },
+  },
+
+  /**
+   * prettier config
+   */
+  configPrettier,
+
+  /**
+   * node config
+   */
+  {
+    name: '@project-config/node',
     files: ['./*.config.{js,ts}', '.prettierrc.js', './src/utils/dev-proxy/generate-proxy.ts'],
 
     languageOptions: {
@@ -76,8 +111,11 @@ export default tsEslint.config(
     },
   },
 
+  /**
+   * ignore config
+   */
   {
-    name: 'ignore',
+    name: '@project-config/ignore',
     ignores: ['dist'],
   },
 )

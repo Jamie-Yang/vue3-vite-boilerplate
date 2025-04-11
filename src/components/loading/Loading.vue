@@ -86,8 +86,8 @@ withDefaults(defineProps<Props>(), {
 
   circle {
     stroke: currentcolor;
-    stroke-linecap: round;
     stroke-width: 3;
+    stroke-linecap: round;
     animation: circular 1.5s ease-in-out infinite;
   }
 }

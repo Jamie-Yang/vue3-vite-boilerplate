@@ -19,10 +19,9 @@ import { showToast, closeToast, showDialog } from '@/components/fn'
 
 import { DemoPage, DemoSection } from '../components'
 
-function handleShowDialog(): void {
-  showDialog({ title: '弹框标题', message: '弹框内容' }).then((index) => {
-    console.log('dialog resolve: ', index)
-  })
+async function handleShowDialog(): Promise<void> {
+  const index = await showDialog({ title: '弹框标题', message: '弹框内容' })
+  console.log('dialog resolve: ', index)
 }
 </script>
 

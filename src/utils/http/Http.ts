@@ -31,7 +31,7 @@ export default class Http {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
       transformRequest: [
         (data, headers) => {
-          if (headers?.['Content-Type'] === 'application/x-www-form-urlencoded') {
+          if (headers['Content-Type'] === 'application/x-www-form-urlencoded') {
             return stringify(data)
           }
           return data
@@ -62,7 +62,7 @@ export default class Http {
   }
 
   setupInstance(setter: (instance: AxiosInstance) => void) {
-    setter?.(this.instance)
+    setter(this.instance)
   }
 
   request<R>(url: string, options: AxiosRequestConfig = {}) {
