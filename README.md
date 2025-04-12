@@ -1,5 +1,7 @@
 # vue3-vite-boilerplate
 
+[中文文档](./README.zh-CN.md)
+
 A Modern Vue 3 Starter Boilerplate based on Vite 6, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
 
 ## Tech stacks
