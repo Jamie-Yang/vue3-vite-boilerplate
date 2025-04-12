@@ -36,9 +36,6 @@ importers:
       '@eslint/js':
         specifier: ^9.24.0
         version: 9.24.0
-      '@tsconfig/node20':
-        specifier: ^20.1.5
-        version: 20.1.5
       '@tsconfig/node22':
         specifier: ^22.0.1
         version: 22.0.1
@@ -1397,9 +1394,6 @@ packages:
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
-
-  '@tsconfig/node20@20.1.5':
-    resolution: {integrity: sha512-Vm8e3WxDTqMGPU4GATF9keQAIy1Drd7bPwlgzKJnZtoOsTm1tduUTbDjg0W5qERvGuxPI2h9RbMufH0YdfBylA==}
 
   '@tsconfig/node22@22.0.1':
     resolution: {integrity: sha512-VkgOa3n6jvs1p+r3DiwBqeEwGAwEvnVCg/hIjiANl5IEcqP3G0u5m8cBJspe1t9qjZRlZ7WFgqq5bJrGdgAKMg==}
@@ -5586,8 +5580,6 @@ snapshots:
   '@rtsao/scc@1.1.0': {}
 
   '@trysound/sax@0.2.0': {}
-
-  '@tsconfig/node20@20.1.5': {}
 
   '@tsconfig/node22@22.0.1': {}
 

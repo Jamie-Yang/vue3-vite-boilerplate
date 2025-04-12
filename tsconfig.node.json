@@ -1,13 +1,17 @@
 {
-  "extends": "@tsconfig/node22/tsconfig.json",
   "include": ["vite.config.ts", "./src/utils/dev-proxy/generate-proxy.ts"],
   "compilerOptions": {
     "composite": true,
-    "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"]
+    "lib": ["ESNext"],
+    "noEmit": true,
+    "types": ["node"],
+    "target": "ESNext",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }
