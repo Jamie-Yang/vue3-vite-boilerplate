@@ -1,5 +1,6 @@
 import js from '@eslint/js'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import { globalIgnores } from 'eslint/config'
 import configPrettier from 'eslint-config-prettier'
 import pluginImport from 'eslint-plugin-import'
 import pluginVue from 'eslint-plugin-vue'
@@ -39,6 +40,12 @@ export default defineConfigWithVueTs(
   {
     name: '@project-config/typescript',
     files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
       '@typescript-eslint/prefer-promise-reject-errors': 'off',
     },
@@ -104,7 +111,7 @@ export default defineConfigWithVueTs(
    */
   {
     name: '@project-config/node',
-    files: ['./*.config.{js,ts}', '.prettierrc.js', './src/utils/dev-proxy/generate-proxy.ts'],
+    files: ['./*.config.{js,ts,cjs}', '.prettierrc.js', './src/utils/dev-proxy/generate-proxy.ts'],
 
     languageOptions: {
       globals: globals.node,
@@ -114,8 +121,36 @@ export default defineConfigWithVueTs(
   /**
    * ignore config
    */
-  {
-    name: '@project-config/ignore',
-    ignores: ['dist'],
-  },
+  globalIgnores([
+    '**/.DS_Store',
+    '**/node_modules',
+    '**/dist',
+    '**/dist-*',
+    '**/*-dist',
+    '**/.husky',
+    '**/.output',
+    '**/Dockerfile',
+    '**/package-lock.json',
+    '**/pnpm-lock.yaml',
+    '**/output',
+    '**/temp',
+    '**/.temp',
+    '**/tmp',
+    '**/.tmp',
+    '**/.history',
+    '**/.changeset',
+    '**/.cache',
+    '**/.output',
+    '**/.vite-inspect',
+
+    '**/CHANGELOG*.md',
+    '**/*.min.*',
+    '**/LICENSE*',
+    '**/auto-import?(s).d.ts',
+    '**/components.d.ts',
+    '**/vite.config.mts.*',
+    '**/*.sh',
+    '**/*.ttf',
+    '**/*.woff',
+  ]),
 )

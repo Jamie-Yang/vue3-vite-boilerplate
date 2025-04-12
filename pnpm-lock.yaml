@@ -39,6 +39,9 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.5
         version: 20.1.5
+      '@tsconfig/node22':
+        specifier: ^22.0.1
+        version: 22.0.1
       '@types/node':
         specifier: ^22.14.0
         version: 22.14.0
@@ -1397,6 +1400,9 @@ packages:
 
   '@tsconfig/node20@20.1.5':
     resolution: {integrity: sha512-Vm8e3WxDTqMGPU4GATF9keQAIy1Drd7bPwlgzKJnZtoOsTm1tduUTbDjg0W5qERvGuxPI2h9RbMufH0YdfBylA==}
+
+  '@tsconfig/node22@22.0.1':
+    resolution: {integrity: sha512-VkgOa3n6jvs1p+r3DiwBqeEwGAwEvnVCg/hIjiANl5IEcqP3G0u5m8cBJspe1t9qjZRlZ7WFgqq5bJrGdgAKMg==}
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
@@ -5582,6 +5588,8 @@ snapshots:
   '@trysound/sax@0.2.0': {}
 
   '@tsconfig/node20@20.1.5': {}
+
+  '@tsconfig/node22@22.0.1': {}
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
