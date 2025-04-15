@@ -6,7 +6,7 @@
 
 - Vue 3
 - Vue Router 4
-- Pinia 2
+- Pinia 3
 - Axios
 - TypeScript 5
 - Vite 6
