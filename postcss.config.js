@@ -1,5 +1,9 @@
 import presetEnv from 'postcss-preset-env'
 
 export default {
-  plugins: [presetEnv()],
+  plugins: [
+    presetEnv({
+      features: { 'nesting-rules': false },
+    }),
+  ],
 }
