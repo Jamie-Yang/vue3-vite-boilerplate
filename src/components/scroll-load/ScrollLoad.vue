@@ -1,10 +1,3 @@
-<template>
-  <div class="scroll-load">
-    <i v-show="isLoading" class="load-icon"></i>
-    <span class="load-label">{{ noMore ? noMoreText : loadingText }}</span>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { watch, onMounted, onBeforeUnmount } from 'vue'
 
@@ -63,6 +56,13 @@ function unbindScroll(el?: ScrollElement): void {
   el.removeEventListener('scroll', onScroll)
 }
 </script>
+
+<template>
+  <div class="scroll-load">
+    <i v-show="isLoading" class="load-icon"></i>
+    <span class="load-label">{{ noMore ? noMoreText : loadingText }}</span>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .scroll-load {

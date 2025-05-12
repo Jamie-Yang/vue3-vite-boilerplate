@@ -1,12 +1,3 @@
-<template>
-  <transition name="toast" @after-leave="$emit('destroy')">
-    <div v-show="visible" :id="id" class="toast" :class="[`toast-${position}`]">
-      <Loading v-if="icon === 'loading'" :size="iconSize" color="#fff" />
-      <span class="toast-text" v-html="message"></span>
-    </div>
-  </transition>
-</template>
-
 <script lang="ts" setup>
 import { Loading } from '@/components'
 
@@ -55,6 +46,15 @@ function useToast() {
   return { visible, close }
 }
 </script>
+
+<template>
+  <transition name="toast" @after-leave="$emit('destroy')">
+    <div v-show="visible" :id="id" class="toast" :class="[`toast-${position}`]">
+      <Loading v-if="icon === 'loading'" :size="iconSize" color="#fff" />
+      <span class="toast-text" v-html="message"></span>
+    </div>
+  </transition>
+</template>
 
 <style lang="scss" scoped>
 .toast {

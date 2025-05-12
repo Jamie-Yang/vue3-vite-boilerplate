@@ -1,18 +1,3 @@
-<template>
-  <div class="loading" :class="{ 'loading-vertical': vertical }">
-    <div class="loading-icon" :class="[type]" :style="{ ...getSizeStyle(size), color }">
-      <div v-if="type === 'spinner'" class="icon-spinner">
-        <div v-for="(_, index) in 12" :key="index" class="spinner-line" :class="`line-${index + 1}`" />
-      </div>
-      <svg v-if="type === 'circular'" class="icon-circular" viewBox="25 25 50 50">
-        <circle cx="50" cy="50" r="20" fill="none" />
-      </svg>
-    </div>
-
-    <span class="text" :style="{ fontSize: `${textSize}px`, color: textColor }"><slot /></span>
-  </div>
-</template>
-
 <script lang="tsx" setup>
 import { getSizeStyle } from '@/utils/format'
 
@@ -34,6 +19,21 @@ withDefaults(defineProps<Props>(), {
   textColor: '#969799',
 })
 </script>
+
+<template>
+  <div class="loading" :class="{ 'loading-vertical': vertical }">
+    <div class="loading-icon" :class="[type]" :style="{ ...getSizeStyle(size), color }">
+      <div v-if="type === 'spinner'" class="icon-spinner">
+        <div v-for="(_, index) in 12" :key="index" class="spinner-line" :class="`line-${index + 1}`" />
+      </div>
+      <svg v-if="type === 'circular'" class="icon-circular" viewBox="25 25 50 50">
+        <circle cx="50" cy="50" r="20" fill="none" />
+      </svg>
+    </div>
+
+    <span class="text" :style="{ fontSize: `${textSize}px`, color: textColor }"><slot /></span>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @use 'sass:math';

@@ -1,3 +1,22 @@
+<script lang="ts" setup>
+import type { DialogButton } from './type'
+
+defineProps({
+  title: { type: String, default: '' },
+  message: { type: String, default: '' },
+  buttons: { type: Array as PropType<DialogButton[]>, default: () => ['我知道了'] },
+  align: { type: String as PropType<'row' | 'column'>, default: 'row' },
+  show: { type: Boolean, default: false },
+})
+
+const emits = defineEmits(['btn-click', 'update:show'])
+
+function onClickBtn(index: number): void {
+  emits('btn-click', index)
+  emits('update:show', false) // 支持sync
+}
+</script>
+
 <template>
   <div class="dialog-wrapper">
     <transition name="fade">
@@ -27,25 +46,6 @@
     </transition>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { DialogButton } from './type'
-
-defineProps({
-  title: { type: String, default: '' },
-  message: { type: String, default: '' },
-  buttons: { type: Array as PropType<DialogButton[]>, default: () => ['我知道了'] },
-  align: { type: String as PropType<'row' | 'column'>, default: 'row' },
-  show: { type: Boolean, default: false },
-})
-
-const emits = defineEmits(['btn-click', 'update:show'])
-
-function onClickBtn(index: number): void {
-  emits('btn-click', index)
-  emits('update:show', false) // 支持sync
-}
-</script>
 
 <style lang="scss" scoped>
 .dialog-wrapper {

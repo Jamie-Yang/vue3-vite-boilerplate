@@ -1,7 +1,3 @@
-<template>
-  <slot :remain="convertRemainTime(remain)">{{ formatRemainTime(remain, format) }}</slot>
-</template>
-
 <script lang="ts" setup>
 import { watch, ref } from 'vue'
 
@@ -57,3 +53,7 @@ function useCountDown() {
   return { remain }
 }
 </script>
+
+<template>
+  <slot :remain="convertRemainTime(remain)">{{ formatRemainTime(remain, format) }}</slot>
+</template>

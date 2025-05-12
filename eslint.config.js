@@ -48,6 +48,7 @@ export default defineConfigWithVueTs(
     },
     rules: {
       '@typescript-eslint/prefer-promise-reject-errors': 'off',
+      '@typescript-eslint/no-floating-promises': 'off',
     },
   },
 
@@ -70,7 +71,6 @@ export default defineConfigWithVueTs(
     },
 
     rules: {
-      'import/named': 'off', // TypeScript 已经确保了命名导入在引用的模块中存在
       'import/no-named-as-default-member': 'off',
       'import/order': [
         'error',
@@ -88,16 +88,18 @@ export default defineConfigWithVueTs(
   /**
    * vue config
    */
-  pluginVue.configs['flat/recommended'],
+  ...pluginVue.configs['flat/recommended'],
   {
     name: '@project-config/vue',
+
     files: ['**/*.vue'],
 
     rules: {
+      'vue/block-order': ['error', { order: ['script', 'template', 'style'] }],
+      'vue/block-lang': ['error', { script: { lang: ['ts', 'tsx'] } }],
       'vue/multi-word-component-names': 'off',
       'vue/attribute-hyphenation': 'off',
       'vue/no-v-html': 'off',
-      'vue/block-lang': ['error', { script: { lang: ['ts', 'tsx'] } }],
     },
   },
 

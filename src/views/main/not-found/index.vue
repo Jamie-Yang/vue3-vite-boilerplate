@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// 无需额外逻辑
+</script>
+
 <template>
   <div class="not-found">
     <div class="content">
@@ -7,10 +11,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-// 无需额外逻辑
-</script>
 
 <style scoped>
 .not-found {

@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+defineProps({
+  title: { type: String, required: true },
+})
+</script>
+
 <template>
   <div class="view-container">
     <h1 class="view-title">{{ title }}</h1>
@@ -5,12 +11,6 @@
     <slot />
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps({
-  title: { type: String, required: true },
-})
-</script>
 
 <style lang="scss" scoped>
 .view-container {

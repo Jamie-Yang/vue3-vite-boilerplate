@@ -1,3 +1,14 @@
+<script lang="ts" setup>
+import { showToast, closeToast, showDialog } from '@/components/fn'
+
+import { DemoPage, DemoSection } from '../components'
+
+async function handleShowDialog(): Promise<void> {
+  const index = await showDialog({ title: '弹框标题', message: '弹框内容' })
+  console.log('dialog resolve: ', index)
+}
+</script>
+
 <template>
   <DemoPage title="---">
     <DemoSection title="Toast" desc="">
@@ -13,17 +24,6 @@
     </DemoSection>
   </DemoPage>
 </template>
-
-<script lang="ts" setup>
-import { showToast, closeToast, showDialog } from '@/components/fn'
-
-import { DemoPage, DemoSection } from '../components'
-
-async function handleShowDialog(): Promise<void> {
-  const index = await showDialog({ title: '弹框标题', message: '弹框内容' })
-  console.log('dialog resolve: ', index)
-}
-</script>
 
 <style lang="scss" scoped>
 button {

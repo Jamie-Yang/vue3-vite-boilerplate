@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+defineProps({
+  title: { type: String, required: true },
+  desc: { type: String, default: '' },
+})
+</script>
+
 <template>
   <div class="demo-section">
     <p class="section-title">{{ title }}</p>
@@ -8,13 +15,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps({
-  title: { type: String, required: true },
-  desc: { type: String, default: '' },
-})
-</script>
 
 <style lang="scss" scoped>
 .demo-section {

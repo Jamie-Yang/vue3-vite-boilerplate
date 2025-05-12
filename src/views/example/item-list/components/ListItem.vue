@@ -1,8 +1,8 @@
+<script lang="ts" setup></script>
+
 <template>
   <div class="item-container"></div>
 </template>
-
-<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .item-container {

@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+import { Icon } from '@iconify/vue'
+
+import { SvgIcon } from '@/components'
+
+import { DemoPage, DemoSection } from '../components'
+</script>
+
 <template>
   <DemoPage title="图标示例">
     <DemoSection title=".svg + vite-svg-loader" desc="将 SVG 文件以 Vue 组件的形式导入使用，适合项目自定义的图标。">
@@ -16,14 +24,6 @@
     </DemoSection>
   </DemoPage>
 </template>
-
-<script lang="ts" setup>
-import { Icon } from '@iconify/vue'
-
-import { SvgIcon } from '@/components'
-
-import { DemoPage, DemoSection } from '../components'
-</script>
 
 <style lang="scss" scoped>
 .icon-group {

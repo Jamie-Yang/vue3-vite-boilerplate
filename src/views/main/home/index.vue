@@ -1,13 +1,13 @@
+<script lang="ts" setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+
 <template>
   <div class="home">
     <img alt="Vue logo" src="./images/logo.png" />
     <HelloWorld msg="Welcome to Your Vue3 App" />
   </div>
 </template>
-
-<script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
 
 <style lang="scss" scoped>
 .home {
