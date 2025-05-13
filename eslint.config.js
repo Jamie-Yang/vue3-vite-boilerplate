@@ -13,6 +13,7 @@ export default defineConfigWithVueTs(
   js.configs.recommended,
   {
     name: '@project-config/javascript',
+
     files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
 
     languageOptions: {
@@ -39,13 +40,16 @@ export default defineConfigWithVueTs(
   vueTsConfigs.recommendedTypeChecked,
   {
     name: '@project-config/typescript',
+
     files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.vue'],
+
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
+
     rules: {
       '@typescript-eslint/prefer-promise-reject-errors': 'off',
       '@typescript-eslint/no-floating-promises': 'off',
@@ -113,6 +117,7 @@ export default defineConfigWithVueTs(
    */
   {
     name: '@project-config/node',
+
     files: ['./*.config.{js,ts,cjs}', '.prettierrc.js', './src/utils/dev-proxy/generate-proxy.ts'],
 
     languageOptions: {
@@ -126,25 +131,23 @@ export default defineConfigWithVueTs(
   globalIgnores([
     '**/.DS_Store',
     '**/node_modules',
-    '**/dist',
-    '**/dist-*',
-    '**/*-dist',
     '**/.husky',
-    '**/.output',
     '**/Dockerfile',
     '**/package-lock.json',
     '**/pnpm-lock.yaml',
+    '**/dist',
+    '**/dist-*',
+    '**/*-dist',
+    '**/.output',
     '**/output',
+    '**/.cache',
     '**/temp',
     '**/.temp',
     '**/tmp',
     '**/.tmp',
     '**/.history',
     '**/.changeset',
-    '**/.cache',
-    '**/.output',
     '**/.vite-inspect',
-
     '**/CHANGELOG*.md',
     '**/*.min.*',
     '**/LICENSE*',

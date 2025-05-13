@@ -10,7 +10,7 @@ async function handleShowDialog(): Promise<void> {
 </script>
 
 <template>
-  <DemoPage title="---">
+  <DemoPage title="弹框">
     <DemoSection title="Toast" desc="">
       <button @click="showToast('文字提示')">文字提示</button>
       <button @click="showToast({ icon: 'loading', message: '加载中...' })">加载提示</button>
@@ -33,9 +33,8 @@ button {
   line-height: 44px;
   color: #fff;
   cursor: pointer;
-
-  // background-color: #409eff;
-  // border: 1px solid #409eff;
+  background-color: #409eff;
+  border: 1px solid #409eff;
   border-radius: 4px;
 
   & + & {
