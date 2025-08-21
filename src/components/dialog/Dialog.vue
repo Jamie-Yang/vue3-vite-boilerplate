@@ -82,7 +82,7 @@ function onClickBtn(index: number): void {
   .dialog-title {
     margin-bottom: 9px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 24px;
     text-align: center;
   }
@@ -114,7 +114,7 @@ function onClickBtn(index: number): void {
     }
 
     &.emphasize {
-      font-weight: bold;
+      font-weight: 700;
     }
   }
 

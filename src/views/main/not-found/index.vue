@@ -43,7 +43,7 @@
 .btn {
   padding: 13px 32px;
   font-size: 16px;
-  color: white;
+  color: #fff;
   background-color: #41b883;
   border-radius: 8px;
   transition:

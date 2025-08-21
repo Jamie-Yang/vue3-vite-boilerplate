@@ -82,7 +82,7 @@ button, input, select, textarea, img {
 
 button, input[type="button"], input[type="password"], input[type="submit"], input[type="text"], textarea {
   appearance: none;
-  appearance: button;
+  appearance: auto;
 }
 
 img, video {
