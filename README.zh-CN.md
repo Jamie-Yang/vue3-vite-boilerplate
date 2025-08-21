@@ -1,13 +1,13 @@
 # vue3-vite-boilerplate
 
-开箱即用的现代 Vue3 web 应用脚手架，基于 Vite 6、Typescript 5、Prettier、Stylelint、ESLint 9 等
+开箱即用的现代 Vue3 web 应用脚手架，基于 Vite 7、Typescript 5、Prettier、Stylelint、ESLint 9 等
 
 ## 技术栈
 
 | 分类            | 技术                          |
 | --------------- | ----------------------------- |
 | **核心框架**    | Vue 3, Vue Router 4, Pinia 3  |
-| **构建工具**    | Vite 6, TypeScript 5          |
+| **构建工具**    | Vite 7, TypeScript 5          |
 | **HTTP 客户端** | Axios                         |
 | **代码质量**    | ESLint 9, Prettier, Stylelint |
 | **Git 工作流**  | Commitlint, Husky             |

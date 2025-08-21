@@ -2,14 +2,14 @@
 
 [中文文档](./README.zh-CN.md)
 
-A Modern Vue 3 Starter Boilerplate based on Vite 6, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
+A Modern Vue 3 Starter Boilerplate based on Vite 7, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
 
 ## Tech Stack
 
 | Category         | Technologies                  |
 | ---------------- | ----------------------------- |
 | **Core**         | Vue 3, Vue Router 4, Pinia 3  |
-| **Build Tools**  | Vite 6, TypeScript 5          |
+| **Build Tools**  | Vite 7, TypeScript 5          |
 | **HTTP Client**  | Axios                         |
 | **Code Quality** | ESLint 9, Prettier, Stylelint |
 | **Git Workflow** | Commitlint, Husky             |
