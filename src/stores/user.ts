@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { store } from '@/stores/index'
+import store from '@/stores/index'
 
 type State = {
   userInfo?: {
