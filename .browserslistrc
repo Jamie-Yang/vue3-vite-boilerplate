@@ -1,8 +1,6 @@
 [production]
 ios_saf >= 13  
 android >= 8  
-not dead  
-> 0.5% in CN
 
 [development]
 last 1 chrome version

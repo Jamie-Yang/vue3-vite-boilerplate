@@ -19,7 +19,10 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       vueJsx(),
-      legacy(),
+      legacy({
+        modernTargets: ['ios_saf >= 13', 'android >= 8'],
+        modernPolyfills: true,
+      }),
       svgLoader(),
       autoImport({
         imports: ['vue', 'vue-router', 'pinia'],
