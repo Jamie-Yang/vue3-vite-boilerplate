@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { setupRouterGuard } from './guard'
+import { setupRouterGuard } from './guards'
 import example from './modules/example'
 
 const routes: Array<RouteRecordRaw> = [
