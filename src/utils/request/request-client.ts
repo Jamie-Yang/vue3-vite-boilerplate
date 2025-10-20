@@ -7,6 +7,19 @@ import { showToast } from '@/components/fn'
 
 import transformProxyUrl from '../dev-proxy/transform-proxy-url'
 
+export interface RequestClientConfig {
+  /** 基础 URL */
+  baseURL: string
+  /** 标识成功的状态码 */
+  successCode: number | string
+  /** 接口响应数据 code 字段名 */
+  codeKey: string
+  /** 接口响应数据 data 字段名 */
+  dataKey: string
+  /** 接口响应数据 message 字段名 */
+  messageKey: string
+}
+
 interface RequestInterceptorConfig {
   fulfilled?: (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>
   rejected?: (error: any) => any // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -21,7 +34,7 @@ interface ResponseInterceptorConfig<T = any> {
 export default class RequestClient {
   private instance: AxiosInstance
 
-  private config = {
+  private config: RequestClientConfig = {
     baseURL: import.meta.env.VITE_API_BASE_URL,
     successCode: 0,
     codeKey: 'code',
@@ -29,7 +42,7 @@ export default class RequestClient {
     messageKey: 'message',
   }
 
-  constructor(config: Partial<RequestClient['config']> = {}) {
+  constructor(config: Partial<RequestClientConfig> = {}) {
     this.config = { ...this.config, ...config }
     this.instance = this.createInstance(this.config.baseURL)
     this.useDefaultResponseInterceptors()
