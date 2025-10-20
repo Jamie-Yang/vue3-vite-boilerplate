@@ -1,118 +1,118 @@
 # vue3-vite-boilerplate
 
-[中文文档](./README.zh-CN.md)
+[English](./README.en.md)
 
-A Modern Vue 3 Starter Boilerplate based on Vite 7, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
+开箱即用的现代 Vue3 web 应用脚手架，基于 Vite 7、Typescript 5、Prettier、Stylelint、ESLint 9 等
 
-## Tech Stack
+## 技术栈
 
-| Category         | Technologies                  |
-| ---------------- | ----------------------------- |
-| **Core**         | Vue 3, Vue Router 4, Pinia 3  |
-| **Build Tools**  | Vite 7, TypeScript 5          |
-| **HTTP Client**  | Axios                         |
-| **Code Quality** | ESLint 9, Prettier, Stylelint |
-| **Git Workflow** | Commitlint, Husky             |
+| 分类            | 技术                          |
+| --------------- | ----------------------------- |
+| **核心框架**    | Vue 3, Vue Router 4, Pinia 3  |
+| **构建工具**    | Vite 7, TypeScript 5          |
+| **HTTP 客户端** | Axios                         |
+| **代码质量**    | ESLint 9, Prettier, Stylelint |
+| **Git 工作流**  | Commitlint, Husky             |
 
-## Features
+## 特性
 
-- 🚀 **Modern Architecture**: Built with latest frontend technologies
-- 📱 **Responsive Design**: Ready for different screen sizes
-- 🛠️ **Developer Experience**: Comprehensive code quality tools
-- 🔒 **Git Hooks**: Husky + lint-staged for pre-commit validation
-- 📦 **Auto Import**: Components and APIs auto-importing
-- 🎨 **Iconify Integration**: Easily use icons from various icon sets
-- 🌐 **Development Proxy**: Convenient API proxying during development
-- 🧩 **Modular Structure**: Well-organized project structure
+- 🚀 **现代架构**：采用最新前端技术构建
+- 📱 **响应式设计**：适配不同屏幕尺寸
+- 🛠️ **开发体验**：完善的代码质量工具
+- 🔒 **Git Hooks**：使用 Husky + lint-staged 进行提交前验证
+- 📦 **自动导入**：组件和 API 自动导入
+- 🎨 **Iconify 集成**：轻松使用各种图标集
+- 🌐 **开发代理**：开发过程中便捷的 API 代理
+- 🧩 **模块化结构**：组织良好的项目结构
 
-## Quick Start
+## 快速开始
 
-### Prerequisites
+### 前提条件
 
 - Node.js 22+
 - pnpm 10+
 
-### Installation
+### 安装
 
 ```bash
-# Clone the repository
+# 克隆仓库
 git clone https://github.com/Jamie-Yang/vue3-vite-boilerplate.git
 cd vue3-vite-boilerplate
 
-# Install dependencies
+# 安装依赖
 pnpm install
 ```
 
-### Development
+### 开发
 
 ```bash
-# Start development server
+# 启动开发服务器
 pnpm dev
 ```
 
-### Build
+### 构建
 
 ```bash
-# Production build
+# 生产环境构建
 pnpm build
 
-# Test environment build
+# 测试环境构建
 pnpm build:test
 
-# Pre-production build
+# 预生产环境构建
 pnpm build:pre
 
-# Production build
+# 生产环境构建
 pnpm build:prod
 ```
 
-### Linting
+### 代码检查
 
 ```bash
-# Run all linters
+# 运行所有检查工具
 pnpm lint
 
-# Run specific linters
+# 运行特定检查工具
 pnpm lint:eslint
 pnpm lint:prettier
 pnpm lint:stylelint
 ```
 
-## Project Structure
+## 项目结构
 
 ```
 vue3-vite-boilerplate/
-├── public/              # Static assets
+├── public/              # 静态资源
 ├── src/
-│   ├── api/             # API requests
-│   ├── assets/          # Images, fonts, etc.
-│   ├── components/      # Reusable components
-│   ├── composables/     # Vue 3 composables
-│   ├── directives/      # Vue directives
-│   ├── router/          # Vue Router configuration
-│   │   ├── guard/       # Navigation guards
-│   │   └── modules/     # Route modules
-│   ├── stores/          # Pinia stores
-│   ├── utils/           # Utility functions
-│   ├── views/           # Page components
-│   ├── App.vue          # Root component
-│   └── main.ts          # Application entry point
-├── typings/             # TypeScript declaration files
-└── ...config files
+│   ├── api/             # API 请求
+│   ├── assets/          # 图片、字体等资源
+│   ├── components/      # 可复用组件
+│   ├── composables/     # Vue 3 组合式函数
+│   ├── directives/      # Vue 指令
+│   ├── router/          # Vue Router 配置
+│   │   ├── guard/       # 导航守卫
+│   │   └── modules/     # 路由模块
+│   ├── stores/          # Pinia 状态管理
+│   ├── utils/           # 工具函数
+│   ├── views/           # 页面组件
+│   ├── App.vue          # 根组件
+│   └── main.ts          # 应用入口
+├── typings/             # TypeScript 声明文件
+└── ...配置文件
 ```
 
-## Commit Guidelines
+## 提交规范
 
-This project follows the conventional commit format. Commitlint will help ensure your commit messages meet the format.
+本项目遵循约定式提交格式。Commitlint 将帮助确保您的提交消息符合格式。
 
-Examples:
+示例：
 
-- `feat: add new feature`
-- `fix: resolve issue with component`
-- `docs: update readme`
-- `style: format code`
-- `refactor: restructure component`
+- `feat: 添加新功能`
+- `fix: 解决组件问题`
+- `docs: 更新文档`
+- `style: 格式化代码`
+- `refactor: 重构组件`
 
-## License
+## 许可证
 
-[MIT License](./LICENSE)
+[MIT 许可证](./LICENSE)
