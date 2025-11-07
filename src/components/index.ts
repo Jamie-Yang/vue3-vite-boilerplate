@@ -1,4 +1,5 @@
 export { default as CountDown } from './count-down/CountDown.vue'
-export { default as Loading } from './loading/Loading.vue'
+export { default as Spinner } from './spinner/Spinner.vue'
+export { default as SpinnerIcon } from './spinner/SpinnerIcon.vue'
 export { default as ScrollLoad } from './scroll-load/ScrollLoad.vue'
 export { default as SvgIcon } from './svg-icon/SvgIcon.vue'

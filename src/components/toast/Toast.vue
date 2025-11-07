@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Loading } from '@/components'
+import { Spinner } from '@/components'
 
 const props = defineProps({
   id: { type: String, default: '' },
@@ -50,7 +50,7 @@ function useToast() {
 <template>
   <transition name="toast" @after-leave="$emit('destroy')">
     <div v-show="visible" :id="id" class="toast" :class="[`toast-${position}`]">
-      <Loading v-if="icon === 'loading'" :size="iconSize" color="#fff" />
+      <Spinner v-if="icon === 'loading'" :size="iconSize" color="#fff" />
       <span class="toast-text" v-html="message"></span>
     </div>
   </transition>

@@ -2,49 +2,37 @@
 import { getSizeStyle } from '@/utils/format'
 
 interface Props {
+  /** 类型 */
   type?: 'circular' | 'spinner'
+  /** 大小 */
   size?: number | string
-  vertical?: boolean
-  textSize?: number
+  /** 颜色 */
   color?: string
-  textColor?: string
 }
 
 withDefaults(defineProps<Props>(), {
   type: 'circular',
   size: 24,
-  vertical: false,
-  textSize: 14,
   color: '#969799',
-  textColor: '#969799',
 })
 </script>
 
 <template>
-  <div class="loading" :class="{ 'loading-vertical': vertical }">
-    <div class="loading-icon" :class="[type]" :style="{ ...getSizeStyle(size), color }">
-      <div v-if="type === 'spinner'" class="icon-spinner">
-        <div v-for="(_, index) in 12" :key="index" class="spinner-line" :class="`line-${index + 1}`" />
-      </div>
-      <svg v-if="type === 'circular'" class="icon-circular" viewBox="25 25 50 50">
-        <circle cx="50" cy="50" r="20" fill="none" />
-      </svg>
+  <div class="spinner-icon" :class="[type]" :style="{ ...getSizeStyle(size), color }">
+    <div v-if="type === 'spinner'" class="icon-spinner">
+      <div v-for="(_, index) in 12" :key="index" class="spinner-line" :class="`line-${index + 1}`" />
     </div>
 
-    <span class="text" :style="{ fontSize: `${textSize}px`, color: textColor }"><slot /></span>
+    <svg v-if="type === 'circular'" class="icon-circular" viewBox="25 25 50 50">
+      <circle cx="50" cy="50" r="20" fill="none" />
+    </svg>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use 'sass:math';
 
-.loading {
-  display: flex;
-  align-items: center;
-  margin: 5px 0;
-}
-
-.loading-icon {
+.spinner-icon {
   width: 20px;
   height: 20px;
   animation: rotate 0.8s 0s linear infinite;
@@ -89,21 +77,6 @@ withDefaults(defineProps<Props>(), {
     stroke-width: 3;
     stroke-linecap: round;
     animation: circular 1.5s ease-in-out infinite;
-  }
-}
-
-.text {
-  margin-left: 8px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #969799;
-}
-
-.loading-vertical {
-  flex-direction: column;
-
-  .text {
-    margin: 8px 0 0;
   }
 }
 

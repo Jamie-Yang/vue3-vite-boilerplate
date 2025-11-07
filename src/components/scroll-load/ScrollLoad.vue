@@ -3,13 +3,24 @@ import { watch, onMounted, onBeforeUnmount } from 'vue'
 
 type ScrollElement = Window | HTMLElement
 
-const props = defineProps<{
+interface Props {
+  /** 是否正在加载 */
   isLoading: boolean
-  loadingText: string
+  /** 加载时的文本 */
+  loadingText?: string
+  /** 是否没有更多 */
   noMore: boolean
-  noMoreText: string
-  scrollElement: ScrollElement
-}>()
+  /** 没有更多时的文本 */
+  noMoreText?: string
+  /** 滚动元素 */
+  scrollElement?: Window | HTMLElement
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  loadingText: '加载中...',
+  noMoreText: '没有更多了',
+  scrollElement: () => window,
+})
 
 const emits = defineEmits(['reach-end'])
 
