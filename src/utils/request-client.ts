@@ -5,7 +5,7 @@ import { stringify } from 'qs'
 
 import { showToast } from '@/components/fn'
 
-import transformProxyUrl from '../dev-proxy/transform-proxy-url'
+import transformProxyUrl from './dev-proxy/transform-proxy-url'
 
 /** 标准 API 响应结构 */
 export interface ApiResponse<T = unknown> {
