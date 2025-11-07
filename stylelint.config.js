@@ -1,5 +1,9 @@
 export default {
-  extends: ['stylelint-config-standard-scss', 'stylelint-config-standard-vue/scss', 'stylelint-config-recess-order'],
+  extends: [
+    'stylelint-config-standard-scss', // scss 规范
+    'stylelint-config-standard-vue/scss', // vue/scss 规范
+    'stylelint-config-recess-order', // 样式顺序
+  ],
 
   ignoreFiles: ['node_modules/**', 'src/assets/fonts/**', 'dist/**'],
 
