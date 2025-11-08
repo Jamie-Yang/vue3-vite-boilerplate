@@ -1,9 +1,8 @@
-import { createApp } from 'vue'
-
 import '@/assets/styles/reset.css'
 import '@/assets/styles/index.scss'
 
 import './setups/vconsole'
+
 import App from './App.vue'
 import router from './router'
 import store from './stores/index'

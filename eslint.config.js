@@ -11,10 +11,19 @@ export default defineConfigWithVueTs(
    * javascript config
    */
   js.configs.recommended,
-  {
-    name: '@project-config/javascript',
 
-    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
+  /**
+   * typescript recommended config
+   */
+  vueTsConfigs.recommendedTypeChecked,
+
+  /**
+   * javascript & typescript & browser config
+   */
+  {
+    name: '@project-config/javascript-typescript-browser',
+
+    files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.vue'],
 
     languageOptions: {
       globals: globals.browser,
@@ -37,7 +46,6 @@ export default defineConfigWithVueTs(
   /**
    * typescript config
    */
-  vueTsConfigs.recommendedTypeChecked,
   {
     name: '@project-config/typescript',
 
@@ -63,6 +71,8 @@ export default defineConfigWithVueTs(
   pluginImport.flatConfigs.typescript,
   {
     name: '@project-config/import',
+
+    files: ['**/*.js', '**/*.ts', '**/*.vue'],
 
     settings: {
       'import/resolver': {
