@@ -2,8 +2,8 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
+import example from './example'
 import { setupRouterGuard } from './guards'
-import example from './modules/example'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/home' },
