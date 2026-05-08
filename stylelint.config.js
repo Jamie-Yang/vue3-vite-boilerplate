@@ -1,7 +1,7 @@
 export default {
   extends: [
     'stylelint-config-standard-scss', // scss 规范
-    'stylelint-config-standard-vue/scss', // vue/scss 规范
+    'stylelint-config-recommended-vue/scss', // vue/scss 规范
     'stylelint-config-recess-order', // 样式顺序
   ],
 
