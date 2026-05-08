@@ -1,6 +1,6 @@
 [production]
-ios_saf >= 13  
-android >= 8  
+ios_saf >= 13
+chrome >= 80
 
 [development]
 last 1 chrome version

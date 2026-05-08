@@ -20,7 +20,6 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueJsx(),
       legacy({
-        modernTargets: ['ios_saf >= 13', 'android >= 8'],
         modernPolyfills: true,
       }),
       svgLoader(),
