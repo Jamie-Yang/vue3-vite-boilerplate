@@ -1,23 +1,23 @@
 # vue3-vite-boilerplate
 
-A Modern Vue 3 Starter Boilerplate based on Vite 8, TypeScript 6, Prettier, Stylelint, ESLint 10, and more.
+A Modern Vue 3 Starter Boilerplate based on Vite+, TypeScript 6, Oxlint, Oxfmt, and more.
 
 ## Tech Stack
 
-| Category         | Technologies                   |
-| ---------------- | ------------------------------ |
-| **Core**         | Vue 3, Vue Router 5, Pinia 4   |
-| **Build Tools**  | Vite 8, TypeScript 6           |
-| **HTTP Client**  | Axios                          |
-| **Code Quality** | ESLint 10, Prettier, Stylelint |
-| **Git Workflow** | Commitlint, Husky              |
+| Category         | Technologies                      |
+| ---------------- | --------------------------------- |
+| **Core**         | Vue 3, Vue Router 5, Pinia 4      |
+| **Build Tools**  | Vite+, TypeScript 6               |
+| **HTTP Client**  | Axios                             |
+| **Code Quality** | Oxlint, Oxfmt, Stylelint, vue-tsc |
+| **Git Workflow** | Commitlint, Vite+ hooks           |
 
 ## Features
 
 - 🚀 **Modern Architecture**: Built with latest frontend technologies
 - 📱 **Responsive Design**: Ready for different screen sizes
 - 🛠️ **Developer Experience**: Comprehensive code quality tools
-- 🔒 **Git Hooks**: Husky + lint-staged for pre-commit validation
+- 🔒 **Git Hooks**: Vite+ hooks + vp staged for pre-commit validation
 - 🎨 **Iconify Integration**: Easily use icons from various icon sets
 - 🌐 **Development Proxy**: Convenient API proxying during development
 - 🧩 **Modular Structure**: Well-organized project structure
@@ -26,7 +26,7 @@ A Modern Vue 3 Starter Boilerplate based on Vite 8, TypeScript 6, Prettier, Styl
 
 ### Prerequisites
 
-- Node.js 22.x (22.22.1+) or 24+; the version in `.node-version` is recommended
+- Node.js 22.x (22.22.1+), 24.x (24.11.0+), or 26+; the version in `.node-version` is recommended
 - pnpm 10.13.1
 
 ### Installation
@@ -50,7 +50,7 @@ pnpm dev
 ### Build
 
 ```bash
-# Default production build (production mode)
+# Production build (loads .env.prod)
 pnpm build
 
 # Test environment build
@@ -58,27 +58,27 @@ pnpm build:test
 
 # Pre-production build
 pnpm build:pre
-
-# Production build
-pnpm build:prod
 ```
 
 ### Linting
+
+Use `pnpm check` for format checks, Oxlint, Stylelint, and Vue type checks; running `vp check` directly omits the last two.
 
 ```bash
 # Type checking
 pnpm type-check
 
-# Check without modifying files
+# Full read-only checks: formatting, Oxlint, Stylelint, and Vue types
+pnpm check
+
+# Fix style and code rule violations, then format (modifies files)
 pnpm lint
 
-# Apply fixes sequentially, then format
-pnpm lint:fix
-
-# Run specific linters
-pnpm lint:eslint
-pnpm lint:prettier
+# Check styles only
 pnpm lint:stylelint
+
+# Format only (modifies files)
+pnpm fmt
 ```
 
 ## Project Structure

@@ -1,25 +1,55 @@
 {
-  // Format code on save
   "editor.formatOnSave": true,
-
-  // Automatically apply code fixes on manual save
-  "editor.codeActionsOnSave": { "source.fixAll": "explicit" },
-
-  // Set default formatter to prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  // Configure Stylelint to validate the following files
-  "stylelint.validate": ["css", "scss", "vue"],
-
-  // Nest related files
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "oxc.disableNestedConfig": true,
+  "oxc.fmt.disableNestedConfig": true,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": true,
   "explorer.fileNesting.patterns": {
-    ".env": ".env.*",
     "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .gitattributes, .gitignore, .npmrc, .node-version, .git*",
-    "eslint.config.js": ".prettierrc.*, .prettierignore, stylelint.config.*, .stylelintignore, lint-staged.config.js, commitlint.config.js",
-    "vite.config.*": ".browserslistrc, postcss.config.*, tsconfig.*",
+    "vite.config.*": ".browserslistrc, tsconfig.*, commitlint.config.js, stylelint.config.js",
     "README.*": "README.*.md, LICENSE",
     "*.ts": "$(capture).model.ts"
-  }
+  },
+  "stylelint.validate": ["css", "scss", "vue"],
+  "editor.formatOnSaveMode": "file",
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

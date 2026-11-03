@@ -1,9 +1,9 @@
-import type { ToastOptions, ToastHandle } from './types'
 import type { ComponentPublicInstance } from 'vue'
 
 import { mountPopup } from '@/utils/mount-popup'
 
 import Toast from './Toast.vue'
+import type { ToastOptions, ToastHandle } from './types'
 
 /* 每个 Toast 暴露独立的关闭方法，关闭时同步清理定时器。 */
 type ToastInstance = ComponentPublicInstance<{ close: () => void }>

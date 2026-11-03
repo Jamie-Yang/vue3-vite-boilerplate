@@ -1,0 +1,15 @@
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+ignoredBuiltDependencies:
+  - unrs-resolver
+overrides:
+  vite@*: 'catalog:'
+peerDependencyRules:
+  allowedVersions:
+    vite: '*'
+  allowAny:
+    - vite
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
+  vite-plus: 1.4.0

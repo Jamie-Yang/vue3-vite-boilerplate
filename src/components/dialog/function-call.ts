@@ -1,8 +1,7 @@
-import type { DialogOptions } from './type'
-
 import { mountPopup } from '@/utils/mount-popup'
 
 import Dialog from './Dialog.vue'
+import type { DialogOptions } from './type'
 
 function showDialog(options: DialogOptions | string = '') {
   if (typeof options === 'string') {

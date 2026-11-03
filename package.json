@@ -5,21 +5,18 @@
   "type": "module",
   "packageManager": "pnpm@10.13.1",
   "scripts": {
-    "dev": "vite --mode dev",
-    "build": "pnpm run type-check && vite build",
-    "build:test": "pnpm run type-check && vite build --mode test",
-    "build:pre": "pnpm run type-check && vite build --mode pre",
-    "build:prod": "pnpm run type-check && vite build --mode prod",
-    "preview": "vite preview",
+    "dev": "vp dev --mode dev",
+    "build": "pnpm run type-check && vp build --mode prod",
+    "build:test": "pnpm run type-check && vp build --mode test",
+    "build:pre": "pnpm run type-check && vp build --mode pre",
+    "preview": "vp preview",
     "type-check": "vue-tsc -b --noEmit",
-    "lint": "run-p lint:prettier lint:eslint lint:stylelint",
-    "lint:fix": "eslint . --fix && stylelint \"./src/**/*.{vue,scss,css}\" --fix && prettier . --write --log-level warn",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier . --check",
-    "lint:stylelint": "stylelint \"./src/**/*.{vue,scss,css}\"",
-    "eslint-inspect": "eslint --inspect-config",
+    "check": "vp check && pnpm run lint:stylelint && pnpm run type-check",
+    "lint": "pnpm run lint:stylelint --fix && vp check --fix",
+    "lint:stylelint": "stylelint \"src/**/*.{vue,scss,css}\"",
+    "fmt": "vp fmt",
     "reinstall": "rm -rf node_modules pnpm-lock.yaml && pnpm install",
-    "prepare": "is-ci || husky",
+    "prepare": "vp config --no-agent",
     "update:deps": "pnpx taze -i"
   },
   "dependencies": {
@@ -34,46 +31,22 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
-    "@eslint/js": "^10.0.1",
     "@types/node": "^22.20.5",
     "@vitejs/plugin-legacy": "^8.2.3",
     "@vitejs/plugin-vue": "^6.0.10",
-    "@vue/eslint-config-typescript": "^14.9.0",
     "@vue/tsconfig": "^0.9.1",
-    "eslint": "^10.14.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-import-x": "^4.17.1",
-    "eslint-plugin-vue": "^10.12.0",
-    "globals": "^17.14.0",
-    "husky": "^9.1.7",
-    "is-ci": "^4.1.0",
-    "lint-staged": "^17.6.0",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.5.32",
     "postcss-html": "^2.0.0",
-    "prettier": "^3.9.10",
     "sass-embedded": "^1.107.1",
     "stylelint": "^17.16.0",
-    "stylelint-config-recess-order": "^7.10.0",
+    "stylelint-config-recommended-scss": "^17.0.1",
     "stylelint-config-recommended-vue": "^2.0.0",
-    "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "~6.0.3",
-    "unplugin-auto-import": "^21.1.0",
-    "vite": "^8.3.5",
+    "vite-plus": "catalog:",
     "vite-svg-loader": "^5.1.3",
     "vue-tsc": "^3.3.14"
   },
   "engines": {
-    "node": "^22.22.1 || >=24.0.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "core-js",
-      "esbuild"
-    ],
-    "ignoredBuiltDependencies": [
-      "unrs-resolver"
-    ]
+    "node": "^22.22.1 || ^24.11.0 || >=26.0.0"
   }
 }

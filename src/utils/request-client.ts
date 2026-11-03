@@ -1,5 +1,4 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-
 import axios from 'axios'
 
 import transformProxyUrl from './dev-proxy/transform-proxy-url'

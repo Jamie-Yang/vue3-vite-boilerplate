@@ -1,36 +1,9 @@
 export default {
-  extends: [
-    'stylelint-config-standard-scss', // scss 规范
-    'stylelint-config-recommended-vue/scss', // vue/scss 规范
-    'stylelint-config-recess-order', // 样式顺序
-  ],
-
-  ignoreFiles: ['node_modules/**', 'src/assets/fonts/**', 'dist/**'],
-
-  overrides: [
-    {
-      files: ['*.vue', '**/*.vue'],
-      rules: {},
-    },
-  ],
-
+  extends: ['stylelint-config-recommended-scss', 'stylelint-config-recommended-vue/scss'],
+  ignoreFiles: ['node_modules/**', 'dist/**'],
   rules: {
-    // 选择器命名：关闭类选择器命名模式检查，支持 BEM、原子化等各种命名方式
-    'selector-class-pattern': null,
-
-    // 颜色规范：禁止使用命名颜色
-    'color-named': 'never',
-
-    // 值规范：字体粗细使用数字
-    'font-weight-notation': 'numeric',
-
-    // 单位规范：禁用印刷媒体单位
-    'unit-disallowed-list': ['pt', 'cm', 'mm', 'in', 'pc'],
-
-    // 选择器复杂度：限制各类选择器使用数量，避免过度嵌套
     'selector-max-id': 1,
-    'selector-max-universal': 1,
-    'selector-max-type': 3,
-    'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
+    'max-nesting-depth': 3,
+    'font-weight-notation': 'numeric',
   },
 }

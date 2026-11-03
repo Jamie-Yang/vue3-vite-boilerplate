@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import type { IconType, ToastPosition } from './types'
-
 import purify from 'dompurify'
+import type { PropType } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import { Spinner, SvgIcon } from '@/components'
 import { getSizeStyle } from '@/utils/format'
+
+import type { IconType, ToastPosition } from './types'
 
 const props = defineProps({
   id: { type: String, default: '' },

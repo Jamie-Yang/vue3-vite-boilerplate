@@ -1,6 +1,6 @@
-import type { Numeric } from './types'
 import type { CSSProperties } from 'vue'
 
+import type { Numeric } from './types'
 import { isNumeric } from './validate'
 
 interface IRemainTime {

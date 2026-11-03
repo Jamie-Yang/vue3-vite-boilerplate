@@ -1,5 +1,4 @@
 import type * as model from './example.model'
-
 import request from './services/example-service'
 
 /** 获取 */

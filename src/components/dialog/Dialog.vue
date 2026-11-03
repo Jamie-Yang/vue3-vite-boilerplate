@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import type { DialogButton } from './type'
-
 import purify from 'dompurify'
+import type { PropType } from 'vue'
+import { computed } from 'vue'
+
+import type { DialogButton } from './type'
 
 const props = defineProps({
   title: { type: String, default: '' },

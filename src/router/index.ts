@@ -1,5 +1,4 @@
 import type { RouteRecordRaw } from 'vue-router'
-
 import { createRouter, createWebHistory } from 'vue-router'
 
 import example from './example'

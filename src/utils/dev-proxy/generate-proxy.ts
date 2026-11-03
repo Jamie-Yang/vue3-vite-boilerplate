@@ -1,4 +1,4 @@
-import type { ProxyOptions } from 'vite'
+import type { ProxyOptions } from 'vite-plus'
 
 /**
  * 根据环境变量配置，生成本地请求代理配置

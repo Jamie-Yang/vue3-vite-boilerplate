@@ -1,4 +1,4 @@
-/// <reference types="vite/client" />
+/// <reference types="vite-plus/client" />
 
 interface ImportMetaEnv {
   readonly VITE_APP_ENV: 'dev' | 'test' | 'pre' | 'prod'
