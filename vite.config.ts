@@ -8,7 +8,7 @@ import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig, loadEnv } from 'vite'
 import svgLoader from 'vite-svg-loader'
 
-import generateProxy from './src/utils/dev-proxy/generate-proxy'
+import generateProxy from './src/utils/dev-proxy/generate-proxy.ts'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, cwd(), '')

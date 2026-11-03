@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import DOMPurify from 'dompurify'
+import purify from 'dompurify'
 
 import { Spinner } from '@/components'
 
@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 /* 仅显式开启 HTML 时清洗，普通消息仍按文本渲染。 */
-const sanitizedMessage = computed(() => (props.allowHtml ? DOMPurify.sanitize(props.message, { USE_PROFILES: { html: true } }) : ''))
+const sanitizedMessage = computed(() => (props.allowHtml ? purify.sanitize(props.message, { USE_PROFILES: { html: true } }) : ''))
 
 defineEmits(['destroy'])
 const { visible } = useToast()
