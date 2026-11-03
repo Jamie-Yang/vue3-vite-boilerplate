@@ -1,16 +1,16 @@
 # vue3-vite-boilerplate
 
-A Modern Vue 3 Starter Boilerplate based on Vite 7, TypeScript 5, Prettier, Stylelint, ESLint 9, and more.
+A Modern Vue 3 Starter Boilerplate based on Vite 8, TypeScript 5, Prettier, Stylelint, ESLint 10, and more.
 
 ## Tech Stack
 
-| Category         | Technologies                  |
-| ---------------- | ----------------------------- |
-| **Core**         | Vue 3, Vue Router 4, Pinia 3  |
-| **Build Tools**  | Vite 7, TypeScript 5          |
-| **HTTP Client**  | Axios                         |
-| **Code Quality** | ESLint 9, Prettier, Stylelint |
-| **Git Workflow** | Commitlint, Husky             |
+| Category         | Technologies                   |
+| ---------------- | ------------------------------ |
+| **Core**         | Vue 3, Vue Router 5, Pinia 3   |
+| **Build Tools**  | Vite 8, TypeScript 5           |
+| **HTTP Client**  | Axios                          |
+| **Code Quality** | ESLint 10, Prettier, Stylelint |
+| **Git Workflow** | Commitlint, Husky              |
 
 ## Features
 
@@ -27,7 +27,7 @@ A Modern Vue 3 Starter Boilerplate based on Vite 7, TypeScript 5, Prettier, Styl
 
 ### Prerequisites
 
-- Node.js 22+
+- Node.js 22.x (22.13.0+) or 24+; the version in `.node-version` is recommended
 - pnpm 10+
 
 ### Installation

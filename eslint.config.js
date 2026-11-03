@@ -2,7 +2,7 @@ import js from '@eslint/js'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import { globalIgnores } from 'eslint/config'
 import configPrettier from 'eslint-config-prettier'
-import pluginImport from 'eslint-plugin-import'
+import pluginImport from 'eslint-plugin-import-x'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 
@@ -72,21 +72,20 @@ export default defineConfigWithVueTs(
   {
     name: '@project-config/import',
 
-    files: ['**/*.js', '**/*.ts', '**/*.vue'],
+    files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.vue'],
 
     settings: {
-      'import/resolver': {
-        typescript: true,
-        alias: {
-          map: [['^@', './src/']],
-          extensions: ['.ts', '.js', '.vue', '.json'],
+      'import-x/resolver': {
+        typescript: {
+          project: './tsconfig.app.json',
+          extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.json', '.node', '.vue'],
         },
       },
     },
 
     rules: {
-      'import/no-named-as-default-member': 'off',
-      'import/order': [
+      'import-x/no-named-as-default-member': 'off',
+      'import-x/order': [
         'error',
         {
           'newlines-between': 'always',
