@@ -67,8 +67,11 @@ pnpm build:prod
 ### Linting
 
 ```bash
-# Run all linters
+# Check without modifying files
 pnpm lint
+
+# Apply fixes sequentially, then format
+pnpm lint:fix
 
 # Run specific linters
 pnpm lint:eslint

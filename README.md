@@ -69,8 +69,11 @@ pnpm build:prod
 ### 代码检查
 
 ```bash
-# 运行所有检查工具
+# 只检查，不修改文件
 pnpm lint
+
+# 顺序执行自动修复，最后统一格式化
+pnpm lint:fix
 
 # 运行特定检查工具
 pnpm lint:eslint
