@@ -1,14 +1,20 @@
 <script lang="ts" setup>
+import DOMPurify from 'dompurify'
+
 import { Spinner } from '@/components'
 
 const props = defineProps({
   id: { type: String, default: '' },
   message: { type: String, default: '' },
+  allowHtml: { type: Boolean, default: false },
   duration: { type: Number, default: 3000 },
   position: { type: String, default: 'middle' },
   icon: { type: String, default: '' },
   iconSize: { type: [Number, String], default: 30 },
 })
+
+/* 仅显式开启 HTML 时清洗，普通消息仍按文本渲染。 */
+const sanitizedMessage = computed(() => (props.allowHtml ? DOMPurify.sanitize(props.message, { USE_PROFILES: { html: true } }) : ''))
 
 defineEmits(['destroy'])
 const { visible } = useToast()
@@ -51,7 +57,8 @@ function useToast() {
   <transition name="toast" @after-leave="$emit('destroy')">
     <div v-show="visible" :id="id" class="toast" :class="[`toast-${position}`]">
       <Spinner v-if="icon === 'loading'" :size="iconSize" color="#fff" />
-      <span class="toast-text" v-html="message"></span>
+      <span v-if="allowHtml" class="toast-text" v-html="sanitizedMessage"></span>
+      <span v-else class="toast-text">{{ message }}</span>
     </div>
   </transition>
 </template>

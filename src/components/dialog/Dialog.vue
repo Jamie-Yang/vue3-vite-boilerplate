@@ -1,13 +1,19 @@
 <script lang="ts" setup>
 import type { DialogButton } from './type'
 
-defineProps({
+import DOMPurify from 'dompurify'
+
+const props = defineProps({
   title: { type: String, default: '' },
   message: { type: String, default: '' },
+  allowHtml: { type: Boolean, default: false },
   buttons: { type: Array as PropType<DialogButton[]>, default: () => ['我知道了'] },
   align: { type: String as PropType<'row' | 'column'>, default: 'row' },
   show: { type: Boolean, default: false },
 })
+
+/* 仅显式开启 HTML 时清洗，普通消息仍按文本渲染。 */
+const sanitizedMessage = computed(() => (props.allowHtml ? DOMPurify.sanitize(props.message, { USE_PROFILES: { html: true } }) : ''))
 
 const emits = defineEmits(['btn-click', 'update:show'])
 
@@ -27,7 +33,10 @@ function onClickBtn(index: number): void {
       <div v-show="show" class="dialog" @touchmove.prevent.stop>
         <div class="dialog-content">
           <div v-if="title" class="dialog-title">{{ title }}</div>
-          <div v-if="message" class="dialog-message" v-html="message"></div>
+          <template v-if="message">
+            <div v-if="allowHtml" class="dialog-message" v-html="sanitizedMessage"></div>
+            <div v-else class="dialog-message">{{ message }}</div>
+          </template>
         </div>
 
         <div class="dialog-buttons" :class="[`buttons-align-${align}`]">
