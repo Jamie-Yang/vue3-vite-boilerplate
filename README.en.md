@@ -18,7 +18,6 @@ A Modern Vue 3 Starter Boilerplate based on Vite 8, TypeScript 6, Prettier, Styl
 - 📱 **Responsive Design**: Ready for different screen sizes
 - 🛠️ **Developer Experience**: Comprehensive code quality tools
 - 🔒 **Git Hooks**: Husky + lint-staged for pre-commit validation
-- 📦 **Auto Import**: Components and APIs auto-importing
 - 🎨 **Iconify Integration**: Easily use icons from various icon sets
 - 🌐 **Development Proxy**: Convenient API proxying during development
 - 🧩 **Modular Structure**: Well-organized project structure
@@ -28,7 +27,7 @@ A Modern Vue 3 Starter Boilerplate based on Vite 8, TypeScript 6, Prettier, Styl
 ### Prerequisites
 
 - Node.js 22.x (22.22.1+) or 24+; the version in `.node-version` is recommended
-- pnpm 10+
+- pnpm 10.13.1
 
 ### Installation
 
@@ -38,7 +37,7 @@ git clone https://github.com/Jamie-Yang/vue3-vite-boilerplate.git
 cd vue3-vite-boilerplate
 
 # Install dependencies
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 ### Development
@@ -51,7 +50,7 @@ pnpm dev
 ### Build
 
 ```bash
-# Production build
+# Default production build (production mode)
 pnpm build
 
 # Test environment build
@@ -67,6 +66,9 @@ pnpm build:prod
 ### Linting
 
 ```bash
+# Type checking
+pnpm type-check
+
 # Check without modifying files
 pnpm lint
 
@@ -89,10 +91,9 @@ vue3-vite-boilerplate/
 │   ├── assets/          # Images, fonts, etc.
 │   ├── components/      # Reusable components
 │   ├── composables/     # Vue 3 composables
-│   ├── directives/      # Vue directives
 │   ├── router/          # Vue Router configuration
-│   │   ├── guard/       # Navigation guards
-│   │   └── modules/     # Route modules
+│   │   ├── guards/      # Navigation guards
+│   │   └── example.ts   # Example routes
 │   ├── stores/          # Pinia stores
 │   ├── utils/           # Utility functions
 │   ├── views/           # Page components
@@ -104,15 +105,15 @@ vue3-vite-boilerplate/
 
 ## Commit Guidelines
 
-This project follows the conventional commit format. Commitlint will help ensure your commit messages meet the format.
+This project follows the conventional commit format with a scope. Commitlint will help ensure your commit messages meet the format.
 
 Examples:
 
-- `feat: add new feature`
-- `fix: resolve issue with component`
-- `docs: update readme`
-- `style: format code`
-- `refactor: restructure component`
+- `feat(app): add new feature`
+- `fix(components): resolve issue with component`
+- `docs(readme): update readme`
+- `style(format): format code`
+- `refactor(components): restructure component`
 
 ## License
 

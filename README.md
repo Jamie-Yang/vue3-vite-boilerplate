@@ -20,7 +20,6 @@
 - 📱 **响应式设计**：适配不同屏幕尺寸
 - 🛠️ **开发体验**：完善的代码质量工具
 - 🔒 **Git Hooks**：使用 Husky + lint-staged 进行提交前验证
-- 📦 **自动导入**：组件和 API 自动导入
 - 🎨 **Iconify 集成**：轻松使用各种图标集
 - 🌐 **开发代理**：开发过程中便捷的 API 代理
 - 🧩 **模块化结构**：组织良好的项目结构
@@ -30,7 +29,7 @@
 ### 前提条件
 
 - Node.js 22.22.1+（22.x）或 24+，推荐使用 `.node-version` 指定的版本
-- pnpm 10+
+- pnpm 10.13.1
 
 ### 安装
 
@@ -40,7 +39,7 @@ git clone https://github.com/Jamie-Yang/vue3-vite-boilerplate.git
 cd vue3-vite-boilerplate
 
 # 安装依赖
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 ### 开发
@@ -53,7 +52,7 @@ pnpm dev
 ### 构建
 
 ```bash
-# 生产环境构建
+# 默认生产构建（production mode）
 pnpm build
 
 # 测试环境构建
@@ -69,6 +68,9 @@ pnpm build:prod
 ### 代码检查
 
 ```bash
+# 类型检查
+pnpm type-check
+
 # 只检查，不修改文件
 pnpm lint
 
@@ -91,10 +93,9 @@ vue3-vite-boilerplate/
 │   ├── assets/          # 图片、字体等资源
 │   ├── components/      # 可复用组件
 │   ├── composables/     # Vue 3 组合式函数
-│   ├── directives/      # Vue 指令
 │   ├── router/          # Vue Router 配置
-│   │   ├── guard/       # 导航守卫
-│   │   └── modules/     # 路由模块
+│   │   ├── guards/      # 导航守卫
+│   │   └── example.ts   # 示例路由
 │   ├── stores/          # Pinia 状态管理
 │   ├── utils/           # 工具函数
 │   ├── views/           # 页面组件
@@ -106,15 +107,15 @@ vue3-vite-boilerplate/
 
 ## 提交规范
 
-本项目遵循约定式提交格式。Commitlint 将帮助确保您的提交消息符合格式。
+本项目遵循带 scope 的约定式提交格式。Commitlint 将帮助确保您的提交消息符合格式。
 
 示例：
 
-- `feat: 添加新功能`
-- `fix: 解决组件问题`
-- `docs: 更新文档`
-- `style: 格式化代码`
-- `refactor: 重构组件`
+- `feat(app): 添加新功能`
+- `fix(components): 解决组件问题`
+- `docs(readme): 更新文档`
+- `style(format): 格式化代码`
+- `refactor(components): 重构组件`
 
 ## 许可证
 

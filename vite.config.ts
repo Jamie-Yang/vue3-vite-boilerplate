@@ -3,7 +3,6 @@ import { fileURLToPath, URL } from 'node:url'
 
 import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig, loadEnv } from 'vite'
 import svgLoader from 'vite-svg-loader'
@@ -18,7 +17,6 @@ export default defineConfig(({ mode }) => {
 
     plugins: [
       vue(),
-      vueJsx(),
       legacy({
         modernPolyfills: true,
       }),

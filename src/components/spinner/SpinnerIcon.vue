@@ -1,4 +1,4 @@
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import { getSizeStyle } from '@/utils/format'
 
 interface Props {
