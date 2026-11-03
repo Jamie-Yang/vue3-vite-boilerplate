@@ -31,7 +31,10 @@ function showToast(options: string | ToastOptions = ''): void {
     ...defaults,
     ...options,
     onDestroy: () => {
-      instance = null
+      /* 仅清理当前实例的引用，避免旧 Toast 销毁时影响新 Toast。 */
+      if (instance === toastInstance) {
+        instance = null
+      }
       unmount()
     },
   })
