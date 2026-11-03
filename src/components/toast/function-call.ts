@@ -1,14 +1,15 @@
-import type { ToastOptions } from './types'
+import type { ToastOptions, ToastHandle } from './types'
 import type { ComponentPublicInstance } from 'vue'
 
 import { mountPopup } from '@/utils/mount-popup'
 
 import Toast from './Toast.vue'
 
-type ToastInstance = ComponentPublicInstance<{ visible: boolean }>
+/* 每个 Toast 暴露独立的关闭方法，关闭时同步清理定时器。 */
+type ToastInstance = ComponentPublicInstance<{ close: () => void }>
 
 let seed = 1
-let instance: ToastInstance | null
+const instances = new Set<ToastInstance>()
 
 const defaults: ToastOptions = {
   message: '',
@@ -18,7 +19,8 @@ const defaults: ToastOptions = {
   iconSize: undefined,
 }
 
-function showToast(options: string | ToastOptions = ''): void {
+/* 创建独立实例并返回关闭句柄，不影响其他 Toast。 */
+function showToast(options: string | ToastOptions = ''): ToastHandle {
   if (typeof options === 'string') {
     options = {
       message: options,
@@ -31,20 +33,22 @@ function showToast(options: string | ToastOptions = ''): void {
     ...defaults,
     ...options,
     onDestroy: () => {
-      /* 仅清理当前实例的引用，避免旧 Toast 销毁时影响新 Toast。 */
-      if (instance === toastInstance) {
-        instance = null
-      }
-      unmount()
+      if (instances.delete(toastInstance)) unmount()
     },
   })
 
-  instance = toastInstance
+  instances.add(toastInstance)
+
+  return {
+    close: () => {
+      if (instances.has(toastInstance)) toastInstance.close()
+    },
+  }
 }
 
+/* 关闭全部仍存活的 Toast，单个关闭使用 showToast 返回的句柄。 */
 function closeToast() {
-  if (!instance) return
-  instance.visible = false
+  instances.forEach((instance) => instance.close())
 }
 
 export { showToast, closeToast }
