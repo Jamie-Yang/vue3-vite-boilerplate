@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { watch, ref } from 'vue'
+import { watch, ref, onBeforeUnmount } from 'vue'
 
 import { formatRemainTime, convertRemainTime } from '@/utils/format'
 
@@ -16,17 +16,26 @@ const { remain } = useCountDown()
 function useCountDown() {
   const rafId = ref(0)
   const remain = ref(0)
-  const endingTime = ref(0) // 结束时间 = 当前时间 + 剩余秒数
+  const endingTime = ref(0) // 结束时间 = 当前时间 + 剩余毫秒数
 
   watch(() => props.remainTime, start, { immediate: true })
+  onBeforeUnmount(stop)
 
+  /* 重启前停止旧循环，归零时只更新显示，不触发完成事件。 */
   function start() {
-    if (!props.remainTime) return
+    stop()
+    remain.value = Math.max(props.remainTime, 0)
+    if (remain.value === 0) return
 
-    remain.value = props.remainTime
-    endingTime.value = Date.now() + props.remainTime
+    endingTime.value = Date.now() + remain.value
 
     tick()
+  }
+
+  /* 重启、结束和卸载共用同一处动画清理。 */
+  function stop() {
+    window.cancelAnimationFrame(rafId.value)
+    rafId.value = 0
   }
 
   function tick() {
@@ -34,7 +43,7 @@ function useCountDown() {
       const remainValue = Math.max(endingTime.value - Date.now(), 0)
 
       if (remainValue === 0) {
-        window.cancelAnimationFrame(rafId.value)
+        stop()
         remain.value = 0
         emits('finish')
         return
